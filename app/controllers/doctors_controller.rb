@@ -24,6 +24,9 @@ class DoctorsController < ApplicationController
     if @doctor.save
       flash[:success] = "Doctor Updated"
       redirect_to doctor_path(@doctor.id)
+    else
+      flash[:error] = "#{doctor_params[:hospital_id]} is not a valid hospital id"
+      render :edit
     end
   end
 

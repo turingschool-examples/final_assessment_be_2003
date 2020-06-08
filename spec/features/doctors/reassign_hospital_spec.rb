@@ -24,7 +24,7 @@ RSpec.describe "From the doctor show" do
     fill_in "New Hospital ID", with: "hello"
     click_on "Add #{meridith.name} to this hospital"
     expect(page).to have_content "hello is not a valid hospital id"
-    expect(page).to have_content "Add #{meridith.name} to this hospital"
+    expect(page).to have_button "Add #{meridith.name} to this hospital"
   end
 
 end
