@@ -76,5 +76,49 @@ RSpec.describe "Doctors Show Page" do
 
     end
 
+    it "Can see a link to add a new doctor" do
+      grey_sloan = Hospital.create(name: "Grey Sloan Memorial Hospital",
+                                address: "123 Save Lives Road",
+                                city: "Seattle",
+                                state: "WA",
+                                zip:"98101"
+                              )
+
+      meridith = Doctor.create(name: "Meredith Grey",
+                            specialty: "General Surgery",
+                            education: "Harvard University"
+                          )
+      alex = grey_sloan.doctors.create(name: "Alex Karev",
+                            specialty: "Pediatric Surgery",
+                            education: "Johns Hopkins University"
+                          )
+
+
+      katie = Patient.create(name: "Katie Bryce",
+                              age: 24 )
+
+      denny = Patient.create(name: "Denny Daquette",
+                              age: 39 )
+
+
+      visit "/hospitals/#{grey_sloan.id}"
+
+      expect(page).to have_link("Add Doctor")
+
+      name = "Meredith Grey"
+      specialty = "General Surgery"
+      education = "Harvard University"
+
+      click_on "Add Doctor"
+      expect(current_path).to eq("/hospitals/#{grey_sloan.id}/doctor/new")
+
+      expect(page).to have_content("New Doctor Hire for #{grey_sloan.name}")
+
+    end
   end
 end
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page
+# And I can see that the number of doctors has increased by one
