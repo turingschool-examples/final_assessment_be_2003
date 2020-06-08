@@ -1,0 +1,15 @@
+<h1><%= @hospital.name %>'s Patients</h1>
+
+<!-- <section id='patients'>
+  <% @hospital.doctors.each do |doctor| %>
+    <% doctor.patients.sort_by_age('desc').each do |patient| %>
+      <%= patient.name %><br>
+    <% end %>
+  <% end %>
+</section> -->
+
+<section id='patients'>
+  <% @hospital.doctors.each do |doctor| %>
+    <% doctor.patients_by_age %>
+  <% end %>
+</section>

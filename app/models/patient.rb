@@ -3,6 +3,6 @@ class Patient < ApplicationRecord
   has_many :doctors, through: :doctor_patients
   
   def self.sort_by_age(order)
-    order(age: 'desc')
+    order(age: "#{order}")
   end 
 end
