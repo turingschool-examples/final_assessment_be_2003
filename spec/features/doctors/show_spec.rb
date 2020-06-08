@@ -11,7 +11,7 @@ RSpec.describe "Doctor's Show Page" do
 
     visit "/doctors/#{karev.id}"
 
-    expect(page).to have_content("Name: Alex Karev")
+    expect(page).to have_content("Alex Karev")
     expect(page).to have_content("Specialty: Pediatric Surgery")
     expect(page).to have_content("Education: Johns Hopkins University")
     expect(page).to have_content("Work: Grey Sloan Memorial Hospital")
