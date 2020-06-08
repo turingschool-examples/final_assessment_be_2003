@@ -10,4 +10,8 @@ class Hospital < ApplicationRecord
     def doctor_schools
         doctors.select(:education).distinct.pluck(:education)
     end
+
+    def all_patients_by_age 
+        Patient.joins(:doctors).where('hospital_id = ?', self.id).order(age: :desc)
+    end
 end
