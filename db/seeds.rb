@@ -28,7 +28,7 @@ patient4 = Patient.create(name: "Von Miller", age: 28)
 patient5 = Patient.create(name: "Peyton Manning", age: 35)
 patient6 = Patient.create(name: "John Elway", age: 50)
 patient7 = Patient.create(name: "Terrell Davis", age: 40)
-patient8 = Patient.create(name: "Champ Baley", age: 35)
+patient8 = Patient.create(name: "Champ Baley", age: 36)
 
 #doctor-patients
 doctor_patient1 = DoctorPatient.create(doctor: doctor1, patient: patient1)
