@@ -4,8 +4,6 @@ class DoctorsController <ApplicationController
     @doctor = Doctor.find(params[:id])
   end
 
-  def update
-    require 'pry'; binding.pry
+  def edit_hospital
   end
-
 end
