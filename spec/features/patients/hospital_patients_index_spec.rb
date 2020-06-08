@@ -32,17 +32,9 @@ RSpec.describe 'Hospital Patient Index Page' do
 
     it 'When I visit patient index, I can see all patients names listed from oldest to youngest' do
       visit "/hospitals/#{@hospital1.id}/patients"
-      save_and_open_page
 
-      expect(@patient2).to appear_before(@patient3)
-      expect(@patient3).to appear_before(@patient1)
+      expect(@patient2.name).to appear_before(@patient3.name)
+      expect(@patient3.name).to appear_before(@patient1.name)
     end
   end
 end
-
-# As a visitor
-# When I visit the hospitals show page 
-# I see a link to view all of that hospitals patients 
-# When I click that link
-# I'm taken to a patients index page for that hospital 
-# I see the names of all that hospital's patients listed from oldest to youngest
