@@ -21,7 +21,7 @@ RSpec.describe 'Doctor Show Page' do
       expect(page).to have_content(@karev.name)
       expect(page).to have_content(@karev.speciality)
       expect(page).to have_content(@karev.education)
-      expect(page).to have_content(@karev.hospital)
+      expect(page).to have_content(@karev.hospital.name)
       expect(page).to have_content(@katie.name)
 
       expect(page).to_not have_content(@grey.name)
