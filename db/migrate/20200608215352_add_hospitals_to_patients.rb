@@ -1,0 +1,5 @@
+class AddHospitalsToPatients < ActiveRecord::Migration[5.1]
+  def change
+    add_reference :patients, :hospitals, foreign_key: true
+  end
+end

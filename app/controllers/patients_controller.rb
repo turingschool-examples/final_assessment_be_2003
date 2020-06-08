@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   def index
+    # require "pry";binding.pry
     @patients = []
     hospital = Hospital.find(params[:id])
     hospital.doctors.each do |doc|
@@ -16,3 +17,8 @@ class PatientsController < ApplicationController
     redirect_to(request.env['HTTP_REFERER'])
   end
 end
+
+
+# id = params[:id].to_i
+# docs = Doctor.where(hospital_id: id)
+# docs.patients.
