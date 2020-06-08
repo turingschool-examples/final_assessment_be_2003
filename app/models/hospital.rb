@@ -7,7 +7,7 @@ class Hospital < ApplicationRecord
   end
 
   def patients
-    doctor_patients.joins(:patient).select('patients.age').order('patients.age').pluck('patients.name').uniq.join(", ")
+    doctor_patients.joins(:patient).select('patients.age').order('patients.age DESC').pluck('patients.name').uniq.join(", ")
   end
 
 end
