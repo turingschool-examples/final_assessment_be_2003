@@ -53,11 +53,32 @@ RSpec.describe "when visiting a hospitals show page" do
 
   it "patients index will list names of patient from oldest to youngest" do
     visit "/hospitals/#{@greys.id}/patients"
-    save_and_open_page
     within(:css, "ol#patients") do
       expect(page.all('li')[0]).to have_content(@denny.name)
       expect(page.all('li')[1]).to have_content(@rebecca.name)
       expect(page.all('li')[2]).to have_content(@katie.name)
     end
   end
+
+  it "a visitor can click a link that will take them to patients index page" do
+    visit "/hospitals/#{@greys.id}"
+
+    click_link "Add Doctor"
+
+    expect(current_path).to eq("/hospitals/#{@greys.id}/doctors/new")
+    expect(page).to have_content("New Doctor Hire for #{@greys.name}")
+  end
 end
+
+# ```
+# User Story 4, Creating a Doctor
+# As a visitor
+# When I visit a hospital's show page
+# I see a link to add a doctor for this hospital
+# When I click that link
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page
+# And I can see that the number of doctors has increased by one
+# ```
