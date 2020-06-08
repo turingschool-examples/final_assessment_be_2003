@@ -34,6 +34,17 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to_not have_content(@karev.name)
       expect(page).to_not have_content(@karev.specialty)
     end
+
+    it "Next to each patient's name, I see a button to remove that patient from that doctor's caseload" do 
+      visit"/doctors/#{@karev.id}"
+
+      within("#patient-#{@denny.id}") do
+        click_link"Remove Patient"
+      end
+
+      expect(page).to_not have_content(@denny.name)
+      expect(page).to have_content(@rebecca.name)
+    end 
   end
 end
 
@@ -45,3 +56,11 @@ end
 #  - university where they got their doctorate
 # And I see the name of the hospital where this doctor works
 # And I see the names of all of the patients this doctor has
+
+
+# As a visitor
+# When I visit a Doctor's show page
+# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+# When I click that button for one patient
+# I'm brought back to the Doctor's show page
+# And I no longer see that patient's name listed

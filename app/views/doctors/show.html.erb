@@ -10,6 +10,9 @@
 <section>
   <h3> Patients: </h3><br />
   <% @doctor.patients.each do |patient| %>
-  <li><%= patient.name %></li>
+  <section id="patient-<%=patient.id%>">
+    <li><%= patient.name %></li>
+    <%= link_to  "Remove Patient", "/doctors/#{@doctor.id}/#{patient.id}", method: :delete, data: {confirm: "Are you sure you want to remove #{patient.name}?"} %>
+  </section>
   <% end %>
 </section>

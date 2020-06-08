@@ -7,4 +7,9 @@ class Doctor < ApplicationRecord
   def ordered_names
     patients.order(:age)
   end
+
+  # def remove_patient(patient_id)
+  #   binding.pry
+  #   @patients[patient_id] -= 1
+  # end
 end

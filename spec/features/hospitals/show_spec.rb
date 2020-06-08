@@ -43,7 +43,6 @@ RSpec.describe 'As a visitor', type: :feature do
 
       expect(current_path).to eq("/hospitals/#{@grey_sloan.id}")
       expect(page).to have_content("Doctors: 3")
-      save_and_open_page
     end
   end
 end
