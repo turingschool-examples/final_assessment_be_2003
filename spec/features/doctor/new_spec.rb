@@ -10,7 +10,7 @@ RSpec.describe "Doctor New Page" do
     it "I see a link to add a doctor for that hospital" do
       visit "/hospitals/#{@sloan.id}"
 
-      click_on("Add a Doctor")
+      click_on("Add a Doctor to Grey Sloan Memorial Hospital")
       expect(current_path).to eq("/hospitals/#{@sloan.id}/doctors/new")
       expect(page).to have_content("New Doctor Hire for Grey Sloan Memorial Hospital")
       fill_in :name, with: "Meredith Grey"
