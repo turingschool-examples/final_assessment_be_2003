@@ -35,7 +35,14 @@ RSpec.describe "When I visit a hospital's show page" do
     visit "/hospitals/#{@seaside.id}"
 
     expect(page).to have_content("Number of Doctors: 2")
+  end
 
+  it "I see a unique list of universities that this hospital's doctors attended" do 
+
+    visit "/hospitals/#{@seaside.id}"
+
+    expect(page).to have_content(@mcdreamy.education)
+    expect(page).to have_content(@miranda.education)
   end
 end
 

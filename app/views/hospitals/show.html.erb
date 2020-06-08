@@ -6,3 +6,11 @@
 <p>Zip: <%= @hospital.zip %></p>
 
 <p>Number of Doctors: <%= @hospital.doctors.count %></p>
+
+<h1>Doctor Education</h1>
+<br>
+<p><% @hospital.doctors.each do |doctor| %></p>
+  <p> <%= doctor.education %> </p>  
+<% end %>
+
+ 
