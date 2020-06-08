@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :hospitals, only: [:show] do
     resources :patients, only: [:index]
+    resources :doctors, only: [:new, :create]
   end
 
 end
