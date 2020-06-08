@@ -16,14 +16,6 @@ Hospitals have many Doctors, Doctors work for just one hospital. Doctors can hav
 ## User Stories
 
 ```
-User Story 2, Hospital Show Page
-"As a visitor
-When I visit a hospital's show page
-I see the hospital's name, street address, city, state, and zip
-And I see the number of doctors that work at this hospital
-And I see a unique list of universities that this hospital's doctors attended
-```
-```
 User Story 3, Hospital Patient Index Page
 As a visitor
 When I visit the hospitals show page
