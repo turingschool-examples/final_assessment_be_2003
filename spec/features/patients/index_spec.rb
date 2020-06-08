@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "hospital show page", type: :feature do
+RSpec.describe "hospital patient index page", type: :feature do
   before(:each) do
     @grey_sloan = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city:"Seatle", state: "WA", zip: "98101")
     @seaside = Hospital.create(name: "Seaside Health & Wellness Center", address: "123 Private Practice Road", city:"Los Angeles", state: "CA", zip: "90001")
@@ -18,26 +18,26 @@ RSpec.describe "hospital show page", type: :feature do
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @jen.id)
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @ethan.id)
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @lauren.id)
-    visit "/hospitals/#{@grey_sloan.id}"
   end
 
-  it "can see hospital's info" do
-      expect(page).to have_content(@grey_sloan.name)
-      expect(page).to have_content(@grey_sloan.address)
-      expect(page).to have_content(@grey_sloan.city)
-      expect(page).to have_content(@grey_sloan.state)
-      expect(page).to have_content(@grey_sloan.zip)
-  end
+  # it "can see hospital's info" do
+  #   visit "/hospitals/#{@grey_sloan.id}"
+  #     expect(page).to have_content(@grey_sloan.name)
+  #     expect(page).to have_content(@grey_sloan.address)
+  #     expect(page).to have_content(@grey_sloan.city)
+  #     expect(page).to have_content(@grey_sloan.state)
+  #     expect(page).to have_content(@grey_sloan.zip)
+  # end
 
-  it "see count of doctors and list of universities" do
-    expect(page).to have_content("Number of Doctors: 2")
-    expect(page).to have_content("Universities attended: Harvard University, Johns Hopkins University")
-  end
-  it "see link to patients" do
-    click_link "Patients List"
-    expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/patients")
-    expect(@lauren.name).to appear_before(@jen.name)
-    expect(@jen.name).to appear_before(@ethan.name)
-    expect(@ethan.name).to appear_before(@erik.name)
-  end
+  # it "see count of doctors and list of universities" do
+  #   expect(page).to have_content("Number of Doctors: 2")
+  #   expect(page).to have_content("Universities attended: Harvard University, Johns Hopkins University")
+  # end
 end
+# User Story 3, Hospital Patient Index Page
+# As a visitor
+# When I visit the hospitals show page
+# I see a link to view all of that hospitals patients
+# When I click that link
+# I'm taken to a patients index page for that hospital
+# I see the names of all that hospital's patients listed from oldest to youngest
