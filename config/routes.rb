@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get '/hospitals/:id', to: 'hospitals#show'
   get '/hospitals/:id/patients', to: 'hospital_patients#index'
+  get '/hospitals/:id/doctors/new', to: 'hospital_doctors#new'
 end

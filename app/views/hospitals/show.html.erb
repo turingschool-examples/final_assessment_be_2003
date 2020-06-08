@@ -9,6 +9,7 @@
 <h3>Doctor Universities:  </h3><br>
 <% @hospital.doctor_universities.each do |university| %>
   <p><%= university %> </p>
-<% end %>
+<% end%>
 
-<%= link_to "View Patients", "/hospitals/#{@hospital.id}/patients" %>
+<%= link_to "View Patients", "/hospitals/#{@hospital.id}/patients"%><br>
+<%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>
