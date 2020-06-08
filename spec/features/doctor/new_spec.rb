@@ -18,7 +18,7 @@ RSpec.describe "Doctor New Page" do
       fill_in :education, with: "Harvard University"
       click_on "Submit"
 
-      expect(current_path).to eq("/hospitals/#{@sload.id}")
+      expect(current_path).to eq("/hospitals/#{@sloan.id}")
       expect(page).to have_content("Number of Doctors: 1")
     end
   end
