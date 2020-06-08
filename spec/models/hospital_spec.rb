@@ -12,4 +12,37 @@ describe Hospital, type: :model do
   describe "relationships" do
     it {should have_many :doctors}
   end
+
+  describe "Instance Methods" do
+    before(:each) do
+      @grey = Hospital.create(
+      name: 'Grey Sloan Memorial Hospital',
+      address: '123 Save Lives Rd',
+      city: 'Seattle',
+      state: 'WA',
+      zip: 98101)
+
+      @miranda =  Doctor.create(
+      name: 'Miranda Bailey',
+      specialty: 'General Surgery',
+      education: 'Stanford University',
+      hospital_id: @grey.id)
+
+      @derek = Doctor.create(
+      name: 'Derek McDreamy Shepherd',
+      specialty: 'Attending Surgeon',
+      education: 'University of Pennsylvania',
+      hospital_id: @grey.id)
+
+      @jeff = Doctor.create(
+      name: 'Jeff Lastname',
+      specialty: 'Attending Surgeon',
+      education: 'University of Pennsylvania',
+      hospital_id: @grey.id)
+    end
+
+    it 'number_of_doctors' do
+      expect(@grey.number_of_doctors).to eq(3)
+    end
+  end
 end
