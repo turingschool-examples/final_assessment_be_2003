@@ -32,15 +32,38 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content("Number of Doctors: #{@hospital1.doctor_count}")
       expect(page).to have_content("Universities Attended: #{@hospital1.uniq_universities}")
     end
-
-
   end
+  it "US4 Create a doctor - link to create doctor and doctor count increases" do
+    visit hospital_path(@hospital1)
+    expect(page).to have_content("Number of Doctors: 4")
+
+    click_link("Add New Doctor")
+
+    expect(current_path).to eq(new_hospital_doctor_path(@hospital1))
+    expect(page).to have_content("New Doctor Hire for #{@hospital1.name}")
+
+    within("#new-doctor-form")do
+      fill_in "doctor[name]",	with: "Bugs Bunny" 
+      fill_in "doctor[specialty]",	with: "Pediatrics" 
+      fill_in "doctor[education]",	with: "ACME University" 
+
+      click_on "Create Doctor"
+    end
+    expect(current_path).to eq(hospital_path(@hospital1))
+    expect(page).to have_content("Number of Doctors: 5")
+
+    
+  end
+  
   
 
 end#final
-# User Story 2, Hospital Show Page
-# "As a visitor
+
 # When I visit a hospital's show page
-# I see the hospital's name,street address, city, state, and zip
-# And I see the number of doctors that work at this hospital
-# And I see a unique list of universities that this hospital's doctors attended
+# I see a link to add a doctor for this hospital
+# When I click that link
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page 
+# And I can see that the number of doctors has increased by one

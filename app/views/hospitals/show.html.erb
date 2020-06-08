@@ -14,3 +14,5 @@
 </section>
 
 <%= link_to "View Patients at #{@hospital.name}", hospital_patients_path(@hospital) %>
+
+<%= link_to 'Add New Doctor', new_hospital_doctor_path(@hospital) %>
