@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Hospital do
   describe 'Relationships' do
     it {should have_many :doctors}
+    it {should have_many(:doctor_patients).through(:doctors)}
+
   end
 
   # describe 'Validations' do
@@ -16,10 +18,23 @@ RSpec.describe Hospital do
       @karev = @hospital.doctors.create(name: "Alex Karev", speciality: "Pediatric Surgery", education: "Johns Hopkins University")
       @martian = @hospital.doctors.create(name: "Marvin the Martian", speciality: "Outer Space", education: "Johns Hopkins University")
       @bunny = @psych.doctors.create(name: "Bugs Bunny", speciality: "Carrot Surgery", education: "Looney Tunes University")
+      @katie = Patient.create(name: "Katie Bryce", age: 24)
+      @denny = Patient.create(name: "Denny Duquette", age: 39)
+      @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
+      @tweety = Patient.create(name: "Tweety Bird", age: 5)
+      DoctorPatient.create(doctor_id: @grey.id, patient_id: @katie.id)
+      DoctorPatient.create(doctor_id: @karev.id, patient_id: @katie.id)
+      DoctorPatient.create(doctor_id: @grey.id, patient_id: @denny.id)
+      DoctorPatient.create(doctor_id: @grey.id, patient_id: @rebecca.id)
+      DoctorPatient.create(doctor_id: @bunny.id, patient_id: @tweety.id)
     end
 
     it '#doctor_universities' do
       expect(@hospital.doctor_universities).to eq("#{@grey.education} and #{@karev.education}")
+    end
+
+    it '#patients' do
+      expect(@hospital.patients).to eq("#{@katie.name}, #{@rebecca.name}, #{@denny.name}")
     end
   end
 end
