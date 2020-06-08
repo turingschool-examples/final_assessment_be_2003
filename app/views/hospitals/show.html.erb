@@ -6,5 +6,7 @@
   <h2>Universities That Doctors Have Attended:</h2>
   <% @hospital.doctors.each do |doctor| %>
      <%= doctor.education %><br>
-  <% end %>
+  <% end.uniq %>
 </section>
+
+<p><%= link_to "This Hospital's Patients", "/hospitals/#{@hospital.id}/patients" %></p>
