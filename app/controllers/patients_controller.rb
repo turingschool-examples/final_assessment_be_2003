@@ -6,4 +6,9 @@ class PatientsController < ApplicationController
     redirect_to "/doctors/#{doctor.id}"
   end
 
+  def index
+    @hospital = Hospital.find(params[:id])
+  end
+
+
 end

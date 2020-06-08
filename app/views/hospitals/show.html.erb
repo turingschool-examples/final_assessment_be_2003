@@ -11,7 +11,9 @@
 </section>
 
 <section id="universities">
-  <%= @hospital.universities %>
+  <% @hospital.universities.each do |university| %>
+    <%= university %>
+  <% end %>
 </section>
 
 <section id="link">

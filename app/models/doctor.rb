@@ -6,8 +6,5 @@ class Doctor < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :specialty
   validates_presence_of :education
-
-
-
-
+  validates_presence_of :hospital_id
 end
