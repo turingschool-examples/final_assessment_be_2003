@@ -51,7 +51,7 @@ RSpec.describe "Doctor Show Page" do
     it "I can reassign a doctor to a different hospital" do
       visit "/doctors/#{@grey.id}"
 
-      click_on "Assign Meredith Grey to a Different Hospital"
+      click_on "Assign Dr. Meredith Grey to a Different Hospital"
 
       expect(current_path).to eq("/doctors/#{@grey.id}/edit")
 
