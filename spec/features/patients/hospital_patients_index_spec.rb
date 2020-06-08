@@ -23,11 +23,11 @@ RSpec.describe 'Hospital Patient Index Page' do
     end
 
     it 'I can see a link to a hospitals patients index on hospital show page' do
-      visit "/hospitals/#{@hospital1.id}"
+      visit hospital_path(@hospital1)
 
       click_link "All Patients"
 
-      expect(current_path).to eq("/hospitals/#{@hospital1.id}/patients")      
+      expect(current_path).to eq(hospital_patients_path(@hospital1))      
     end
 
     xit 'When I visit patient index, I can see all patients names listed from oldest to youngest' do
