@@ -5,6 +5,8 @@
 
   <section id=doctors_patients>
     <%@pats.flatten.each do |patient|%>
+    <section id="patient-<%=patient.id%>">
     <%= patient.name %>
-    <% end %>
+    <%= link_to "remove patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
+    </section><% end %>
   </section>

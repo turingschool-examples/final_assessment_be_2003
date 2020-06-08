@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get'hospitals/:hospital_id/doctors/new', to: "doctors#new"
   post'hospitals/:hospital_id/doctors/new', to: "doctors#create"
 
+  delete "/doctors/:doctor_id/patients/:patient_id", to: "patients#destroy"
 end
