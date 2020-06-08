@@ -34,7 +34,7 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content("Miranda Bailey")
       expect(page).to have_content("Harvard University")
       expect(page).to have_content("Johns Hopkins University")
-      expect(page).to have_content("Standord University")
+      expect(page).to have_content("Stanford University")
       expect(page).to_not have_content("Derek McDreamy Shepherd")
       expect(page).to_not have_content("University of Pennsylvania")
     end
