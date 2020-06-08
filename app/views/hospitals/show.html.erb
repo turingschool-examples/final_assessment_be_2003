@@ -14,3 +14,5 @@
 <% schools.uniq.each do |school| %>
   <%= school %>
 <% end %>
+
+<p><%= link_to "all patients", "/hospitals/#{@hospital.id}/patients" %></p>
