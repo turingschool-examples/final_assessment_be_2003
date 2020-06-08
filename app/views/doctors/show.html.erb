@@ -6,5 +6,8 @@
 <br/>
 <h4>Patients: </h4>
 <% @doctor.patients.each do |patient| %>
-  <%= patient.name %> <br/>
+   <section class= "patient-<%= patient.id%>">
+     <p><%= patient.name %></p>
+     <%= button_to "Remove from Caseload", doctor_patient_path(doctor_id: @doctor.id, id: patient.id), method: :delete %>
+  </section>
 <% end %>
