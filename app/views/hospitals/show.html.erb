@@ -1,8 +1,7 @@
 <h1><%= @hospital.name %></h1>
 <h2><%= @hospital.address %><br/>
 <%= @hospital.city %>, <%= @hospital.state %> <%= @hospital.zip %></h2>
-
+<%= link_to "See Patients", hospital_patients_path(@hospital.id) %> <br/>
 <p>Number of doctors on staff: <%= @hospital.num_doctors %></p> <br/>
-<p>Featuring doctors from - <%= @hospital.unique_univ %></p>
-<br/>
-<%= link_to "See Patients", hospital_patients_path(@hospital.id) %>
+<p>Featuring doctors from - <%= @hospital.unique_univ %></p> <br/>
+<%= button_to "Add Doctor", new_hospital_doctor_path(@hospital.id), method: :get %>
