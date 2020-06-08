@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   get :root, to: 'welcome#index'
 
-  resources :doctors, only: [:show] do 
+  resources :doctors, only: [:show, :update] do 
     resources :patients, only: [:destroy], controller: "doctor_patients"
   end 
+
+  get "/doctors/:doctor_id/reassign", to: "doctors#edit_hospital"
 
   resources :hospitals, only: [:show] do 
     resources :patients, only: [:index], controller: "hospital_patients"

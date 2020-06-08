@@ -3,6 +3,8 @@
 <p>University: <%= @doctor.education %></p>
 <p>Hospital: <%= @doctor.hospital.name %></p>
 
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/reassign" %>
+
 <h2>Patients</h2>
 <% @doctor.patients.each do |patient| %>
   <section id='patient-<%= patient.id %>'>
