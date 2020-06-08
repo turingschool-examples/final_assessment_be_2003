@@ -1,10 +1,10 @@
-require "rails_helper"
-
-RSpec.describe "Hospital Patients Index Page" do
-  it "Displays patients names from youngest to oldest" do
-    
-  end
-end
+# require "rails_helper"
+#
+# RSpec.describe "Hospital Patients Index Page" do
+#   it "Displays patients names from youngest to oldest" do
+#
+#   end
+# end
 
 
 # User Story 3, Hospital Patient Index Page
