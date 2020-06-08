@@ -30,8 +30,8 @@ RSpec.describe "When I visit a doctor's show page" do
 
     visit "/doctors/#{@mcdreamy.id}"
 
-    within(".doctor-#{@zola.id}") do
-      click_button "Delete Patient"
+    within("#patient-#{@zola.id}") do
+      click_button("Delete Patient")
     end
 
     expect(page).to_not have_content("Zola Shepherd")
