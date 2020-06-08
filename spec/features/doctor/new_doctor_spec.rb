@@ -19,7 +19,7 @@ RSpec.describe "when i visit a hospitals show page" do
 
 
     visit "/hospitals/#{hospital1.id}/doctors/new"
-    
+
     fill_in "Name", with: "Rostam"
     fill_in "Specialty", with: "Surgeon"
     fill_in "Education", with: "ASU"
@@ -27,9 +27,9 @@ RSpec.describe "when i visit a hospitals show page" do
     click_on "Create Doctor"
 
     expect(current_path).to eq("/hospitals/#{hospital1.id}")
-
+    
     expect(page).to have_content(1)
-    expect(page).to have_content("ASU")
+    expect(page).to have_content("Asu")
 
   end
 
