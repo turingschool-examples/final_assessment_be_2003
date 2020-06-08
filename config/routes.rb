@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :doctors, only: [:new, :create]
   end
 
-
+  delete "/doctors/:doctor_id/patients", to: "doctor_patients#destroy"
 end
