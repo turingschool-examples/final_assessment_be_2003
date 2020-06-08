@@ -15,6 +15,10 @@ class DoctorsController < ApplicationController
     redirect_to "/hospitals/#{@hospital.id}"
   end
 
+  def edit
+    @doctor = Doctor.find(params[:id])
+  end
+
   private
 
  def doctor_params

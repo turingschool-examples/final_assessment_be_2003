@@ -46,9 +46,9 @@ RSpec.describe "doctors show page", type: :feature do
   it "reassign doctor to another hospital" do
     click_link "Assign Meredith Grey to a Different Hospital"
     expect(current_path).to eq("/doctors/#{@grey.id}/edit")
-    fill_in 'Hospital ID', with: "#{@seaside.id}"
-
-    click_link "Add #{@grey.name} to this hospital"
+    fill_in 'hospital_id', with: "#{@seaside.id}"
+    
+    click_button "Add #{@grey.name} to this hospital"
     expect(current_path).to eq("/doctors/#{@grey.id}")
 
     expect(page).not_to have_content(@grey_sloan.name)

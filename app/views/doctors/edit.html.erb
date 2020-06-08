@@ -1,0 +1,11 @@
+
+<h1>Edit <%=link_to @doctor.name, "/doctors/#{@doctor.id}" %></h1>
+
+<center>
+<%= form_tag "/doctors/#{@doctor.id}", method: :patch  do %>
+  <%= label_tag :hospital_id %>
+  <%= text_field_tag :hospital_id, "new hospital id"%>
+
+  <%= submit_tag "Add #{@doctor.name} to this hospital" %>
+<% end %>
+</center>
