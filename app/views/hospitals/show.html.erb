@@ -1,0 +1,11 @@
+<h1><%=@hospital.name%></h1>
+<strong>Address: <%=@hospital.address%></strong></br>
+<strong>City: <%=@hospital.city%></strong></br>
+<strong>State: <%=@hospital.state%></strong></br>
+<strong>Zip: <%=@hospital.zip%></strong></br></br>
+
+<strong>Number of Doctors: <%=@hospital.doctor_count%></strong></br>
+<h3>List of Schools:</h3>
+<ul><%@hospital.education_list.each do |school|%>
+<li><%=school%></li>
+<%end%></ul>
