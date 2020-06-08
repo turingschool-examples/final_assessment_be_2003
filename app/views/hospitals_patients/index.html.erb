@@ -1,8 +1,7 @@
 <h2> <%= @hospital.name %>'s Patients </h2>
 
 <p>Patients: </p>
-  
 <% @hospital.doctors.each do |doctor| %>
-<%= doctor.patients.order_by_oldest %>
- <% end %> 
+  <%= doctor.patients.order_by_oldest %>
+<% end %> 
 
