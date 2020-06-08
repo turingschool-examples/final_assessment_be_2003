@@ -49,19 +49,29 @@ RSpec.describe "Dr Show Page" do
       expect(page).to have_content(@patient3.name)
     end
     expect(page).to_not have_content(@patient4.name)
+  end
 
- 
-    
+  it "US5 Remove a patient from a doctors caseload via link on doctor show page" do
+    visit doctor_path(@doctor1)
+
+    within("#patient-#{@patient1.id}")do
+      expect(page).to have_link("Remove Patient From #{@doctor1.name}'s Caseload")
+    end
+    within("#patient-#{@patient2.id}")do
+      expect(page).to have_link("Remove Patient From #{@doctor1.name}'s Caseload")
+    end
+    within("#patient-#{@patient3.id}")do
+      click_link("Remove Patient From #{@doctor1.name}'s Caseload")
+    end
+    expect(current_path).to eq(doctor_path(@doctor1))
+    expect(page).to_not have_content(@patient3.name)
   end
   
 end
-
-# User Story 1, Doctors Show Page
-# 'As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
+# User Story 5, Remove a Patient from a Doctor
+# As a visitor
+# When I visit a Doctor's show page
+# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+# When I click that button for one patient
+# I'm brought back to the Doctor's show page
+# And I no longer see that patient's name listed
