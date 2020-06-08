@@ -23,6 +23,15 @@ RSpec.describe Doctor do
       expect(grey.doctors.all_universities.first.education).to eq("Harvard University")
       expect(grey.doctors.all_universities.last.education).to eq("Johns Hopkins University")
     end
+
+    it ".find_doctor_patient_id" do
+      grey = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
+      meridith = grey.doctors.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
+      denny = Patient.create(name: "Denny Duquette", age: 39)
+      doctor_patient = DoctorPatient.create(doctor_id: meridith.id, patient_id: denny.id)
+      expect(meridith.find_doctor_patient_id(denny.id)).to eq(doctor_patient.id)
+    end
+
   end
 
 end
