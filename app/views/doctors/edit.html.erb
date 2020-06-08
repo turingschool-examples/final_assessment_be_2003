@@ -1,0 +1,5 @@
+<%= form_tag "/doctors/#{@doctor.id}/edit" do %>
+  <%= label_tag "New Hospital Id" %>
+  <%= text_field_tag :hospital_id%>
+<%= submit_tag "Add #{@doctor.name} to this hospital" %>
+<% end  %>
