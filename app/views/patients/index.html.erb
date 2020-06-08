@@ -1,0 +1,5 @@
+<h1><%= @hospital.name %> Patients</h1>
+
+ <% @hospital.patients.each do |patient| %>
+  <p><%= patient %></p>
+ <% end %>
