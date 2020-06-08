@@ -35,5 +35,17 @@ RSpec.describe "Doctor Show Page" do
       expect(page).to_not have_content("Name: Alex Karev")
       expect(page).to_not have_content("Rebecca Pope")
     end
+
+    it "I can remove a patient from that doctor" do
+      visit "/doctors/#{@grey.id}"
+
+      within "#patient-#{@bryce.id}" do
+        click_on "Remove This Patient from Caseload"
+      end
+
+      expect(current_path).to eq("/doctors/#{@grey.id}")
+      expect(page).to_not have_content("Katie Bryce")
+      expect(page).to have_content("Denny Duquette")
+    end
   end
 end

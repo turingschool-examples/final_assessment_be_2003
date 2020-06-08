@@ -5,7 +5,10 @@
 <h2>Hospital: <%= @doctor.hospital.name %></h2>
 <h2>Patients:</h2>
 <% @doctor.patients.each do |patient| %>
+<section id = "patient-<%= patient.id %>">
 <ul>
-  <%= patient.name %>
+  <%= patient.name %><br>
+  <%= link_to "Remove This Patient from Caseload", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
 </ul>
+</section>
 <% end %>
