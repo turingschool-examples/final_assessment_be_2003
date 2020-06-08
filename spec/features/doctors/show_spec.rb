@@ -32,7 +32,7 @@ RSpec.describe "doctors show page" do
     it "can see their hospital and all their patients" do
 
       visit doctor_path(@doc1)
-# binding.pry
+
       expect(page).to have_content("Practices at #{@hospital1.name}")   
       expect(page).to have_content(@pat1.name)     
       expect(page).to have_content(@pat2.name)     

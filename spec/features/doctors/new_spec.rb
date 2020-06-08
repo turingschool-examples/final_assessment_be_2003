@@ -26,7 +26,6 @@ RSpec.describe "new doctor form" do
       expect(current_path).to eq(hospital_path(@hospital1)) 
 
       expect(page).to have_content("Number of Doctors: 2") 
-
     end
   end
 end
