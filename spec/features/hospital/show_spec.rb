@@ -29,6 +29,14 @@ RSpec.describe "When I visit a hospital's show page" do
     expect(page).to_not have_content("State: #{@grey_sloan.state}")
     expect(page).to_not have_content("Zip: #{@grey_sloan.zip}")
   end
+
+  it "I see the number of doctors that work at this hospital" do 
+
+    visit "/hospitals/#{@seaside.id}"
+
+    expect(page).to have_content("Number of Doctors: 2")
+
+  end
 end
 
 
