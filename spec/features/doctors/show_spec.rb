@@ -6,7 +6,7 @@ RSpec.describe 'Doctor show page', type: :feature do
     name: 'Seaside Health & Wellness Center',
     address: '123 Private Practice Road',
     city: 'Los Angeles',
-    state: 'CA,'
+    state: 'CA,',
     zip: 90001)
 
     @grey = Hospital.create(
@@ -17,24 +17,48 @@ RSpec.describe 'Doctor show page', type: :feature do
     zip: 98101)
 
     @miranda =  Doctor.create(
-    Name: 'Miranda Bailey',
-    Specialty: 'General Surgery',
-    Education: 'Stanford University',
+    name: 'Miranda Bailey',
+    specialty: 'General Surgery',
+    education: 'Stanford University',
     hospital_id: @grey.id)
 
     @derek = Doctor.create(
-    Name: 'Derek McDreamy Shepherd',
-    Specialty: 'Attending Surgeon',
-    Education: 'University of Pennsylvania',
+    name: 'Derek McDreamy Shepherd',
+    specialty: 'Attending Surgeon',
+    education: 'University of Pennsylvania',
     hospital_id: @seaside.id)
 
     @rebecca = Patient.create(
-    Name: 'Rebecca Pope',
-    Age: 32)
+    name: 'Rebecca Pope',
+    age: 32)
 
     @zola = Patient.create(
-    Name: 'Zola  Shepherd',
-    Age: 2)
+    name: 'Zola Shepherd',
+    age: 2)
 
+    PatientDoctor.create(patient_id: @rebecca.id, doctor_id: @miranda.id)
+    PatientDoctor.create(patient_id: @zola.id, doctor_id: @miranda.id)
+    PatientDoctor.create(patient_id: @zola.id, doctor_id: @derek.id)
+  end
+
+  it "shows all doctor information" do
+    visit doctor_path(@miranda)
+    expect(page).to have_content(@miranda.name)
+    expect(page).to have_content(@miranda.specialty)
+    expect(page).to have_content(@miranda.education)
+    expect(page).to have_content(@grey.name)
+    expect(page).to have_content(@rebecca.name)
+    expect(page).to have_content(@zola.name)
+  end
+
+  it "will not show patients that do not belong to the doctor" do
+    visit doctor_path(@derek)
+    save_and_open_page
+    expect(page).to have_content(@derek.name)
+    expect(page).to have_content(@derek.specialty)
+    expect(page).to have_content(@derek.education)
+    expect(page).to have_content(@seaside.name)
+    expect(page).to have_content(@zola.name)
+    expect(page).to_not have_content(@rebecca.name)
   end
 end
