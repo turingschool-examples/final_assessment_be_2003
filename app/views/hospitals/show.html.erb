@@ -9,7 +9,7 @@
   <% if @hospital.doctors.empty? %>
     <p>This Hospital has no doctors.</p>
   <% else%>
-    <p>Doctors: <%= @hospital.doctors.count %></p>
+    <p>Doctors: <%= @hospital.doctor_count %></p>
     <p>Doctors were educated at: <%= @hospital.doctor_universities %></p>
   <% end %>
 </section>
