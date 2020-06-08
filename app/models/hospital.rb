@@ -4,4 +4,8 @@ class Hospital < ApplicationRecord
   def doctor_count
     doctors.count
   end
+
+  def education_list
+    binding.pry
+  end
 end
