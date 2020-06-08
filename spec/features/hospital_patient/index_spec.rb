@@ -26,7 +26,7 @@ RSpec.describe "Hospital Patient Index" do
     it "I see a link to view all of the hospital's patients" do
       visit "/hospitals/#{@sloan.id}"
 
-      click_on("View All Patients")
+      click_on("View All Patients of Grey Sloan Memorial Hospital")
       expect(current_path).to eq("/hospitals/#{@sloan.id}/patients")
       expect("Denny Duquette").to appear_before("Rebecca Pope")
       expect("Rebecca Pope").to appear_before("Katie Bryce")
