@@ -67,7 +67,7 @@ RSpec.describe "Dr Show Page" do
     expect(page).to_not have_content(@patient3.name)
   end
 
-  it "US6 Reassign Dr to different hospital via link on doctor show page" do
+  it "US6 HAPPY: Reassign Dr to different hospital via link on doctor show page" do
     visit doctor_path(@doctor1)
 
     within("#doctor-hospital")do
@@ -94,6 +94,33 @@ RSpec.describe "Dr Show Page" do
     end
 
   end
+
+    it "US6 SAD: If no selection, default is to assign to hospital with lowest id" do
+    visit doctor_path(@doctor1)
+
+    within("#doctor-hospital")do
+      expect(page).to have_content("Works at: #{@hospital1.name}")
+      expect(page).to_not have_content(@hospital2.name)
+      click_link("Assign #{@doctor1.name} to a Different Hospital")
+    end
+
+    expect(current_path).to eq(edit_doctor_path(@doctor1))
+    expect(page).to have_content("Current Hospital ID: #{@hospital1.id}")
+
+    within("#assign-form")do
+
+      click_on "Add #{@doctor1.name} to this hospital"
+    end
+    
+    expect(current_path).to eq(doctor_path(@doctor1))
+    hospital = Hospital.first
+    within("#doctor-hospital")do
+      expect(page).to have_content("Works at: #{hospital.name}")
+      expect(page).to have_link("Assign #{@doctor1.name} to a Different Hospital")
+    end
+
+  end
+  
   
   
 end
