@@ -33,8 +33,7 @@ RSpec.describe "when visiting a doctors show page" do
 
   it "a visitor will see all doctors info, hospital & patients" do
     visit "/doctors/#{@meredith.id}"
-
-    within(:css, "ul#patients-#{@katie.id}") do
+    within(:css, "li##{@katie.id}") do
       click_on "Remove Patient"
     end
 
@@ -44,12 +43,3 @@ RSpec.describe "when visiting a doctors show page" do
   end
 
 end
-# ```
-# User Story 5, Remove a Patient from a Doctor
-# As a visitor
-# When I visit a Doctor's show page
-# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
-# When I click that button for one patient
-# I'm brought back to the Doctor's show page
-# And I no longer see that patient's name listed
-# ```
