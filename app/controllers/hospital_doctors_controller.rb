@@ -15,17 +15,6 @@ class HospitalDoctorsController < ApplicationController
     end 
   end 
 
-  #   def create
-  #   @item = Item.find(params[:item_id])
-  #   review = @item.reviews.new(review_params)
-  #   if review.save
-  #     redirect_to item_path(@item)
-  #   else
-  #     generate_flash(review)
-  #     render :new
-  #   end
-  # end
-
   private
 
   def doctor_params
