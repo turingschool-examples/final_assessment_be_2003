@@ -1,10 +1,10 @@
 <h1> <%= @doc.name %> </h1>
-<%= link_to "reassign", "/doctors/#{@doc.id}/edit" %>
 
 <p> specialty: <%= @doc.specialty %> </p>
 <p> education: <%= @doc.school %> </p>
 
-<p>works at: <%= Hospital.find(@doc.hospital_id).name %> </p>
+<p>works at: <%= Hospital.find(@doc.hospital_id).name %>
+<%= link_to "Assign #{@doc.name} to a Different Hospital", "/doctors/#{@doc.id}/edit" %> </p>
 
 <% @doc.patients.each do |patient|%>
   <section class= "patient-<%=patient.id%>">

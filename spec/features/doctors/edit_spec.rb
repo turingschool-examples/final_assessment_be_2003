@@ -12,12 +12,12 @@ RSpec.describe 'doctor edit page', type: :feature do
     visit "/doctors/#{@meredith.id}"
 
     expect(page).to have_content("works at: Grey Sloan Memorial Hospital")
-    click_link "reassign"
+    click_link "Assign #{@meredith.name} to a Different Hospital"
 
     expect(current_path).to eq("/doctors/#{@meredith.id}/edit")
     fill_in :hospital_id, with: @seaside.id
 
-    click_button "Reassign Doctor"
+    click_button "Add #{@meredith.name} to this hospital"
 
     expect(current_path).to eq("/doctors/#{@meredith.id}")
     expect(page).to have_content("works at: Seaside Health & Wellness Center")

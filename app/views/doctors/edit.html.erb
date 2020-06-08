@@ -5,5 +5,5 @@
   <%= label_tag :hospital_id %>
   <%= text_field_tag :hospital_id %>
 
-  <%= submit_tag 'Reassign Doctor' %>
+  <%= submit_tag "Add #{Doctor.find(params[:id]).name} to this hospital" %>
 <% end %>

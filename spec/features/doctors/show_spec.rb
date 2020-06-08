@@ -42,7 +42,7 @@ RSpec.describe 'doctors show page', type: :feature do
   it "provides a link to reassign doctoer to new hospital" do
     visit "/doctors/#{@meredith.id}"
 
-    click_link "reassign"
+    click_link "Assign #{@meredith.name} to a Different Hospital"
 
     expect(current_path).to eq("/doctors/#{@meredith.id}/edit")
   end

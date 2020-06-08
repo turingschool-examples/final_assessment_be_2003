@@ -13,11 +13,19 @@ class DoctorsController < ApplicationController
   end
 
   def edit
+
+  end
+
+  def update
+    doc = Doctor.find(params[:id])
+    doc.update(doctor_params)
+    doc.save
+    redirect_to "/doctors/#{params[:id]}"
   end
 
   private
 
   def doctor_params
-    params.permit(:name,:specialty,:school)
+    params.permit(:name,:specialty,:school,:hospital_id)
   end
 end
