@@ -9,6 +9,13 @@ RSpec.describe 'New doctor creation', type: :feature do
     state: 'WA',
     zip: 98101)
 
+    @seaside = Hospital.create(
+    name: 'Seaside Health & Wellness Center',
+    address: '123 Private Practice Road',
+    city: 'Los Angeles',
+    state: 'CA,',
+    zip: 90001)
+
     @miranda =  Doctor.create(
     name: 'Miranda Bailey',
     specialty: 'General Surgery',
@@ -29,19 +36,16 @@ RSpec.describe 'New doctor creation', type: :feature do
   end
 
   it 'can create a new doctor' do
-    visit hospital_path(@grey)
-    expect(page).to have_content("Number of Doctors: 3")
-    expect(@grey.doctors).to eq([@miranda, @derek, @jeff])
-    expect(page).to have_link("Add a doctor")
-    click_link "Add a doctor"
-    expect(current_path).to eq(new_hospital_doctor_path(@grey))
+    visit doctor_path(@jeff)
+    expect(page).to have_link("Assign Jeff Lastname to a Different Hospital")
+
+    click_link "Assign Jeff Lastname to a Different Hospital"
+    expect(current_path).to eq(edit_doctor_path(@jeff))
     
-    fill_in :name, with: 'Bradley Cooper'
-    fill_in :specialty, with: 'General Surgery'
-    fill_in :education, with: 'University of California'
-    click_button 'Submit'
+    fill_in :hospital_id, with: @seaside.id
+    click_button "Add #{@jeff.name} to this hospital"
     
-    expect(current_path).to eq(hospital_path(@grey))
-    expect(page).to have_content("Number of Doctors: 4")
+    expect(current_path).to eq(doctor_path(@jeff))
+    expect(page).to have_content("Works at: #{@seaside.name}")
   end
 end

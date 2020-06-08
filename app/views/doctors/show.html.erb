@@ -1,7 +1,8 @@
 <h1><%= @doctor.name %></h1>
 <h2><%= @doctor.specialty %></h2>
 <h2><%= @doctor.education %></h2>
-<h2>Works at: <%= @doctor.hospital.name %></h2>
+<h2>Works at: <%= @doctor.hospital.name %>  <%= link_to "Assign #{@doctor.name}
+to a Different Hospital", edit_doctor_path(@doctor) %></h2>
 <h2>Patients:</h2>
 <% @doctor.patients.each do |patient| %>
   <p><%= patient.name %></p>
