@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-@meredith = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
+@meredith = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hosiptal_id: @sloan.id)
 @alex = Doctor.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
 @miranda = Doctor.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University")
 @derek = Doctor.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
@@ -17,3 +17,6 @@
 @denny = Patient.create(name: "Denny Duquette", age: 39)
 @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
 @zola = Patient.create(name: "Zola  Shepherd", age: 2)
+
+DoctorPatient.create(doctor_id: @meredith.id, patients_id: @katie.id)
+DoctorPatient.create(doctor_id: @meredith.id, patients_id: @rebecca.id)
