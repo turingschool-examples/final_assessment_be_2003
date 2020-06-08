@@ -51,10 +51,31 @@ RSpec.describe "Hospital Show Page" do
     end
     expect(current_path).to eq(hospital_path(@hospital1))
     expect(page).to have_content("Number of Doctors: 5")
-
-    
   end
-  
+ 
+  it "US4 SAD PATH: if all doctor info is not filled out, redirect to new doctor page" do
+    visit hospital_path(@hospital1)
+    expect(page).to have_content("Number of Doctors: 4")
+
+    click_link("Add New Doctor")
+    
+    expect(page).to have_content("New Doctor Hire for #{@hospital1.name}")
+
+    within("#new-doctor-form")do
+      fill_in "doctor[name]",	with: "Daffy Duck" 
+      fill_in "doctor[specialty]",	with: "" 
+      fill_in "doctor[education]",	with: "" 
+
+      click_on "Create Doctor"
+    end
+
+    doctor = Doctor.last
+    expect(doctor.name).to_not eq("Daffy Duck")
+    expect(current_path).to eq(new_hospital_doctor_path(@hospital1))
+
+    visit hospital_path(@hospital1)
+    expect(page).to have_content("Number of Doctors: 4")
+  end
   
 
 end#final
