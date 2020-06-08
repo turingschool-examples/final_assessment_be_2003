@@ -26,23 +26,22 @@ RSpec.describe 'Hospital Show Page' do
       visit hospital_path(@hospital1)
 
       expect(page).to have_content(@hospital1.name)
-      expect(page).to have_content("Address: #{@hospital1.address} #{@hospital1.city} #{@hospital1.state} #{@hospital1.zip}")
-
+      expect(page).to have_content("Address: #{@hospital1.address} #{@hospital1.city}, #{@hospital1.state} #{@hospital1.zip}")
       expect(page).to_not have_content(@hospital2.name)
     end
 
-    xit 'I see the number of doctors that work at this hospital' do
+    it 'I see the number of doctors that work at this hospital' do
       visit hospital_path(@hospital1)
 
-      within "doctors" do
-        expect(page).to have_content(3)
+      within "#doctors" do
+        expect(page).to have_content("Number of Doctors at Hospital: 3")
       end
     end
 
-    xit 'I see a unique list of universities that this hospitls doctors attended' do
+    it 'I see a unique list of universities that this hospitals doctors attended' do
       visit hospital_path(@hospital1)
 
-      within "universities" do
+      within "#universities" do
         expect(page).to have_content(@doctor1.education)
         expect(page).to have_content(@doctor2.education)
       end
