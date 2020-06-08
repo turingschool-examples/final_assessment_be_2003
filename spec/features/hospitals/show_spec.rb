@@ -26,18 +26,18 @@ RSpec.describe "Doctors Show Page" do
       expect(page).to have_content("Seattle")
       expect(page).to have_content("WA")
       expect(page).to have_content("98101")
-      expect(page).to have_content(2)
-      expect(page).to have_content("Harvard University")
-      expect(page).to have_content("Johns Hopkins University")
+      within(".doctors") do
+        expect(page).to have_content(2)
+      end
 
+      within(".doc_univ") do
+        expect(page).to have_content("Harvard University")
+        expect(page).to have_content("Johns Hopkins University")
+      end
+ save_and_open_page
     end
   end
 end
 
 
-# User Story 2, Hospital Show Page
-# "As a visitor
-# When I visit a hospital's show page
-# I see the hospital's name, street address, city, state, and zip
-# And I see the number of doctors that work at this hospital
 # And I see a unique list of universities that this hospital's doctors attended
