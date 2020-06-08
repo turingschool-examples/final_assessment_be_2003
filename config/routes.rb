@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/hospitals/:id/patients', to: 'patients#index'
   get '/hospitals/:hospital_id/doctors/new', to: 'doctors#new'
   post '/hospitals/:hospital_id', to: 'doctors#create'
+  resources :doctor_patients, only: [:destroy]
 end
