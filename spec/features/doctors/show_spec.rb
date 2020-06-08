@@ -13,7 +13,7 @@ RSpec.describe "Doctor show page" do
     expect(page).to have_content(meridith.specialty)
     expect(page).to have_content(meridith.education)
     expect(page).to have_content(grey.name)
-    within "#patients" do
+    within ".patients" do
       expect(page).to have_content(katie.name)
       expect(page).to have_content(denny.name)
     end
