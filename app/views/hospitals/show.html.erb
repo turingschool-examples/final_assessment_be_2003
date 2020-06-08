@@ -7,4 +7,5 @@
   <p>Universities attended: <%= @hospital.doctors.unique_education %></p>
   <p>Number of Doctors: <%= @hospital.doctors_count %></p>
   <%= link_to "View all patients of #{@hospital.name}", "/hospitals/#{@hospital.id}/patients" %>
-  <a href= "/hospitals/<%=@hospital.id%>/doctors/new">Add Doctor to Hospital</a>
+
+  <h3>Add Doctor to Hospital <%=link_to @hospital.name, "/hospitals/#{@hospital.id}/doctors/new" %></h3>

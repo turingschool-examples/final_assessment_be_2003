@@ -41,7 +41,8 @@ RSpec.describe "hospital show page", type: :feature do
     expect(@ethan.name).to appear_before(@erik.name)
   end
   it "can add a doctor" do
-    click_link "Add Doctor to Hospital"
+    # save_and_open_page
+    click_link "Grey Sloan Memorial Hospital"
     expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/doctors/new")
     expect(page).to have_content("New Doctor Hire for Grey Sloan Memorial Hospital")
 
@@ -49,7 +50,7 @@ RSpec.describe "hospital show page", type: :feature do
      fill_in "Specialty", with: "Genetics"
      fill_in "Education", with: "University of Phoenix"
      click_button "Submit"
-     
+
      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}")
      expect(page).to have_content("Number of Doctors: 3")
   end
