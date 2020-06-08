@@ -5,6 +5,8 @@ RSpec.describe "hospital patient index page" do
     before(:each) do
       @hospital1 = Hospital.create(name: "Banner Desert", address: "123 Medical Dr", city: "Mesa", state: "AZ", zip: "80202")
       @doc1 = @hospital1.doctors.create(name: "John Matrix", specialty: "Cardiology", education: "Arizona State University")
+      @doc2 = @hospital1.doctors.create(name: "Doug Quiad", specialty: "Neurology", education: "Metro State University")
+
       @pat1 = Patient.create(name: "Little Timmy", age: 10)
       @pat2 = Patient.create(name: "Ice T", age: 60)
       @pat3 = Patient.create(name: "Tron", age: 30)
@@ -13,6 +15,7 @@ RSpec.describe "hospital patient index page" do
       DoctorPatient.create(doctor_id: @doc1.id, patient_id: @pat1.id)
       DoctorPatient.create(doctor_id: @doc1.id, patient_id: @pat2.id)
       DoctorPatient.create(doctor_id: @doc1.id, patient_id: @pat3.id)
+      DoctorPatient.create(doctor_id: @doc2.id, patient_id: @pat4.id)
     end
 
     it "can see names of patient listed from oldest to youngest" do

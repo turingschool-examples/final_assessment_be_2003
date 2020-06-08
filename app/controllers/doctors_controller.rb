@@ -20,20 +20,13 @@ class DoctorsController < ApplicationController
 
   def update
     doctor = Doctor.find(params[:id])
-    # binding.pry
     doctor.update(doctor_params)
+    redirect_to doctor_path(doctor)
   end
   
-  
-
   private
 
   def doctor_params
     params.permit(:name, :specialty, :education, :hospital_id)
   end
-
-
-  
-  
-  
 end

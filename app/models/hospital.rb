@@ -8,6 +8,12 @@ class Hospital < ApplicationRecord
   def doc_universities
     doctors.select(:education).distinct.pluck(:education)
   end
+
+  # def hospital_patients
+  #   patients = []
+  #   doctor.patients.each do |patient
+  # end
+  
   
   
 end

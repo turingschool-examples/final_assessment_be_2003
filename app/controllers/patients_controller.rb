@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
   def index
-    @patients = Patient.all.order(age: :desc)
+    @hospital = Hospital.find(params[:id])
+
   end
-  #need to come back and fix, need hospital specific patients only
 end
