@@ -7,13 +7,10 @@
   <p><%= @doctor.education %></p>
 </section>
 
-<section class='patients'>
-  <% if @doctor.patients.empty? %>
-    <p>This Doctor has no patients.</p>
-  <% else%>
-    <% @doctor.patients.each do |patient| %>
-      <p>Name: <%= patient.name %></p>
-      <%= link_to "Remove Patient From Caseload", "/doctors/#{@doctor.id}/patients" %></p>
-    <% end %>
-  <% end %>
+
+<% @doctor.patients.each do |patient| %>
+<section class='patient-<%= patient.id %>'>
+  <p>Name: <%= patient.name %></p>
+  <%= link_to "Remove Patient From Caseload", "/doctors/#{@doctor.id}/patients?patient_id=#{patient.id}", method: :delete %>
 </section>
+<% end %>
