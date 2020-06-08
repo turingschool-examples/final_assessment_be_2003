@@ -25,6 +25,26 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content(@grey.education)
       expect(page).to have_content(@shepherd.education)
     end
+
+    it "I see a link to add a doctor for this hospital" do 
+      visit"/hospitals/#{@grey_sloan.id}"
+
+      click_link("Hire New Doctor") 
+
+      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/doctorApp")
+      
+      expect(page).to have_content("New Doctor Hire for #{@grey_sloan.name}") 
+
+      fill_in "Name",	with: "Mark Sloan" 
+      fill_in "Specialty",	with: "Plastics Attending" 
+      fill_in "Education",	with: "Harvard University" 
+
+      click_button("Submit Application")
+
+      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}")
+      expect(page).to have_content("Doctors: 3")
+      save_and_open_page
+    end
   end
 end
 # "As a visitor
@@ -32,3 +52,13 @@ end
 # I see the hospital's name,street address, city, state, and zip
 # And I see the number of doctors that work at this hospital
 # And I see a unique list of universities that this hospital's doctors attended
+
+# As a visitor
+# When I visit a hospital's show page
+# I see a link to add a doctor for this hospital
+# When I click that link
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page 
+# And I can see that the number of doctors has increased by one
