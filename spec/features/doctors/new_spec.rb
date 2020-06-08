@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'As a visitor' do
-  describe 'When I visit a Hospitals show page' do
+  describe 'When I visit a new doctor page' do
 
     before(:each) do
       @grey_sloan = Hospital.create(
@@ -89,36 +89,18 @@ describe 'As a visitor' do
       )
     end
 
-    it 'I see that hospitals information' do
-      visit "/hospitals/#{@grey_sloan.id}"
+    it 'I can create a new doctor' do
+      visit "/hospitals/#{@grey_sloan.id}/doctors/new"
 
-      expect(page).to have_content(@grey_sloan.name)
-      expect(page).to have_content(@grey_sloan.address)
-      expect(page).to have_content(@grey_sloan.city)
-      expect(page).to have_content(@grey_sloan.state)
-      expect(page).to have_content(@grey_sloan.zip)
-      expect(page).to have_content("Doctors Count: 3")
-      expect(page).to have_content(@meredith.university)
-      expect(page).to have_content(@alex.university)
-      expect(page).to_not have_content(@derek.university)
-      expect(page).to_not have_content(@miranda.university)
+      expect(page).to have_title("New Doctor Hire for #{@grey_sloan.name}")
+
+      fill_in "Name", with: "Taylor"
+      fill_in "Specialty", with: "Infectious Disease"
+      fill_in "University", with: "Virginia Tech"
+      click_on "Create Doctor"
+
+      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}")
+      expect(page).to have_content("Doctors Count: 4")
     end
-
-    it 'I see a link to view all of that hospitals patients' do
-      visit "/hospitals/#{@grey_sloan.id}"
-
-      click_on "View Patients"
-
-      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/patients")
-    end
-
-    it 'I see a link to add a doctor for this hospital' do
-      visit "/hospitals/#{@grey_sloan.id}"
-
-      click_on "Add Doctor"
-
-      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/doctors/new")
-    end
-
   end
 end
