@@ -12,6 +12,9 @@ class DoctorsController < ApplicationController
     redirect_to "/hospitals/#{params[:id]}"
   end
 
+  def edit
+  end
+
   private
 
   def doctor_params
