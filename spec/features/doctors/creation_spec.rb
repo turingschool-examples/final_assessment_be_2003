@@ -36,4 +36,17 @@ RSpec.describe "Doctor creation" do
     expect(page).to have_content("Number of Doctors: 4")
   end
 
+  it "Must fill in all fields" do
+    grey = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
+    visit hospital_path(grey.id)
+    click_link "Create New Doctor"
+    fill_in "Name", with: ""
+    fill_in "Specialty", with: "general"
+    fill_in "Education", with: "Turing"
+    click_on "Create Doctor"
+
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Create Doctor")
+  end
+
 end
