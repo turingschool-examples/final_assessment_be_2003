@@ -9,13 +9,13 @@ RSpec.describe "Patient index page" do
 
     @mikal = @meredith.patients.create(name: "Mikal", age: 27)
     @austin = @meredith.patients.create(name: "Austin", age: 26)
-    @jared = @joe.patients.create(name: "Jared", age: 28)
+    @jared = @joe.patients.create(name: "Jared", age: 25)
   end
 
   it "lists all patients from oldest to youngest" do
     visit "/hospitals/#{@greys.id}/patients"
 
-    expect(page).to have_content("Jared Mikal Austin")
+    expect(page).to have_content("Mikal Austin Jared")
   end
 
 end
