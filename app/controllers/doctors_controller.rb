@@ -10,8 +10,7 @@ class DoctorsController < ApplicationController
 
   def create
     hospital = Hospital.find(params[:hospital_id])
-    doctor = hospital.doctors.create!(doctor_params)
-
+    hospital.doctors.create!(doctor_params)
     redirect_to "/hospitals/#{hospital.id}"
   end
 
