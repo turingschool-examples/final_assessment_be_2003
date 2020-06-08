@@ -24,14 +24,22 @@ RSpec.describe "Hospital Index Page" do
       katie = Patient.create(name: "Katie Bryce", age: 24)
       zola = Patient.create(name: "Zola Shepherd", age: 2)
      
+      DoctorPatient.create(doctor: meredith, patient: zola)
       DoctorPatient.create(doctor: meredith, patient: denny)
-      DoctorPatient.create(doctor: meredith, patient: rebecca)
-
+      DoctorPatient.create(doctor: alex, patient: rebecca)
+      DoctorPatient.create(doctor: alex, patient: katie)
       visit "/hospitals/#{grey.id}/patients"
 
       expect(denny.name).to appear_before(rebecca.name)
+      # expect(rebecca.name).to appear_before(katie.name)
+      # expect(katie.name).to appear_before(zola.name)
   end
 end
+
+#   <%= @hospital.order_by_oldest %>
+# # <% @hospital.doctors.each do |doctor| %>
+#   <%= doctor.patients.order_by_oldest %>
+#   <% end %> 
 
 # User Story 3, Hospital Patient Index Page
 

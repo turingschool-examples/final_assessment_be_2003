@@ -17,6 +17,7 @@ RSpec.describe Patient, type: :model do
       katie = Patient.create(name: "Katie Bryce", age: 24)
       zola = Patient.create(name: "Zola Shepherd", age: 2)
       patients = Patient.all
+
       expect(patients.order_by_oldest.first).to eq(denny.name)
       expect(patients.order_by_oldest.last).to eq(zola.name)
     end

@@ -5,7 +5,6 @@ class Patient < ApplicationRecord
   has_many :doctors, through: :doctor_patients
 
   def self.order_by_oldest
-    # binding.pry
     order(age: :desc).pluck(:name).uniq
   end
 end

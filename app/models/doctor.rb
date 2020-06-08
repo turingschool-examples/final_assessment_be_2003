@@ -10,10 +10,4 @@ class Doctor < ApplicationRecord
   def self.unique_schools
     pluck(:education).uniq
   end
-
-  # def order_by_oldest
-  #   # binding.pry
-  #   self.patients.order(age: :desc).uniq
-  #   # self.patients.order(age: :desc).pluck(:name).uniq
-  # end
 end
