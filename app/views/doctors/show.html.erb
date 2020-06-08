@@ -1,0 +1,10 @@
+<h1> <%= @doc.name %> </h1>
+
+<p> specialty: <%= @doc.specialty %> </p>
+<p> education: <%= @doc.school %> </p>
+
+<p>works at: <%= Hospital.find(@doc.hospital_id).name %> </p>
+
+<% @doc.patients.each do |patient|%>
+  <%= patient.name %>
+<% end %>
