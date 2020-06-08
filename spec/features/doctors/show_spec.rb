@@ -26,8 +26,9 @@ RSpec.describe "when visiting a doctors show page" do
     expect(page).to have_content(@meredith.name)
     expect(page).to have_content(@meredith.specialty)
     expect(page).to have_content(@meredith.education)
-    expect(page).to have_content(@meredith.hospital)
-    expect(page).to have_content(@meredith.patients.all)
+    expect(page).to have_content(@meredith.hospital.name)
+    expect(page).to have_content(@meredith.patients.first.name)
+    expect(page).to have_content(@meredith.patients.last.name)
   end
 
 end

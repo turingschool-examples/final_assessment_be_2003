@@ -1,0 +1,16 @@
+<h1> <%=@doctor.name %> </h1>
+
+<h3>Specialty </h3><br>
+<p><%=@doctor.specialty  %></p><br>
+
+<h3>Education </h3><br>
+<p> <%=@doctor.education  %></p>
+
+<h3>Hospital </h3><br>
+<p><%=@doctor.hospital.name %></p>
+
+<h2>Patients </h2><br>
+
+<%@doctor.patients.each do |patient|%>
+  <p><%=patient.name%></p>
+<% end %>
