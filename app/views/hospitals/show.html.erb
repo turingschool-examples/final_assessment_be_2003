@@ -11,5 +11,7 @@
   <% else%>
     <p>Doctors: <%= @hospital.doctors.count %></p>
     <p>Doctors were educated at: <%= @hospital.doctor_universities %></p>
-  <% end %> 
+  <% end %>
 </section>
+
+<%= link_to "View All Patients", "/hospitals/#{@hospital.id}/patients" %>
