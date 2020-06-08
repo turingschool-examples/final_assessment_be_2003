@@ -32,4 +32,29 @@ RSpec.describe "Doctors show page", type: :feature do
     expect(page).to have_content("#{@patient_3.name}")
   end
 
+  it "Story-5: Delete patients for doctors caseload" do
+    visit "/doctors/#{@doc_1.id}"
+
+    expect(page).to have_content("#{@doc_1.name}")
+    expect(page).to have_content("#{@doc_1.specialty}")
+    expect(page).to have_content("#{@doc_1.education}")
+    expect(page).to have_content("#{@hospital_1.name}")
+
+
+    within "#patient-#{@patient_2.id}" do
+      expect(page).to have_content("#{@patient_2.name}")
+      click_on "Delete"
+    end
+    expect(current_path).to eq("/doctors/#{@doc_1.id}")
+
+    within "#patient-#{@patient_1.id}" do
+      expect(page).to have_content("#{@patient_1.name}")
+    end
+
+    within "#patient-#{@patient_3.id}" do
+      expect(page).to have_content("#{@patient_3.name}")
+    end
+
+    expect(page).to_not have_content("#{@patient_2.name}")
+  end
 end
