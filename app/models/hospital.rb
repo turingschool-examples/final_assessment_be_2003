@@ -26,10 +26,5 @@ class Hospital < ApplicationRecord
     end
     patients_list.uniq.sort_by{|patient| -patient.age}
   end
-  # def merchant_subtotal(merchant_id)
-  #   order_items
-  #     .joins("JOIN items ON order_items.item_id = items.id")
-  #     .where("items.merchant_id = #{merchant_id}")
-  #     .sum('order_items.price * order_items.quantity')
-  # end
+  
 end
