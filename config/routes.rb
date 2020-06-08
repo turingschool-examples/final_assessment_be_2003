@@ -7,6 +7,4 @@ Rails.application.routes.draw do
     resources :doctors, only: [:new, :create]
     resources :patients, only: [:index]
   end
-  # get '/hospitals/:hospital_id/patients', to: 'hospital_patients#index'
-
 end
