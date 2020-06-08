@@ -10,4 +10,5 @@ class Doctor < ApplicationRecord
   def self.unique_universities
     select(:university).distinct.pluck(:university)
   end
+
 end

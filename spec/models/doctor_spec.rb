@@ -91,6 +91,18 @@ describe Doctor do
         patient_id: @denny.id,
         doctor_id: @meredith.id
       )
+      DoctorPatient.create(
+        patient_id: @zola.id,
+        doctor_id: @meredith.id
+      )
+      DoctorPatient.create(
+        patient_id: @katie.id,
+        doctor_id: @alex.id
+      )
+      DoctorPatient.create(
+        patient_id: @denny.id,
+        doctor_id: @alex.id
+      )
     end
 
     it 'unique_universities' do

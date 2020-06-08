@@ -26,28 +26,28 @@ seaside = Hospital.create(
 )
 
 # Doctors:
-Doctor.create(
+meredith = Doctor.create(
   name: "Meredith Grey",
   specialty: "General Surgery",
   university: "Harvard University",
   hospital_id: grey_sloan.id
 )
 
-Doctor.create(
+alex = Doctor.create(
   name: "Alex Karev",
   specialty: "Pediatric Surgery",
   university: "Johns Hopkins University",
   hospital_id: grey_sloan.id
 )
 
-Doctor.create(
+miranda = Doctor.create(
   name: "Miranda Bailey",
   specialty: "General Surgery",
   university: "Stanford University",
   hospital_id: seaside.id
 )
 
-Doctor.create(
+derek = Doctor.create(
   name: "Derek McDreamy Shepherd",
   specialty: "Attending Surgeon",
   university: "University of Pennsylvania",
@@ -56,22 +56,41 @@ Doctor.create(
 
 # Patients:
 
-Patient.create(
+katie = Patient.create(
   name: "Katie Bryce",
   age: 24
 )
 
-Patient.create(
+denny = Patient.create(
   name: "Denny Duquette",
   age: 39
 )
 
-Patient.create(
+rebecca = Patient.create(
   name: "Rebecca Pope",
   age: 32
 )
 
-Patient.create(
+zola = Patient.create(
   name: "Zola  Shepherd",
   age: 2
+)
+
+DoctorPatient.create(
+  patient_id: katie.id,
+  doctor_id: meredith.id
+)
+
+DoctorPatient.create(
+  patient_id: denny.id,
+  doctor_id: meredith.id
+)
+
+DoctorPatient.create(
+  patient_id: zola.id,
+  doctor_id: meredith.id
+)
+DoctorPatient.create(
+  patient_id: zola.id,
+  doctor_id: alex.id
 )

@@ -12,7 +12,9 @@
       <% @doctor.doctor_patients.each do |doctor_patient| %>
         <section id="patient-<%= doctor_patient.patient.id %>">
           <li> <%= doctor_patient.patient.name %></li>
-          <li><%= link_to "Remove Patient", doctor_patient_path(doctor_patient), method: :delete %></li>
+          <ul>
+            <li><%= link_to "Remove Patient", doctor_patient_path(doctor_patient), method: :delete %></li>
+          </ul>
         </section>
       <% end %>
     </ul>
