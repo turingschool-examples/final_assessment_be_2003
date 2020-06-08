@@ -42,4 +42,17 @@ RSpec.describe "Hospital Show Page" do
     expect(@rebecca.name).to appear_before(@katie.name)
 
   end
+
+  it "displays link to add doctor to hospital" do
+    visit "/hospitals/#{@sloan.id}"
+    click_link "Add Doctor"
+    expect(current_path).to eq("/hospitals/#{@sloan.id}/doctors/new")
+    expect(page).to have_content("New Doctor Hire for #{@sloan.name}")
+    fill_in :name, with: "Mary"
+    fill_in :specialty, with: "General Surgery"
+    fill_in :education, with: "UCLA"
+    click_button "Submit"
+    expect(current_path).to eq("/hospitals/#{@sloan.id}")
+    expect(page).to have_content("Number of Doctors: 4")
+  end
 end
