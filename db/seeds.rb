@@ -9,6 +9,8 @@
 @alex = Doctor.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
 @miranda = Doctor.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University")
 @derek = Doctor.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
+@bob = Doctor.create(name: "Bob", specialty: "General Surgery", education: "Harvard University", hospital_id: @sloan.id))
+
 
 @sloan = Hospital.create(name: "Grey Sloan Memorial Hospital", address:"123 Save Lives Rd", city: "Seattle", state: "WA", zipcode: "98101")
 @seaside = Hospital.create(name:"Seaside Health & Wellness Center", address: "123 Private Practice Road", city: "Los Angeles", state: "CA", zipcode: "90001")
