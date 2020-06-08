@@ -1,0 +1,11 @@
+<h1><%= @hospital.name %></h1>
+<p><%= @hospital.address %></p>
+<p><%= @hospital.city %>, <%= @hospital.state %>, <%= @hospital.zip%> </p>
+<p>Number of Doctors: <%= @hospital.doc_count %></p>
+<h3>Universities Our Providers Have Attended</h3>
+<% @hospital.doc_universities.each do |univ| %>
+  <p><%= univ %></p>
+<% end%>
+
+<%= link_to 'View All Patients', hospital_patients_path(@hospital) %>
+<%= link_to "New Doctor Hire for #{@hospital.name}", new_hospital_doctor_path(@hospital) %>
