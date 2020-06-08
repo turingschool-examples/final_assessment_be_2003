@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get :root, to: 'welcome#index'
 
   resources :doctors, only: [:show]
+
+  resources :hospitals, only: [:show]
 end

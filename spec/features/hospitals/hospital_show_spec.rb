@@ -23,7 +23,7 @@ RSpec.describe 'Hospital Show Page' do
     end
 
     it 'I see the hospitals name and address' do
-      visit "/hospitals/#{@hospital1.id}"
+      visit hospital_path(@hospital1)
 
       expect(page).to have_content(@hospital1.name)
       expect(page).to have_content("Address: #{@hospital1.address} #{@hospital1.city} #{@hospital1.state} #{@hospital1.zip}")
@@ -32,7 +32,7 @@ RSpec.describe 'Hospital Show Page' do
     end
 
     xit 'I see the number of doctors that work at this hospital' do
-      visit hospital_path(@hospital)
+      visit hospital_path(@hospital1)
 
       within "doctors" do
         expect(page).to have_content(3)
@@ -40,7 +40,7 @@ RSpec.describe 'Hospital Show Page' do
     end
 
     xit 'I see a unique list of universities that this hospitls doctors attended' do
-      visit hospital_path(@hospital)
+      visit hospital_path(@hospital1)
 
       within "universities" do
         expect(page).to have_content(@doctor1.education)
