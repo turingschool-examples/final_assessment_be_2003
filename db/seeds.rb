@@ -6,31 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Doctors:
-Doctor.create(
-Name: 'Meredith Grey',
-Specialty: 'General Surgery',
-Education: 'Harvard University')
-
-Doctor.create(
-Name: 'Alex Karev',
-Specialty: 'Pediatric Surgery',
-Education: 'Johns Hopkins University')
-
-Doctor.create(
-Name: 'Miranda Bailey',
-Specialty: 'General Surgery',
-Education: 'Stanford University')
-
-Doctor.create(
-Name: 'Derek McDreamy Shepherd',
-Specialty: 'Attending Surgeon',
-Education: 'University of Pennsylvania')
 
 
 # Hospitals:
 
-Hospital.create(
+grey = seaside = Hospital.create(
 name: 'Grey Sloan Memorial Hospital',
 address: '123 Save Lives Rd',
 city: 'Seattle',
@@ -41,22 +21,52 @@ Hospital.create(
 name: 'Seaside Health & Wellness Center',
 address: '123 Private Practice Road',
 city: 'Los Angeles',
-state: 'CA,'
+state: 'CA,',
 zip: 90001)
 
+# Doctors:
+meredith = grey.doctors.create(
+name: 'Meredith Grey',
+specialty: 'General Surgery',
+education: 'Harvard University')
+
+alex = grey.doctors.create(
+name: 'Alex Karev',
+specialty: 'Pediatric Surgery',
+education: 'Johns Hopkins University')
+
+miranda = grey.doctors.create(
+name: 'Miranda Bailey',
+specialty: 'General Surgery',
+education: 'Stanford University')
+
+derek = seaside.doctors.create(
+name: 'Derek McDreamy Shepherd',
+specialty: 'Attending Surgeon',
+education: 'University of Pennsylvania')
+
+
 # Patients:
-Patient.create(
-Name: 'Katie Bryce',
-Age: 24)
+katie = Patient.create(
+name: 'Katie Bryce',
+age: 24)
 
-Patient.create(
-Name: 'Denny Duquette',
-Age: 39)
+denny = Patient.create(
+name: 'Denny Duquette',
+age: 39)
 
-Patient.create(
-Name: 'Rebecca Pope',
-Age: 32)
+rebecca = Patient.create(
+name: 'Rebecca Pope',
+age: 32)
 
-Patient.create(
-Name: 'Zola  Shepherd',
-Age: 2)
+zola = Patient.create(
+name: 'Zola  Shepherd',
+age: 2)
+
+PatientDoctor.create(patient_id: zola.id, doctor_id: derek.id)
+PatientDoctor.create(patient_id: denny.id, doctor_id: derek.id)
+PatientDoctor.create(patient_id: katie.id, doctor_id: derek.id)
+PatientDoctor.create(patient_id: denny.id, doctor_id: miranda.id)
+PatientDoctor.create(patient_id: katie.id, doctor_id: miranda.id)
+
+PatientDoctor.create(patient_id: zola.id, doctor_id: meredith.id)
