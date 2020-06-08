@@ -110,40 +110,10 @@ RSpec.describe "Hospital Show Page" do
   #                                        specialty: "Attending Surgeon",
   #                                        education: "University of Pennsylvania")
   #
-  #     visit "/hospitals/#{general.id}"
   #
-  #     expect(page).to have_link("Add Doctor")
-  #
-  #     click_link "Add Doctor"
-  #
-  #     expect(current_path).to eq('/hospitals/#{general.id/doctors/new')
-  #
-  #     expect(page).to have_content('New Doctor Hire for: #{general.name}')
-  #
-  #     fill_in 'Name', with: 'Mark Sloan'
-  #     fill_in 'Specialty', with: 'Plastic Surgeon'
-  #     fill_in 'University', with: 'University of Pennsylvania'
-  #
-  #     click_on 'Create Doctor'
-  #
-  #     new_doctor = Doctor.last
-  #
-  #     expect(current_path).to eq("/hospitals/#{general.id}")
-  #
-  #     expect(page).to have_content('Mark Sloan')
-  #     expect(page).to have_content("Current number of doctors: 3")
-  #   end
-  # end
-
-# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
-# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
-# When I fill out all three fields and click submit
-# I am taken back to the hospital show page
-# And I can see that the number of doctors has increased by one
-end
 
 
-
+end 
 
 
 
