@@ -12,3 +12,5 @@
 <% @hospital.uniq_education.each do |edu| %>
   <li><%= edu %></li>
 <%end%>
+
+<%= link_to  "View All Patients", "/hospitals/#{@hospital.id}/patients"%>
