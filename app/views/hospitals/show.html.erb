@@ -10,4 +10,5 @@
   <li><%= school %></li>
   <% end %>
 </ul>
-<p>User: <%= link_to "Patients", "/hospitals/#{@hospital.id}/patients/index" %></p>
+<p><%= link_to "Patients", "/hospitals/#{@hospital.id}/patients/index" %></p>
+<p><%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/doctors/new" %></p>

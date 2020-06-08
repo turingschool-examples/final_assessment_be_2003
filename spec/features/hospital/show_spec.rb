@@ -48,8 +48,8 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content(patient_2.name)
       expect(page).to have_content(patient_3.name)
       expect(page).to have_content(patient_4.name)
-      save_and_open_page
-      
+
+
 
     end
   end

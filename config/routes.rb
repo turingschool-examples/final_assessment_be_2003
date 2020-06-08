@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :hospitals, only: [:show]
   resources :doctors, only: [:show]
   get "/hospitals/:hospital_id/patients/index", to: 'patients#index'
+
+  get "/hospitals/:hospital_id/doctors/new", to: 'doctors#new'
+  post '/hospitals/:hospital_id/doctors', to: 'doctors#create'
 end
