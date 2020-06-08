@@ -5,4 +5,8 @@ class Hospital < ApplicationRecord
                         :city,
                         :state,
                         :zip
+
+  def count_of_doctors
+    doctors.count
+  end
 end

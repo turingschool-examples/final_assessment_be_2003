@@ -16,7 +16,7 @@ RSpec.describe "Hospital show page" do
     expect(page).to have_content(grey.address)
     expect(page).to have_content(grey.city)
     expect(page).to have_content(grey.zip)
-    expect(page).to have_content("Number of Doctors 3")
+    expect(page).to have_content("Number of Doctors: 3")
     within ".universities" do
       expect(page).to have_content("Harvard University", count: 1)
       expect(page).to have_content("Johns Hopkins University")
