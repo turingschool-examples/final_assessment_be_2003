@@ -1,0 +1,15 @@
+<h1><%= @doctor.name %></h1>
+
+<h4>Specialty: <%= @doctor.specialty %></h4>
+<h4>Education: <%= @doctor.education %></h4>
+
+<h4>Work: <%= @doctor.hospital.name %>
+  <button><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %></button></h4>
+
+<h2>Patients</h2>
+<% @doctor.patients.each do |patient| %>
+  <section class="patients-<%= patient.id %> ">
+    <%= patient.name %>
+    <button><%= link_to "Remove Patient", "/doctors/#{@doctor.id}/#{patient.id}", method: :delete %></button>
+  </section>
+<% end %>
