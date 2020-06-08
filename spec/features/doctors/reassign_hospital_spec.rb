@@ -7,7 +7,7 @@ RSpec.describe "From the doctor show" do
     meridith  = grey.doctors.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
     visit doctor_path(meridith.id)
     click_link "Assign #{meridith.name} to a Different Hospital"
-    expect(current_path).to eq("/doctors/#{meridith.id}/update")
+    expect(current_path).to eq("/doctors/#{meridith.id}/edit")
     fill_in "New Hospital ID", with: seaside.id
     click_on "Add #{meridith.name} to this hospital"
     expect(current_path).to eq(doctor_path(meridith.id))

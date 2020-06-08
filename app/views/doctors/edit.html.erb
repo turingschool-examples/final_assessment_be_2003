@@ -1,0 +1,7 @@
+<%= form_for @doctor do |f| %>
+
+  <%= f.label :hospital_id, 'New Hospital ID' %>
+  <%= f.text_field :hospital_id  %>
+
+  <%= f.submit "Add #{@doctor.name} to this hospital" %>
+<% end %>
