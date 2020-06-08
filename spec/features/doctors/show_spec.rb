@@ -53,7 +53,6 @@ RSpec.describe 'Doctor show page', type: :feature do
 
   it "will not show patients that do not belong to the doctor" do
     visit doctor_path(@derek)
-    save_and_open_page
     expect(page).to have_content(@derek.name)
     expect(page).to have_content(@derek.specialty)
     expect(page).to have_content(@derek.education)
