@@ -5,7 +5,7 @@
   <p>Number of Doctors at Hospital: <%= @hospital.count_of_doctors %></p>
 </section>
 
-<%= link_to "Add Doctor to Hospital", "/hospitals/#{@hospital.id}/doctors/new" %>
+<%= link_to "Add Doctor to Hospital", new_hospital_doctor_path(@hospital) %>
 
 
 <br>
