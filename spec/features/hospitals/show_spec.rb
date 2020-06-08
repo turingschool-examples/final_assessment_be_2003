@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Show Show Page", type: :feature do
+RSpec.describe "Hospital Show Page", type: :feature do
   describe "when I visit /hospitals/:id" do
     before(:each) do
       @unmh = Hospital.create!(name: "UNM Hospital", address: "2211 Lomas Blvd. NE", city: "Albuquerque", state: "NM", zip: 87106)
@@ -27,13 +27,25 @@ RSpec.describe "Show Show Page", type: :feature do
     end
 
     it "I see a list of universities that the doctor's attended" do
-      save_and_open_page
-
       expect(page).to have_content("Cornell")
       expect(page).to have_content("UNAM")
     end
+
+    it "I can click on a link that takes me to that hospital's list of patients" do
+      click_link("Patients")
+
+      expect(current_path).to eq("/hospitals/#{@unmh.id}/patients")
+    end
   end
 end
+
+# User Story 3, Hospital Patient Index Page
+# As a visitor
+# When I visit the hospitals show page
+# I see a link to view all of that hospitals patients
+# When I click that link
+# I'm taken to a patients index page for that hospital
+# I see the names of all that hospital's patients listed from oldest to youngest
 
 
 # User Story 2, Hospital Show Page
