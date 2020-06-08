@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resources :patients, only: [:index], controller: 'hospital_patients'
     resources :doctors, only: [:new, :create]
   end
+
+  resources :patient_doctor, only: [:destroy]
 end

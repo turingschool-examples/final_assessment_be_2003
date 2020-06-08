@@ -36,9 +36,9 @@ RSpec.describe 'Doctor show page', type: :feature do
     name: 'Zola Shepherd',
     age: 2)
 
-    PatientDoctor.create(patient_id: @rebecca.id, doctor_id: @miranda.id)
-    PatientDoctor.create(patient_id: @zola.id, doctor_id: @miranda.id)
-    PatientDoctor.create(patient_id: @zola.id, doctor_id: @derek.id)
+    @miranda_rebecca = PatientDoctor.create(patient_id: @rebecca.id, doctor_id: @miranda.id)
+    @miranda_zola = PatientDoctor.create(patient_id: @zola.id, doctor_id: @miranda.id)
+    @derek_zola = PatientDoctor.create(patient_id: @zola.id, doctor_id: @derek.id)
   end
 
   it "shows all doctor information" do
@@ -59,5 +59,19 @@ RSpec.describe 'Doctor show page', type: :feature do
     expect(page).to have_content(@seaside.name)
     expect(page).to have_content(@zola.name)
     expect(page).to_not have_content(@rebecca.name)
+  end
+
+  it 'has_buttons to remove patients from their caseload' do
+    visit doctor_path(@derek)
+    expect(page).to have_content(@zola.name)
+    expect(page).to_not have_content(@rebecca.name)
+
+    within ".patient-#{@derek_zola.id}" do
+      expect(page).to have_button('Remove from caseload')
+      click_button "Remove from caseload"
+    end
+
+    expect(current_path).to eq(doctor_path(@derek))
+    expect(page).to_not have_content(@zola.name)
   end
 end
