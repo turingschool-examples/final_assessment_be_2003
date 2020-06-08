@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "Doctor Show Page" do
   before(:each) do
     @sloan = Hospital.create(name: "Grey Sloan Memorial Hospital", address:"123 Save Lives Rd", city: "Seattle", state: "WA", zipcode: "98101")
+    @seaside = Hospital.create(name:"Seaside Health & Wellness Center", address: "123 Private Practice Road", city: "Los Angeles", state: "CA", zipcode: "90001")
+
     @meredith = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: @sloan.id)
     @katie = Patient.create(name: "Katie Bryce", age: 24)
     @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
@@ -32,5 +34,19 @@ RSpec.describe "Doctor Show Page" do
     end
     expect(current_path).to eq("/doctors/#{@meredith.id}")
     expect(page).to_not have_content(@katie.name)
+  end
+
+  it "allows user to assign doctor to different hospital" do
+    visit "/doctors/#{@meredith.id}"
+    click_link "Assign #{@meredith.name} to a Different Hospital"
+    expect(current_path).to eq("/doctors/#{@meredith.id}/edit")
+
+    fill_in :hospital_id, with: @seaside.id
+    click_button "Add #{@meredith.name} to this hospital"
+
+    expect(current_path).to eq("/doctors/#{@meredith.id}")
+    expect(page).to have_content(@seaside.name)
+    expect(page).to_not have_content(@sloan.name)
+
   end
 end

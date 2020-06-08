@@ -2,6 +2,7 @@
 
   <p><%=@doctor.specialty%></p>
   <p><%=@doctor.hospital.name %></p>
+  <%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit"%>
 
   <section id=doctors_patients>
     <%@pats.flatten.each do |patient|%>

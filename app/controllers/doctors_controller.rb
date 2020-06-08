@@ -17,13 +17,24 @@ class DoctorsController < ApplicationController
     doctor = hospital.doctors.create!(doctor_params)
     if doctor.save
       redirect_to "/hospitals/#{hospital.id}"
-  end 
+    end
+  end
 
+  def edit
+    @doctor = Doctor.find(params[:doctor_id])
+  end
+
+  def update
+    doctor = Doctor.find(params[:doctor_id])
+    doctor.update(doctor_params)
+    if doctor.save
+       redirect_to "/doctors/#{doctor.id}"
+     end
   end
 
   private
 
   def doctor_params
-    params.permit(:name, :specialty, :education)
+    params.permit(:name, :specialty, :education, :hospital_id)
   end
 end
