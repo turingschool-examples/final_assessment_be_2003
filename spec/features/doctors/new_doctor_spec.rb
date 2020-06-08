@@ -27,12 +27,12 @@ RSpec.describe 'New Doctor Creation' do
       
       click_link 'Add Doctor to Hospital'
 
-      expect(current_path).to eq("/hospitals/#{@hospital1.id}/doctors/new")
-      # expect(current_path).to have_content(@hospital1.name)
+      expect(current_path).to eq(new_hospital_doctor_path(@hospital1))
+      expect(page).to have_content("New Doctor Hire for #{@hospital1.name}")
     end
 
     it 'I can create a new doctor with form' do
-      visit "/hospitals/#{@hospital1.id}/doctors/new"
+      visit new_hospital_doctor_path(@hospital1)
 
       name = 'Megans Marmalades'
       specialty = '123 Main St'

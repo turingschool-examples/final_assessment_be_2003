@@ -5,10 +5,4 @@ class Doctor < ApplicationRecord
 
   validates_presence_of :name, :specialty, :education
   
-  def self.patients_by_age(order)
-    select('doctors.*, patients.id, patients.name, patients.age')
-    joins(:doctor_patients => :patient)
-    pluck('patients.name')
-    # order("patients.age '#{order}'")
-  end 
 end
