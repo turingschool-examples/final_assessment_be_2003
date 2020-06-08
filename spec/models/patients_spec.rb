@@ -16,7 +16,7 @@ RSpec.describe Patient do
       @ethan = Patient.create(name: "Ethan Embry", age: 21)
       @lauren = Patient.create(name: "Lauren Ambrose", age: 18)
       @patient = Patient.all
-      expect(@patient.order_by_age).to eq([@lauren, @jen, @ethan, @erik])
+      expect(@patient.order_by_age).to eq([@erik, @ethan, @jen, @lauren])
     end
   end
 end

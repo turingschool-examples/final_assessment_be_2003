@@ -33,15 +33,14 @@ RSpec.describe "hospital show page", type: :feature do
     expect(page).to have_content("Number of Doctors: 2")
     expect(page).to have_content("Universities attended: Harvard University, Johns Hopkins University")
   end
-  it "see link to patients" do
+  it "see link to patients and they are displayed oldest to youngest " do
     click_link "View all patients of Grey Sloan Memorial Hospital"
     expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/patients")
-    expect(@lauren.name).to appear_before(@jen.name)
-    expect(@jen.name).to appear_before(@ethan.name)
-    expect(@ethan.name).to appear_before(@erik.name)
+    expect(@erik.name).to appear_before(@ethan.name)
+    expect(@ethan.name).to appear_before(@jen.name)
+    expect(@jen.name).to appear_before(@lauren.name)
   end
   it "can add a doctor" do
-    # save_and_open_page
     click_link "Grey Sloan Memorial Hospital"
     expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/doctors/new")
     expect(page).to have_content("New Doctor Hire for Grey Sloan Memorial Hospital")
@@ -55,14 +54,3 @@ RSpec.describe "hospital show page", type: :feature do
      expect(page).to have_content("Number of Doctors: 3")
   end
 end
-#
-# User Story 4, Creating a Doctor
-# As a visitor
-# When I visit a hospital's show page
-# I see a link to add a doctor for this hospital
-# When I click that link
-# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
-# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
-# When I fill out all three fields and click submit
-# I am taken back to the hospital show page
-# And I can see that the number of doctors has increased by one

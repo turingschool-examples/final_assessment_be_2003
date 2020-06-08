@@ -20,19 +20,6 @@ RSpec.describe "hospital patient index page", type: :feature do
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @lauren.id)
   end
 
-  # it "can see hospital's info" do
-  #   visit "/hospitals/#{@grey_sloan.id}"
-  #     expect(page).to have_content(@grey_sloan.name)
-  #     expect(page).to have_content(@grey_sloan.address)
-  #     expect(page).to have_content(@grey_sloan.city)
-  #     expect(page).to have_content(@grey_sloan.state)
-  #     expect(page).to have_content(@grey_sloan.zip)
-  # end
-
-  # it "see count of doctors and list of universities" do
-  #   expect(page).to have_content("Number of Doctors: 2")
-  #   expect(page).to have_content("Universities attended: Harvard University, Johns Hopkins University")
-  # end
 end
 # User Story 3, Hospital Patient Index Page
 # As a visitor

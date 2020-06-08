@@ -41,7 +41,7 @@ RSpec.describe "doctors show page", type: :feature do
     end
     visit "/doctors/#{@grey.id}"
     expect(page).not_to have_content(@jen.name)
-    
+
     visit "/doctors/#{@karev.id}"
     expect(page).to have_content(@jen.name)
   end
@@ -58,31 +58,3 @@ RSpec.describe "doctors show page", type: :feature do
     expect(page).to have_content(@seaside.name)
   end
 end
-# User Story 6, Reassign Doctor to Different Hospital
-# As a visitor
-# When I visit a doctor's show page
-# Next to the name of the hospital where this doctor works
-# I see a link that says "Assign <insert name of doctor> to a Different Hospital"
-# When I click on that link
-# I'm taken to a form where I can input an id of an existing hospital
-# When I click "Add <insert name of doctor> to this hospital"
-# I'm taken back to that doctor's show page
-# And I can see the name of the new hospital that they were assigned to
-
-# User Story 5, Remove a Patient from a Doctor
-# As a visitor
-# When I visit a Doctor's show page
-# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
-# When I click that button for one patient
-# I'm brought back to the Doctor's show page
-# And I no longer see that patient's name listed
-
-# User Story 1, Doctors Show Page
-# 'As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
