@@ -7,3 +7,5 @@
   <%@hospital.schools.each do |school|%></p>
   <p><%=school%></p>
   <% end  %>
+
+  <%= link_to "View All Patients", "/hospitals/#{@hospital.id}/patients" %>

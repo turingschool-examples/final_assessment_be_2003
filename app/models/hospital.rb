@@ -10,6 +10,6 @@ class Hospital <ApplicationRecord
     doctors.each do |doctor|
       edu << doctor.education
     end
-    edu.uniq 
+    edu.uniq
   end
 end

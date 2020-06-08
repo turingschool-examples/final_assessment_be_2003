@@ -8,8 +8,15 @@ RSpec.describe "Hospital Show Page" do
     @meredith = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: @sloan.id)
     @derek = Doctor.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania", hospital_id: @sloan.id)
     @bob = Doctor.create(name: "Bob", specialty: "General Surgery", education: "Harvard University", hospital_id: @sloan.id)
-
     @miranda = Doctor.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University", hospital_id: @seaside.id)
+
+    @katie = Patient.create(name: "Katie Bryce", age: 24)
+    @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
+    @denny = Patient.create(name: "Denny Duquette", age: 39)
+
+    DoctorPatient.create(doctor_id: @meredith.id, patient_id: @katie.id)
+    DoctorPatient.create(doctor_id: @meredith.id, patient_id: @rebecca.id)
+    DoctorPatient.create(doctor_id: @bob.id, patient_id: @denny.id)
 
   end
 
@@ -23,5 +30,16 @@ RSpec.describe "Hospital Show Page" do
     expect(page).to have_content("Number of Doctors: 3")
     expect(page).to have_content("Harvard University", count:1)
     expect(page).to have_content("University of Pennsylvania", count:1)
+  end
+
+  xit "shows link to view all patients" do
+    visit "/hospitals/#{@sloan.id}"
+
+    click_link "View All Patients"
+    expect(current_path).to eq("/hospitals/#{@sloan.id}/patients")
+
+    expect(@denny.name).to appear_before(@rebecca.name)
+    expect(@rebecca.name).to appear_before(@katie.name)
+
   end
 end

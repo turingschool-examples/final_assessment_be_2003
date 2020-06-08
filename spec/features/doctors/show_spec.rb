@@ -8,7 +8,7 @@ RSpec.describe "Doctor Show Page" do
     @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
     @denny = Patient.create(name: "Denny Duquette", age: 39)
 
-    @doc = DoctorPatient.create(doctor_id: @meredith.id, patient_id: @katie.id)
+    DoctorPatient.create(doctor_id: @meredith.id, patient_id: @katie.id)
     DoctorPatient.create(doctor_id: @meredith.id, patient_id: @rebecca.id)
   end
 
