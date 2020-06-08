@@ -13,7 +13,7 @@ RSpec.describe "As a visitor when i visit a hospitals show page" do
 
     expect(page).to have_content("#{hospital1.name}")
     expect(page).to have_content(2)
-    expect(page).to have_content(doctor1.education)
+    expect(page).to have_content(doctor1.education.titleize)
     expect(page).to have_content(doctor2.education)
 
   end
