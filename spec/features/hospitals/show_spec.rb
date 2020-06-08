@@ -32,7 +32,9 @@ RSpec.describe "when visiting a hospitals show page" do
     expect(page).to have_content(@greys.zip)
 
     expect(page).to have_content(@greys.number_of_doctors)
-    expect(page).to have_content(@greys.doctor_universities)
+    expect(page).to have_content(@greys.doctors.first.education)
+    expect(page).to have_content(@greys.doctors.last.education)
+    save_and_open_page
   end
 end
 # User Story 2, Hospital S'ow Page

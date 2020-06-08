@@ -4,4 +4,5 @@ RSpec.describe Doctor, type: :model do
     it {should have_many :patients}
     it {should belong_to :hospital}
   end
+
 end
