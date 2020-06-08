@@ -1,0 +1,17 @@
+<h1><%= @hospital.name %></h1>
+
+<%= @hospital.address %>
+<%= @hospital.city %>
+<%= @hospital.state %>
+<%= @hospital.zip %>
+
+
+<h3> Doctors: <%= @hospital.doctors.count %></h3>
+
+<h3> Educational Background at this hospital: </h3>
+<% @hospital.uniq_education.each do |edu| %>
+  <li><%= edu %></li>
+<%end%>
+
+<%= link_to  "View All Patients", "/hospitals/#{@hospital.id}/patients"%>
+<%= link_to  "Hire New Doctor", "/hospitals/#{@hospital.id}/doctorApp" %>
