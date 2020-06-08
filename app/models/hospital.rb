@@ -9,4 +9,6 @@ class Hospital <ApplicationRecord
   def doctors_count
     self.doctors.count
   end
+
+  
 end

@@ -11,4 +11,10 @@ class Doctor <ApplicationRecord
     schools.join(", ")
   end
 
+  def hospital_name
+    to_find = self.hospital_id
+    location = Hospital.find(to_find)
+    location.name
+  end
+
 end

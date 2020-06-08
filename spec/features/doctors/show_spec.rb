@@ -25,6 +25,7 @@ RSpec.describe "doctors show page", type: :feature do
       expect(page).to have_content(@grey.name)
       expect(page).to have_content(@grey.specialty)
       expect(page).to have_content(@grey.education)
+      expect(page).to have_content("Grey Sloan Memorial Hospital")
   end
 
   it "list of all its patients" do
@@ -41,7 +42,7 @@ RSpec.describe "doctors show page", type: :feature do
     visit "/doctors/#{@grey.id}"
     expect(page).not_to have_content(@jen.name)
   end
-  
+
   it "reassign doctor to another hospital" do
     click_link "Assign Meredith Grey to a Different Hospital"
     expect(current_path).to eq("/doctors/#{@grey.id}/edit")
