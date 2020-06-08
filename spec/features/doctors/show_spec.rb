@@ -33,7 +33,6 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content(@zola.name)
       expect(page).to_not have_content(@karev.name)
       expect(page).to_not have_content(@karev.specialty)
-      save_and_open_page
     end
   end
 end

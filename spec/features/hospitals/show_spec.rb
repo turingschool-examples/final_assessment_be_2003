@@ -24,8 +24,6 @@ RSpec.describe 'As a visitor', type: :feature do
       expect(page).to have_content("Educational Background at this hospital:")
       expect(page).to have_content(@grey.education)
       expect(page).to have_content(@shepherd.education)
-      save_and_open_page
-
     end
   end
 end
