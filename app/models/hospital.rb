@@ -5,4 +5,8 @@ class Hospital <ApplicationRecord
   validates_presence_of :state
   validates_presence_of :zip
   has_many :doctors
+
+  def doctors_count
+    self.doctors.count
+  end
 end
