@@ -34,6 +34,11 @@ RSpec.describe Hospital do
         expect(@hospital_1.universities).to eq(["Harvard University", "Johns Hopkins University"])
       end
 
+      it "patient_list" do
+        expect([@hospital_1.patient_list.first.name]).to eq(["#{@patient_2.name}"])
+        expect([@hospital_1.patient_list.last.name]).to eq(["#{@patient_1.name}"])
+      end
+
   end
 
 

@@ -15,5 +15,9 @@ class Hospital < ApplicationRecord
     doctors.select('education').distinct.pluck('education')
   end
 
+  def patient_list
+    doctors.joins(:patients).select('patients.*').distinct.order('patients.age DESC')
+  end
+
 
 end

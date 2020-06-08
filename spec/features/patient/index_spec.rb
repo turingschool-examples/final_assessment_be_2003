@@ -1,4 +1,4 @@
-RSpec.describe "Hospital show page", type: :feature do
+RSpec.describe "Patient index page", type: :feature do
   before :each do
     @hospital_1 = Hospital.create!(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101" )
     @hospital_2 = Hospital.create!(name: "Seaside Health & Wellness Center", address: "123 Private Practice Road", city: "Los Angeles", state: "CA", zip: "90001")
@@ -17,26 +17,19 @@ RSpec.describe "Hospital show page", type: :feature do
     PatientDoctor.create!(doctor_id: @doc_1.id, patient_id: @patient_3.id)
     PatientDoctor.create!(doctor_id: @doc_2.id, patient_id: @patient_1.id)
     PatientDoctor.create!(doctor_id: @doc_2.id, patient_id: @patient_3.id)
+    PatientDoctor.create!(doctor_id: @doc_2.id, patient_id: @patient_4.id)
+    PatientDoctor.create!(doctor_id: @doc_3.id, patient_id: @patient_4.id)
   end
 
-  it "Story-2: Hospital info, number of docs and uniqe list of universitys are displayed" do
+  it "Story-3: From hospital show page link takes user to patient index page" do
     visit "/hospitals/#{@hospital_1.id}"
-
-    within "#hospital" do
-      expect(page).to have_content("#{@hospital_1.name}")
-      expect(page).to have_content("#{@hospital_1.address}")
-      expect(page).to have_content("#{@hospital_1.city}")
-      expect(page).to have_content("#{@hospital_1.state}")
-      expect(page).to have_content("#{@hospital_1.zip}")
+    within "#link" do
+      click_link "View Patients"
     end
-
-    within "#num-of-docs" do
-      expect(page).to have_content("3")
-    end
-
-    within "#universities" do
-      expect(page).to have_content("Harvard University")
-      expect(page).to have_content("Johns Hopkins University")
-    end
+    expect(current_path).to eq("/hospitals/#{@hospital_1.id}/patient_index")
+    expect(page).to have_content("#{@patient_1.name}")
+    expect(page).to have_content("#{@patient_2.name}")
+    expect(page).to have_content("#{@patient_3.name}")
+    expect(page).to have_content("#{@patient_4.name}")
   end
 end

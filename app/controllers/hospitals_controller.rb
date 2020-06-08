@@ -4,4 +4,8 @@ class HospitalsController < ApplicationController
     @hospital = Hospital.find(params[:id])
   end
 
+  def index
+    @hospital = Hospital.find(params[:id])
+  end
+
 end

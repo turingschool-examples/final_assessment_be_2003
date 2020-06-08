@@ -13,3 +13,7 @@
 <section id="universities">
   <%= @hospital.universities %>
 </section>
+
+<section id="link">
+  <%= link_to "View Patients", "/hospitals/#{@hospital.id}/patient_index" %>
+</section>
