@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   namespace "hospitals", path: "hospitals/:id" do 
     get "/patients", to: "patients#index"
+    get "/doctors/new", to: "doctors#new"
+    post "/doctors/create", to: "doctors#create"
   end
+
 end

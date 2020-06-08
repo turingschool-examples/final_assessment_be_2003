@@ -11,11 +11,13 @@ RSpec.describe "When I visit a hospital's show page" do
     @mcdreamy_2 = @seaside.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
     @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
     @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
-
     @rebecca_p = @mcdreamy.patients.create(name: "Rebecca Pope", age: 32)
     @zola = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
     @rico = @miranda.patients.create(name: "Rico Suave", age: 22)
     @mimi = @miranda.patients.create(name: "Mimi Mimison", age: 88)
+    
+    @bong_joon = Doctor.create(name: "Bong Joon Ho", specialty: "Filmmaking", education: "Life University")
+
   end
 
   it "I see the hospital's name,street address, city, state, and zip" do 
@@ -61,8 +63,39 @@ RSpec.describe "When I visit a hospital's show page" do
     expect("Rico Suave").to appear_before("Zola Shepherd")
 
   end
+  it "I see a link to add a doctor for this hospital taken to New Hire form" do 
+
+    visit "/hospitals/#{@seaside.id}"
+
+    expect(page).to_not have_content("Bong Joon")
+
+    click_link "Add Doctor"
+
+    expect(page).to have_content("New Doctor Hire for #{@seaside.name}")
+
+    fill_in :name, with: "Bong Joon"
+    fill_in :specialty, with: "Filmmaking"
+    fill_in :education, with: "Life University"
+
+    click_on "Submit"
+
+    new_doctor = Doctor.last
+
+    expect(new_doctor.name).to eq("Bong Joon")
+    expect(current_path).to eq("/hospitals/#{@seaside.id}")
+  end
 end
 
+# User Story 4, Creating a Doctor 
+# As a visitor
+# When I visit a hospital's show page
+# I see a link to add a doctor for this hospital
+# When I click that link
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page 
+# And I can see that the number of doctors has increased by one
 
 # User Story 3, Hospital Patient Index Page
 # As a visitor
