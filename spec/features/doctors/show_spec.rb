@@ -66,12 +66,42 @@ RSpec.describe "Dr Show Page" do
     expect(current_path).to eq(doctor_path(@doctor1))
     expect(page).to_not have_content(@patient3.name)
   end
+
+  it "US6 Reassign Dr to different hospital via link on doctor show page" do
+    visit doctor_path(@doctor1)
+
+    within("#doctor-hospital")do
+      expect(page).to have_content("Works at: #{@hospital1.name}")
+      expect(page).to_not have_content(@hospital2.name)
+      click_link("Assign #{@doctor1.name} to a Different Hospital")
+    end
+
+    expect(current_path).to eq(edit_doctor_path(@doctor1))
+    expect(page).to have_content("Current Hospital ID: #{@hospital1.id}")
+
+    within("#assign-form")do
+      # fill_in "doctor[hospital_id]",	with: @hospital2.id 
+      select @hospital2.id, :from => "doctor[hospital_id]"
+
+      click_on "Add #{@doctor1.name} to this hospital"
+    end
+    
+    expect(current_path).to eq(doctor_path(@doctor1))
+    within("#doctor-hospital")do
+      expect(page).to have_content("Works at: #{@hospital2.name}")
+      expect(page).to_not have_content(@hospital1.name)
+      expect(page).to have_link("Assign #{@doctor1.name} to a Different Hospital")
+    end
+
+  end
+  
   
 end
-# User Story 5, Remove a Patient from a Doctor
-# As a visitor
-# When I visit a Doctor's show page
-# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
-# When I click that button for one patient
-# I'm brought back to the Doctor's show page
-# And I no longer see that patient's name listed
+# When I visit a doctor's show page
+# Next to the name of the hospital where this doctor works
+# I see a link that says "Assign <insert name of doctor> to a Different Hospital"
+# When I click on that link
+# I'm taken to a form where I can input an id of an existing hospital
+# When I click "Add <insert name of doctor> to this hospital"
+# I'm taken back to that doctor's show page
+# And I can see the name of the new hospital that they were assigned 

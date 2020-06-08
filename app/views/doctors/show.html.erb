@@ -8,6 +8,7 @@
 
 <section id="doctor-hospital">
   <h3>Works at: <%=@doctor.hospital.name %></h3>
+  <%= link_to "Assign #{@doctor.name} to a Different Hospital", edit_doctor_path(@doctor) %>
 </section>
 
 

@@ -1,0 +1,13 @@
+<h1>Assign <%=@doctor.name %> to a Hospital</h1>
+
+<p>Current Hospital ID: <%=@doctor.hospital.id %></p>
+
+<section id="assign-form">
+  <%= form_for [@doctor] do |f| %>
+    <%= f.label :hospital %>
+    <%= f.collection_select :hospital_id, Hospital.all, :id, :id %> 
+  
+    <%= f.submit "Add #{@doctor.name} to this hospital"%>
+  <% end %>
+
+</section>
