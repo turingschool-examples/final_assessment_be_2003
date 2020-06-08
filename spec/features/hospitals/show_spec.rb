@@ -22,4 +22,12 @@ RSpec.describe 'hospitals show page', type: :feature do
     expect(page).to have_content("Doctors on staff: 4")
     expect(page).to have_content("Turing Brown Home Schooled")
   end
+
+  it "include link to view all patients of hospital" do
+    visit "/hospitals/#{@greys.id}"
+
+    click_link("all patients")
+
+    expect(current_path).to eq("/hopsitals/#{@greys.id}/patients")
+  end
 end
