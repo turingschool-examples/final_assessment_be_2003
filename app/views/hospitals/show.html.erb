@@ -8,6 +8,6 @@
 
 <h2>Affiliated Universities: <%= @hospital.affiliated_universities %></h2>
 
-<h2><%= link_to "View All Patients", "/hospitals/#{@hospital.id}/patients" %></h2>
+<h2><%= link_to "View All Patients of #{@hospital.name}", "/hospitals/#{@hospital.id}/patients" %></h2>
 
-<h2><%= link_to "Add a Doctor", "/hospitals/#{@hospital.id}/doctors/new" %></h2>
+<h2><%= link_to "Add a Doctor to #{@hospital.name}", "/hospitals/#{@hospital.id}/doctors/new" %></h2>
