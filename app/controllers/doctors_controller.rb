@@ -15,7 +15,7 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-    @doctor = Doctor.find(params[:doctor_id])
+    @doctor = Doctor.find(params[:id])
   end
 
   def update

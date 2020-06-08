@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :doctors, only: [:show]
+  resources :doctors, only: [:show, :edit]
   delete '/doctors/:doctor_id/patients/:patient_id', to: 'doctor_patients#destroy'
-  get '/doctors/:doctor_id/edit', to: 'doctors#edit'
   patch '/doctors/:doctor_id', to: 'doctors#update'
 
   get '/hospitals/:id', to: 'hospitals#show'
