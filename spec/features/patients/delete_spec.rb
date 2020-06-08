@@ -18,9 +18,6 @@ RSpec.describe "Delete Patient" do
       end
       expect(current_path).to eq("/doctors/#{doctor_1.id}")
       expect(page).to_not have_content(patient_1.name)
-
-
-
     end
   end
 end

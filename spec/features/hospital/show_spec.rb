@@ -23,7 +23,6 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content(hospital_1.city)
       expect(page).to have_content(hospital_1.state)
       expect(page).to have_content(hospital_1.zip)
-
     end
     it "I see link to hospital patients index" do
       hospital_1 = Hospital.create({name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101"})
@@ -48,9 +47,6 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content(patient_2.name)
       expect(page).to have_content(patient_3.name)
       expect(page).to have_content(patient_4.name)
-
-
-
     end
   end
 end

@@ -21,8 +21,6 @@ RSpec.describe "doctors creation " do
       click_on "Submit"
       expect(current_path).to eq("/hospitals/#{hospital_1.id}")
       expect(page).to have_content("Total Number of Doctors: 2")
-
-
     end
   end
 end

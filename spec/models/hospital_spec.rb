@@ -36,8 +36,6 @@ RSpec.describe Hospital, type: :model do
       DoctorPatient.create({doctor_id: doctor_2.id, patient_id: patient_4.id})
 
       expect(hospital_1.patients).to eq([patient_1, patient_2, patient_3, patient_4])
-
-
     end
   end
 end
