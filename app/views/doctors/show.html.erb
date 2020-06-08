@@ -2,6 +2,7 @@
 <h3><%= @doctor.specialty %></h3>
 <h3><%= @doctor.education %></h3>
 <h3><%= @doctor.hospital.name %></h3>
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit", method: :get %>
 
 <% @doctor.patients.each do |patient| %>
   <section id="patient-<%=patient.id %>">
