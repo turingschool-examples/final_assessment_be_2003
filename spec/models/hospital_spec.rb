@@ -44,5 +44,10 @@ describe Hospital, type: :model do
     it 'number_of_doctors' do
       expect(@grey.number_of_doctors).to eq(3)
     end
+
+    it 'doctor_alma_maters' do
+      expect(@grey.doctor_alma_maters).to eq(['Stanford University',
+                                              'University of Pennsylvania'])
+    end
   end
 end
