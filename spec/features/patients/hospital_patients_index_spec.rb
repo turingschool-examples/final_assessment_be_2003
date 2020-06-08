@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Hospital Show Page' do
+RSpec.describe 'Hospital Patient Index Page' do
   describe 'As a visitor' do
     before :each do
       @hospital1 = Hospital.create!(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
@@ -8,43 +8,42 @@ RSpec.describe 'Hospital Show Page' do
 
       @doctor1 = @hospital1.doctors.create!(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
       @doctor2 = @hospital1.doctors.create!(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
-      @doctor3 = @hospital1.doctors.create!(name: "Bill", specialty: "Orthopedic Surgery", education: "Johns Hopkins University")
-      @doctor4 = @hospital2.doctors.create!(name: "Tom", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
+      @doctor3 = @hospital2.doctors.create!(name: "Tom", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
 
       @patient1 = Patient.create!(name: "Katie Bryce", age: 24)
       @patient2 = Patient.create!(name: "Denny Duquette", age: 39)
       @patient3 = Patient.create!(name: "Rebecca Pope", age: 32)
       @patient4 = Patient.create!(name: "Zola  Shepherd", age: 2)
+      @patient5 = Patient.create!(name: "Tom", age: 15)
 
       @doctor_patient1 = DoctorPatient.create!(doctor: @doctor1, patient: @patient1)
       @doctor_patient2 = DoctorPatient.create!(doctor: @doctor1, patient: @patient2)
       @doctor_patient3 = DoctorPatient.create!(doctor: @doctor2, patient: @patient3)
-      @doctor_patient4 = DoctorPatient.create!(doctor: @doctor2, patient: @patient4)
+      @doctor_patient5 = DoctorPatient.create!(doctor: @doctor3, patient: @patient5)
     end
 
-    it 'I see the hospitals name and address' do
-      visit hospital_path(@hospital1)
+    it 'I can see a link to a hospitals patients index on hospital show page' do
+      visit "/hospitals/#{@hospital1.id}"
 
-      expect(page).to have_content(@hospital1.name)
-      expect(page).to have_content("Address: #{@hospital1.address} #{@hospital1.city}, #{@hospital1.state} #{@hospital1.zip}")
-      expect(page).to_not have_content(@hospital2.name)
+      click_link "All Patients"
+
+      expect(current_path).to eq("/hospitals/#{@hospital1.id}/patients")      
     end
 
-    it 'I see the number of doctors that work at this hospital' do
-      visit hospital_path(@hospital1)
+    xit 'When I visit patient index, I can see all patients names listed from oldest to youngest' do
+      visit "/hospitals/#{@hospital1.id}/patients"
 
-      within "#doctors" do
-        expect(page).to have_content("Number of Doctors at Hospital: 3")
-      end
-    end
-
-    it 'I see a unique list of universities that this hospitals doctors attended' do
-      visit hospital_path(@hospital1)
-
-      within "#universities" do
-        expect(page).to have_content(@doctor1.education)
-        expect(page).to have_content(@doctor2.education)
+      within "#patients" do
+        expect(@patient2).to appear_before(@patient3)
+        expect(@patient3).to appear_before(@patient1)
       end
     end
   end
 end
+
+# As a visitor
+# When I visit the hospitals show page 
+# I see a link to view all of that hospitals patients 
+# When I click that link
+# I'm taken to a patients index page for that hospital 
+# I see the names of all that hospital's patients listed from oldest to youngest
