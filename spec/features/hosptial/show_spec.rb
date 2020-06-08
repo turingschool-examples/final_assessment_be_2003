@@ -39,4 +39,25 @@ RSpec.describe "Hospital show page", type: :feature do
       expect(page).to have_content("Johns Hopkins University")
     end
   end
+
+  it "Story-4: Add doctor to hopsital from hosoital show page" do
+    visit "/hospitals/#{@hospital_1.id}"
+
+    within "#link" do
+      click_link "Add Doctor"
+    end
+    expect(current_path).to eq("/hospitals/#{@hospital_1.id}/new_doctor")
+    expect(page).to have_content("New Doctor Hire for #{@hospital_1.name}")
+    fill_in :name, with: "Jack"
+    fill_in :specialty, with: "General"
+    fill_in :education, with: "USC"
+    click_on "Submit"
+    expect(current_path).to eq("/hospitals/#{@hospital_1.id}")
+
+    within "#num-of-docs" do
+      expect(page).to have_content("4")
+    end
+
+
+  end
 end
