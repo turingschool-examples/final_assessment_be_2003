@@ -15,7 +15,7 @@ RSpec.describe "new doctor form" do
 
       click_link "New Doctor Hire for Banner Desert"
 
-      expect(current_path).to eq("/hospitals/#{@hospital1.id}/doctors/new")
+      expect(current_path).to eq(new_hospital_doctor_path(@hospital1))
 
       fill_in :name,	with: "Bob" 
       fill_in :specialty,	with: "ENT" 

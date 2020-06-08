@@ -29,10 +29,5 @@ RSpec.describe Hospital, type: :model do
     it "#doc_universities" do
       expect(@hospital1.doc_universities).to eq(["Arizona State University", "Metro State University"]) 
     end
-
-    # it "#hospital_patients" do
-    #   expect(@hospital1.hospital_patients).to eq([@pat1, @pat2, @pat3, @pat4])
-    # end
-    
   end
 end

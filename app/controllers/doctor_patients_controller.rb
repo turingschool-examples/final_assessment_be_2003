@@ -5,5 +5,4 @@ class DoctorPatientsController < ApplicationController
     dp.destroy
     redirect_to "/doctors/#{params[:doctor_id]}"
   end
-  
 end

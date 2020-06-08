@@ -24,7 +24,7 @@ RSpec.describe "hospital patient index page" do
       
       click_link "View All Patients"
 
-      expect(current_path).to eq("/hospitals/#{@hospital1.id}/patients") 
+      expect(current_path).to eq(hospital_patients_path(@hospital1)) 
 
       expect(page).to have_content(@pat2.name) 
       expect(page).to have_content(@pat4.name) 
