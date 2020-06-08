@@ -1,0 +1,13 @@
+<h1><%= @hospital.name %></h1>
+
+<h2>Address:</h2>
+<h3><%= @hospital.address %></h3>
+<h3><%= @hospital.city %> <%= @hospital.state %> <%= @hospital.zip %></h3>
+
+<h2>Number of Doctors: <%= @hospital.doctor_count %></h2>
+
+<h2>Affiliated Universities: <%= @hospital.affiliated_universities %></h2>
+
+<h2><%= link_to "View All Patients of #{@hospital.name}", "/hospitals/#{@hospital.id}/patients" %></h2>
+
+<h2><%= link_to "Add a Doctor to #{@hospital.name}", "/hospitals/#{@hospital.id}/doctors/new" %></h2>
