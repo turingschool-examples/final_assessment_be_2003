@@ -10,8 +10,11 @@ RSpec.describe "When I visit a hospital's show page" do
     @mcdreamy = @seaside.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
     @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
     @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
+
     @rebecca_p = @mcdreamy.patients.create(name: "Rebecca Pope", age: 32)
     @zola = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
+    @rico = @miranda.patients.create(name: "Rico Suave", age: 22)
+    @mimi = @miranda.patients.create(name: "Mimi Mimison", age: 88)
   end
 
   it "I see the hospital's name,street address, city, state, and zip" do 
@@ -52,6 +55,9 @@ RSpec.describe "When I visit a hospital's show page" do
     click_link("View Patients")
 
     expect(current_path).to eq("/hospitals/#{@seaside.id}/patients")
+    expect("Mimi Mimison").to appear_before("Rebecca Pope")
+    expect("Rebecca Pope").to appear_before("Rico Suave")
+    expect("Rico Suave").to appear_before("Zola Shepherd")
 
   end
 end
