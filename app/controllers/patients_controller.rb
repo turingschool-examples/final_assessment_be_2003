@@ -4,9 +4,9 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    doc_pat = DoctorPatient.where("patient_id = #{params[:id]}
-                                  AND doctor_id = #{params[:doctor_id]}").first
-    doc_pat.destroy
+    dr_patient = DoctorPatient.where("patient_id = #{params[:id]} AND
+                                      doctor_id = #{params[:doctor_id]}").first
+    dr_patient.destroy
     redirect_to doctor_path(params[:doctor_id])
   end
 end

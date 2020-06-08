@@ -14,6 +14,16 @@ class DoctorsController < ApplicationController
     redirect_to hospital_path(hospital.id)
   end
 
+  def edit
+    @doctor = Doctor.find(params[:id])
+  end
+
+  def update
+    doctor = Doctor.find(params[:id])
+    doctor.update_attribute(:hospital_id, params[:hospital_id])
+    redirect_to doctor_path(doctor.id)
+  end
+
   private
   def doc_params
     params.require(:doctor).permit(:name, :specialty, :education)
