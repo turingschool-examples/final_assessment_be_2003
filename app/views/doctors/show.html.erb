@@ -1,7 +1,8 @@
 <h1>Doctor <%=@doctor.name%></h1>
 <strong>Specialty: <%=@doctor.specialty%></strong></br>
 <strong>Education: <%=@doctor.education%></strong></br>
-<strong>Hospital: <%=@doctor.hospital.name%></strong></br>
+<strong>Hospital: <%=@doctor.hospital.name%></strong>
+<%= link_to %>
 
 Patients: <%@doctor.patients.each do |patient|%>
 <section class="patient-<%=patient.id%>">
