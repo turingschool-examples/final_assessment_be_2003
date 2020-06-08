@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/doctors/:id", to: "doctors#show"
-  delete "/doctors/:id", to: "doctors#destroy"
-  
+  delete "/patients/:id", to: "patients#destroy"
+
   get "/hospitals/:id", to: "hospitals#show"
 
   namespace "hospitals", path: "hospitals/:id" do 

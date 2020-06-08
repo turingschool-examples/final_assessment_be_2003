@@ -7,6 +7,6 @@
 
 <p>Patients: <%= @doctor.patients.each do |patient| %></p>
   <section id="patient-<%= patient.id %>">
-    <p> <%= patient.name %> <%= button_to "Delete Patient", "/doctors/#{@doctor.id}", method: :delete %> </p>
+    <p> <%= patient.name %> <%= button_to "Delete Patient", "/patients/#{patient.id}", params: { doctor_id: @doctor.id }, method: :delete %> </p>
   </section>    
 <% end %>
