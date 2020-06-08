@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Show Show Page", type: :feature do
+RSpec.describe "Hospital Show Page", type: :feature do
   describe "when I visit /hospitals/:id" do
     before(:each) do
       @unmh = Hospital.create!(name: "UNM Hospital", address: "2211 Lomas Blvd. NE", city: "Albuquerque", state: "NM", zip: 87106)
@@ -27,13 +27,43 @@ RSpec.describe "Show Show Page", type: :feature do
     end
 
     it "I see a list of universities that the doctor's attended" do
-      save_and_open_page
-
       expect(page).to have_content("Cornell")
       expect(page).to have_content("UNAM")
     end
+
+    it "I can click on a link that takes me to that hospital's list of patients" do
+      click_link("Patients")
+
+      expect(current_path).to eq("/hospitals/#{@unmh.id}/patients")
+    end
+
+    it "I see a link to add a doctor for this hospital" do
+      click_link("Add Doctor")
+
+      expect(current_path).to eq("/hospitals/#{@unmh.id}/doctors/new")
+    end
   end
 end
+
+# User Story 4, Creating a Doctor
+# As a visitor
+# When I visit a hospital's show page
+# I see a link to add a doctor for this hospital
+# When I click that link
+# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
+# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
+# When I fill out all three fields and click submit
+# I am taken back to the hospital show page
+# And I can see that the number of doctors has increased by one
+
+
+# User Story 3, Hospital Patient Index Page
+# As a visitor
+# When I visit the hospitals show page
+# I see a link to view all of that hospitals patients
+# When I click that link
+# I'm taken to a patients index page for that hospital
+# I see the names of all that hospital's patients listed from oldest to youngest
 
 
 # User Story 2, Hospital Show Page
