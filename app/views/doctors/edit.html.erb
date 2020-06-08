@@ -1,0 +1,8 @@
+<h1>Reassign <%= @doctor.name %></h1>
+<section class="form">
+  <%= form_tag "/doctors/#{@doctor.id}", method: :patch do %>
+    <%= label_tag :hospital_id %>
+    <%= text_field_tag :hospital_id %>
+    <%= submit_tag "Add #{@doctor.name} to this Hospital" %>
+  <% end %>
+</section>
