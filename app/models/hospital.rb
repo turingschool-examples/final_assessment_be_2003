@@ -12,7 +12,7 @@ class Hospital < ApplicationRecord
   end
 
   def unique_schools
-    doctors.select(:education).distinct
+    doctors.pluck(:education).uniq
   end
 
   def doctor_patients
