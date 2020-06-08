@@ -19,7 +19,10 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    binding.pry
+    @doctor = Doctor.find(params[:id])
+    @patient = Patient.find(params[:patient])
+    @doctor.patients.delete(@patient)
+    redirect_to "/doctors/#{@doctor.id}"
   end
 
   private
