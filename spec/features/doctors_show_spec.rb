@@ -5,8 +5,8 @@ RSpec.describe 'Doctor Show Page' do
     before :each do
       @hospital1 = Hospital.create!(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
 
-      @doctor1 = hospital1.doctors.create!(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
-      @doctor2 = hospital1.doctors.create!(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
+      @doctor1 = @hospital1.doctors.create!(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
+      @doctor2 = @hospital1.doctors.create!(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
 
       @patient1 = Patient.create!(name: "Katie Bryce", age: 24)
       @patient2 = Patient.create!(name: "Denny Duquette", age: 39)
@@ -23,17 +23,17 @@ RSpec.describe 'Doctor Show Page' do
       visit doctor_path(@doctor1)
 
       expect(page).to have_content(@doctor1.name)
-      expect(page).to have_content(@doctor1.specialty)
-      expect(page).to have_content(@doctor1.education)
+      expect(page).to have_content("Specialty: #{@doctor1.specialty}")
+      expect(page).to have_content("University: #{@doctor1.education}")
     end
 
-    xit 'I see the name of the hospital where this doctor works' do
+    it 'I see the name of the hospital where this doctor works' do
       visit doctor_path(@doctor1)
 
-      expect(page).to have_content(@hospital1.name)
+      expect(page).to have_content("Hospital: #{@hospital1.name}")
     end
 
-    xit 'I see the names of all the patients this doctor has' do
+    it 'I see the names of all the patients this doctor has' do
       visit doctor_path(@doctor1)
 
 
@@ -47,13 +47,3 @@ RSpec.describe 'Doctor Show Page' do
     end
   end
 end
-
-# User Story 1, Doctors Show Page
-# 'As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
