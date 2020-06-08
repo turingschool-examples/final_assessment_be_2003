@@ -32,8 +32,8 @@ RSpec.describe "Doctor creation" do
     click_on "Create Doctor"
 
     expect(current_path).to eq(hospital_path(grey.id))
-    expect(page).to have_content("Number of Doctors: 4")
     expect(page).to have_content("New Doctor Created!")
+    expect(page).to have_content("Number of Doctors: 4")
   end
 
 end
