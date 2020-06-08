@@ -8,4 +8,10 @@ class Hospital < ApplicationRecord
   def count_of_doctors
     doctors.count
   end 
+
+  def unique_universities
+    doctors.select(:education)
+           .distinct
+           .pluck(:education)
+  end 
 end
