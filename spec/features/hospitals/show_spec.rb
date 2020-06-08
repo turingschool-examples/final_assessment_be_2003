@@ -6,6 +6,7 @@ RSpec.describe "Hospital Show Page", type: :feature do
     hospital_2 = Hospital.create({name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: 98101})
     meredith = Doctor.create({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: "#{hospital_2.id}"})
     alex = Doctor.create({name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", hospital_id: "#{hospital_2.id}"})
+    miranda = Doctor.create({name: "Miranda Bailey", specialty: "General Surgery", education: "Johns Hopkins University", hospital_id: "#{hospital_2.id}"})
     visit "/hospitals/#{hospital_2.id}"
     expect(page).not_to have_content(hospital_1.name)
     expect(page).to have_content(hotpital_2.name)
@@ -14,6 +15,8 @@ RSpec.describe "Hospital Show Page", type: :feature do
     expect(page).to have_content(hotpital_2.state)
     expect(page).to have_content(hotpital_2.zip)
     expect(page).to have_content("Number of Doctors: 2")
+    expect(page).to have_content("Harvard University")
+    expect(page).to have_content("Johns Hopkins University", count: 1)
   end
 end
 
