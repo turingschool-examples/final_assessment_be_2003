@@ -55,7 +55,7 @@ RSpec.describe "Doctor Show Page" do
 
       expect(current_path).to eq("/doctors/#{@grey.id}/edit")
 
-      fill_in :hospital, with: @seaside.id
+      fill_in :hospital_id, with: @seaside.id
       click_on "Add Meredith Grey to this hospital"
 
       expect(current_path).to eq("/doctors/#{@grey.id}")

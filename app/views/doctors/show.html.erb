@@ -2,7 +2,9 @@
 
 <h2>Specialty: <%= @doctor.specialty %></h2>
 <h2>University: <%= @doctor.education %></h2>
-<h2>Hospital: <%= @doctor.hospital.name %></h2>
+<h2>Hospital: <%= @doctor.hospital.name %></h2><br>
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %>
+
 <h2>Patients:</h2>
 <% @doctor.patients.each do |patient| %>
 <section id = "patient-<%= patient.id %>">
