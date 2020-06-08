@@ -7,9 +7,6 @@ RSpec.describe Hospital do
 
   end
 
-  # describe 'Validations' do
-  # end
-
   describe 'instance methods' do
     before(:each) do
       @hospital = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
@@ -34,7 +31,7 @@ RSpec.describe Hospital do
     end
 
     it '#patients' do
-      expect(@hospital.patients).to eq("#{@katie.name}, #{@rebecca.name}, #{@denny.name}")
+      expect(@hospital.patients).to eq("#{@denny.name}, #{@rebecca.name}, #{@katie.name}")
     end
   end
 end
