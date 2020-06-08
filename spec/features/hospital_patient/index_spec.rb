@@ -28,7 +28,8 @@ RSpec.describe "Hospital Patient Index" do
 
       click_on("View All Patients")
       expect(current_path).to eq("/hospitals/#{@sloan.id}/patients")
-      expect(page).to have_content("Patients: Denny Duquette, Rebecca Pope, Katie Bryce")
+      expect("Denny Duquette").to appear_before("Rebecca Pope")
+      expect("Rebecca Pope").to appear_before("Katie Bryce")
       expect(page).to_not have_content("Zola Shepherd")
     end
   end
