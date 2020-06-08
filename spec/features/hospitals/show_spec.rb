@@ -28,6 +28,6 @@ RSpec.describe 'hospitals show page', type: :feature do
 
     click_link("all patients")
 
-    expect(current_path).to eq("/hopsitals/#{@greys.id}/patients")
+    expect(current_path).to eq("/hospitals/#{@greys.id}/patients")
   end
 end
