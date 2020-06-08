@@ -38,4 +38,12 @@ RSpec.describe 'doctors show page', type: :feature do
     expect(page).to have_content(@austin.name)
     expect(page).to have_content(@jared.name)
   end
+
+  it "provides a link to reassign doctoer to new hospital" do
+    visit "/doctors/#{@meredith.id}"
+
+    click_link "reassign"
+
+    expect(current_path).to eq("/doctors/#{@meredith.id}/edit")
+  end
 end
