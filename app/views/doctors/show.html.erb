@@ -5,6 +5,7 @@
 
 <ul>
   <li>Hospital: <%= @doctor.hospital.name %></li>
+
   <h1>Patients:</h1>
   <% @doctor.patients.each do |patient| %>
     <section id = "patient-<%= patient.id %>">
@@ -12,3 +13,4 @@
     </section>
   <% end %>
 </ul>
+<p><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %></p>
