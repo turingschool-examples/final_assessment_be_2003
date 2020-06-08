@@ -1,10 +1,10 @@
-<h1> <%= @doctor.name %> </h1>
+<h1> <%= @doctors.name %> </h1>
 
-<p> Specialty: <%= @doctor.specialty %> </p>
-<p> Education: <%= @doctor.education %> </p>
+<p> Specialty: <%= @doctors.specialty %> </p>
+<p> Education: <%= @doctors.education %> </p>
 
 
-<h4>Currently works at: <%=  @doctor.hospital.name %></h4><br>
-<h4> <% @doctor.patients.each do |patient| %></h4>
+<h4>Currently works at: <%=  @doctors.hospital.name %></h4><br>
+<h4> <% @doctors.patients.each do |patient| %></h4>
         <%= patient.name %><br>
 <% end %>

@@ -21,8 +21,6 @@ RSpec.describe Hospital, type: :model do
 
 
       expect(general.list_schools).to eq(["Harvard University", "University of Pennsylvania"])
-
-
+      end
     end
   end
-end

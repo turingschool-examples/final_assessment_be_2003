@@ -1,10 +1,14 @@
-<h1> <%= @hospital.name %> </h1>
+<h1> <%= @hospitals.name %> </h1>
 
-<h3> <%= @hospital.address %> </h3><br>
-<h3> <%= @hospital.city %> </h3><br>
-<h3> <%= @hospital.state %> </h3><br>
-<h3> <%= @hospital.zip %> </h3><br>
+<h3> <%= @hospitals.address %> </h3><br>
+<h3> <%= @hospitals.city %> </h3><br>
+<h3> <%= @hospitals.state %> </h3><br>
+<h3> <%= @hospitals.zip %> </h3><br>
 
-<h4>Current number of doctors: <%= @hospital.doctors.count %> </h4><br>
+<h4>Current number of doctors: <%= @hospitals.doctors.count %> </h4><br>
 
-<%=  @hospital.list_schools %>
+<h3>Universities our doctors have attended:</h3>
+<h4><%= @hospitals.list_schools %></h4>
+
+
+<%= link_to "Hospital Patients", "/patients"%>
