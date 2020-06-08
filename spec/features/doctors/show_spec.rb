@@ -93,5 +93,14 @@ describe 'As a visitor' do
       expect(page).to have_content(@katie.name)
       expect(page).to_not have_content(@zola.name)
     end
+
+    it 'I can remove patients from a doctors caseload' do
+      visit "/doctors/#{@meredith.id}"
+
+      within("#patient-#{@katie.id}") do
+        click_on "Remove Patient"
+      end
+      expect(page).to_not have_content("Katie Bryce")
+    end
   end
 end
