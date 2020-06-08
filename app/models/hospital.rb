@@ -4,4 +4,8 @@ class Hospital < ApplicationRecord
   def full_address
     "#{address} #{city}, #{state} #{zip}"
   end 
+
+  def count_of_doctors
+    doctors.count
+  end 
 end
