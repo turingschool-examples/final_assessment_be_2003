@@ -3,6 +3,10 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
   end
 
+  def edit
+    @doctor = Doctor.find(params[:id])
+  end
+
   def new
     @hospital = Hospital.find(params[:id])
   end
@@ -20,9 +24,14 @@ class DoctorsController < ApplicationController
 
   def update
     @doctor = Doctor.find(params[:id])
-    @patient = Patient.find(params[:patient])
-    @doctor.patients.delete(@patient)
-    redirect_to "/doctors/#{@doctor.id}"
+    if params[:patient]
+      @patient = Patient.find(params[:patient])
+      @doctor.patients.delete(@patient)
+      redirect_to "/doctors/#{@doctor.id}"
+    else
+      @doctor.update(hospital_id:params[:hospital])
+      redirect_to "/doctors/#{@doctor.id}"
+    end
   end
 
   private
