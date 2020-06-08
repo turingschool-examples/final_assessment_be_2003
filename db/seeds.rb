@@ -16,5 +16,5 @@
 @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
 @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
 @rebecca_p = @mcdreamy.patients.create(name: "Rebecca Pope", age: 32)
-@denny_d = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
+@zola = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
 

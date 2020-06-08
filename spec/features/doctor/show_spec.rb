@@ -11,7 +11,7 @@ RSpec.describe "When I visit a doctor's show page" do
     @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
     @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
     @rebecca_p = @mcdreamy.patients.create(name: "Rebecca Pope", age: 32)
-    @denny_d = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
+    @zola = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
   end
   it "I see all of that doctor's information and patients" do 
 
@@ -19,10 +19,10 @@ RSpec.describe "When I visit a doctor's show page" do
 
     expect(page).to have_content(@mcdreamy.name)
     expect(page).to have_content("Specialty: #{@mcdreamy.specialty}")
-    expect(page).to have_content("Education: #{@midsommar.education}")
-    expect(page).to have_content("Hospital: #{@seaside.name}")
-    expect(page).to have_content("Hospital: #{@seaside.name}")
-    expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to have_content("Education: #{@mcdreamy.education}")
+    # expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to have_content("Rebecca Pope")
+    expect(page).to have_content("Zola Shepherd")
     expect(page).to_not have_content(@alex.name)
   end
 end
