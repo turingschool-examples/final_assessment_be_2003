@@ -25,6 +25,7 @@ RSpec.describe "Doctor creation" do
     DoctorPatient.create(doctor_id: meridith.id, patient_id: denny.id)
     visit hospital_path(grey.id)
     click_link "Create New Doctor"
+    expect(page).to have_content("New Doctor Hire for #{grey.name}")
     fill_in "Name", with: "new doc"
     fill_in "Specialty", with: "general"
     fill_in "Education", with: "Turing"

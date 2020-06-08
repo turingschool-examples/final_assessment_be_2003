@@ -2,7 +2,7 @@
 <p><%= @hospital.address %></p>
 <p><%= @hospital.city %> <%= @hospital.state %> <%= @hospital.zip %></p>
 
-
+<%= link_to "Create New Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>
 <h2>Number of Doctors: <%= @hospital.count_of_doctors %></h2>
 
 <ul class="universities">

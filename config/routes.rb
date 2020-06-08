@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :doctors, only: [:show]
   resources :hospitals, only: [:show] do
     get '/patients', to: 'hospital_patients#index'
+    resources :doctors, only: [:new, :create]
   end
 end
