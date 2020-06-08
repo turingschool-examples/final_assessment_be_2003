@@ -9,3 +9,5 @@
 <ul><%@hospital.education_list.each do |school|%>
 <li><%=school%></li>
 <%end%></ul>
+
+<%= link_to "Create Doctor", "/hospitals/#{@hospital.id}/doctors/new"%>
