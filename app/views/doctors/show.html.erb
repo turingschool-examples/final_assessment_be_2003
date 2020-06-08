@@ -7,7 +7,7 @@
   <p>Alma Mater: <%= @doctor.education %></p>
 </section>
 
-<h3>Doctor's Patients</h3>
+<h3>Patients</h3>
 <% @doctor.patients.each do |patient| %>
 <section class='patient-<%= patient.id %>'>
   <p>Name: <%= patient.name %></p>
