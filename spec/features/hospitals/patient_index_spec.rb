@@ -1,19 +1,7 @@
 require 'rails_helper'
 
-describe Hospital do
-  describe 'Relationships' do
-    it {should have_many :doctors}
-  end
-
-  describe 'Validations' do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :address}
-    it {should validate_presence_of :city}
-    it {should validate_presence_of :state}
-    it {should validate_presence_of :zip}
-  end
-
-  describe 'instance methods' do
+describe 'As a visitor' do
+  describe 'When I visit a Hospitals patient index page' do
 
     before(:each) do
       @grey_sloan = Hospital.create(
@@ -86,7 +74,7 @@ describe Hospital do
       )
 
       @zola = Patient.create(
-        name: "Zola  Shepherd",
+        name: "Zola Shepherd",
         age: 2
       )
 
@@ -99,10 +87,17 @@ describe Hospital do
         patient_id: @denny.id,
         doctor_id: @meredith.id
       )
-
+      DoctorPatient.create(
+        patient_id: @rebecca.id,
+        doctor_id: @meredith.id
+      )
       DoctorPatient.create(
         patient_id: @zola.id,
         doctor_id: @meredith.id
+      )
+      DoctorPatient.create(
+        patient_id: @rebecca.id,
+        doctor_id: @alex.id
       )
       DoctorPatient.create(
         patient_id: @zola.id,
@@ -110,8 +105,17 @@ describe Hospital do
       )
     end
 
-    it '#age_sorted_patient_names' do
-      expect(@grey_sloan.age_sorted_patient_names).to eq([@denny.name, @katie.name, @zola.name])
+    it 'I can see all of that hospitals patients' do
+      visit "/hospitals/#{@grey_sloan.id}/patients"
+
+      expect(page).to have_content(@zola.name)
+      expect(page).to have_content(@katie.name)
+      expect(page).to have_content(@rebecca.name)
+      expect(page).to have_content(@denny.name)
+
+      expect(@denny.name).to appear_before(@rebecca.name)
+      expect(@rebecca.name).to appear_before(@katie.name)
+      expect(@katie.name).to appear_before(@zola.name)
     end
   end
 end

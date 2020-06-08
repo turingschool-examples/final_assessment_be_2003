@@ -1,0 +1,9 @@
+<h2> Patient Names: </h2>
+
+<ul>
+  <% @patient_names.each do |name| %>
+    <section id="<%= name %>"">
+    <li> <%= name %></li>
+    </section>
+  <% end %>
+</ul>

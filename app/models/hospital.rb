@@ -5,4 +5,16 @@ class Hospital < ApplicationRecord
                         :city,
                         :state,
                         :zip
+
+
+  def age_sorted_patient_names
+    patients = []
+    doctors.each do |doctor|
+      patients << doctor.patients
+    end
+    patients.flatten!
+    patients = patients.sort_by { |patient| patient.age}.reverse
+    patients.map { |patient| patient.name }.uniq
+  end
+
 end

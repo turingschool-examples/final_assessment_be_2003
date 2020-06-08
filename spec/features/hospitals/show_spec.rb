@@ -103,5 +103,14 @@ describe 'As a visitor' do
       expect(page).to_not have_content(@derek.university)
       expect(page).to_not have_content(@miranda.university)
     end
+
+    it 'I see a link to view all of that hospitals patients' do
+      visit "/hospitals/#{@grey_sloan.id}"
+
+      click_on "View Patients"
+
+      expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/patients")
+    end
+
   end
 end
