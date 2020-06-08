@@ -39,6 +39,23 @@ describe Hospital, type: :model do
       specialty: 'Attending Surgeon',
       education: 'University of Pennsylvania',
       hospital_id: @grey.id)
+
+      @rebecca = Patient.create(
+      name: 'Rebecca Pope',
+      age: 12)
+
+      @jessica = Patient.create(
+      name: 'Jessica Smith',
+      age: 32)
+
+      @zola = Patient.create(
+      name: 'Zola Shepherd',
+      age: 2)
+
+      PatientDoctor.create(patient_id: @rebecca.id, doctor_id: @miranda.id)
+      PatientDoctor.create(patient_id: @zola.id, doctor_id: @miranda.id)
+      PatientDoctor.create(patient_id: @jessica.id, doctor_id: @jeff.id)
+      PatientDoctor.create(patient_id: @jessica.id, doctor_id: @miranda.id)
     end
 
     it 'number_of_doctors' do
@@ -48,6 +65,10 @@ describe Hospital, type: :model do
     it 'doctor_alma_maters' do
       expect(@grey.doctor_alma_maters).to eq(['Stanford University',
                                               'University of Pennsylvania'])
+    end
+
+    it 'patients_by_age' do
+      expect(@grey.patients_by_age).to eq([@jessica.name, @rebecca.name, @zola.name])
     end
   end
 end
