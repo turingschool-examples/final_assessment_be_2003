@@ -8,10 +8,22 @@ RSpec.describe "When I visit a doctor's show page" do
     @alex = @grey_sloan.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
     @miranda = @seaside.doctors.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University")
     @mcdreamy = @seaside.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
-    @katie_b = @grey_sloan.patients.create(name: "Katie Bryce", age: 24)
-    @denny_d = @grey_sloan.patients.create(name: "Denny Duquette", age: 39)
-    @rebecca_p = @seaside.patients.create(name: "Rebecca Pope", age: 32)
-    @denny_d = @seaside.patients.create(name: "Zola Shepherd", age: 2)
+    @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
+    @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
+    @rebecca_p = @mcdreamy.patients.create(name: "Rebecca Pope", age: 32)
+    @denny_d = @mcdreamy.patients.create(name: "Zola Shepherd", age: 2)
+  end
+  it "I see all of that doctor's information and patients" do 
+
+    visit "/doctors/#{@mcdreamy.id}"
+
+    expect(page).to have_content(@mcdreamy.name)
+    expect(page).to have_content("Specialty: #{@mcdreamy.specialty}")
+    expect(page).to have_content("Education: #{@midsommar.education}")
+    expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to_not have_content(@alex.name)
   end
 end
 
