@@ -23,6 +23,7 @@ RSpec.describe "Doctors Show Page", type: :feature do
     expect(page).to have_content(rebecca.name)
     expect(page).to have_content(denny.name)
     expect(page).to_not have_content(zola.name)
+  
 
   end
 end
