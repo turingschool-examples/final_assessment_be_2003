@@ -62,15 +62,3 @@ RSpec.describe "when visiting a doctors show page" do
     expect(page).to have_content(@seaside.name)
   end
 end
-# ```
-# User Story 6, Reassign Doctor to Different Hospital
-# As a visitor
-# When I visit a doctor's show page
-# Next to the name of the hospital where this doctor works
-# I see a link that says "Assign <insert name of doctor> to a Different Hospital"
-# When I click on that link
-# I'm taken to a form where I can input an id of an existing hospital
-# When I click "Add <insert name of doctor> to this hospital"
-# I'm taken back to that doctor's show page
-# And I can see the name of the new hospital that they were assigned to
-# ```

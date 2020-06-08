@@ -6,8 +6,7 @@ RSpec.describe Hospital, type: :model do
   end
 
   describe "instance methods " do
-    it "#number_of_doctors" do
-
+    before :each do
       @greys = Hospital.create!(name: "Grey Sloan Memorial Hospital",
         address: "123 Save Lives Rd",
         city: "Seattle",
@@ -27,7 +26,26 @@ RSpec.describe Hospital, type: :model do
         specialty: "General Surgery",
         education: "Stanford University")
 
+      @katie = @meredith.patients.create!(name: "Katie Bryce",
+        age: 24)
+      @denny = @alex.patients.create!(name: "Denny Duquette",
+        age: 39)
+      @rebecca = @miranda.patients.create!(name: "Rebecca Pope",
+        age: 32)
+    end
+
+    it "#number_of_doctors" do
       expect(@greys.number_of_doctors).to eq(3)
+    end
+
+    it "#doctor_universities" do
+      expect(@greys.doctor_universities).to eq(["Harvard University","Johns Hopkins University", "Stanford University"])
+    end
+
+    it "#patients_by_age" do
+      expect(@greys.patients_by_age.first).to eq(@denny)
+      expect(@greys.patients_by_age.last).to eq(@katie)
+      expect(@greys.patients_by_age).to eq([@denny,@rebecca,@katie])
     end
   end
 end

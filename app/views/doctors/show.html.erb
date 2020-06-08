@@ -1,15 +1,16 @@
 <h1> <%=@doctor.name %> </h1>
 
-<h3>Specialty </h3><br>
+<h3>Specialty </h3>
 <p><%=@doctor.specialty  %></p><br>
 
-<h3>Education </h3><br>
-<p> <%=@doctor.education  %></p>
+<h3>Education </h3>
+<p> <%=@doctor.education  %></p><br>
 
-<h3>Hospital </h3><br>
-<p><%=@doctor.hospital.name %></p>
+<h3>Hospital </h3>
+<p><%=@doctor.hospital.name %>
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit", method: :patch %></p>
 
-<h2>Patients </h2><br>
+<h2>Patients </h2>
 
 <ul>
   <%@doctor.patients.each do |patient|%>
