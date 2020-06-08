@@ -3,7 +3,7 @@
 <h2><%= @hospital.city %> , <%= @hospital.state %> <%= @hospital.zip %></h2>
 
 <p><%= link_to "See All Patients", "/hospitals/#{@hospital.id}/patients" %></p>
-
+<p><%= link_to "New Doctor For Hire", "/hospitals/#{@hospital.id}/doctors/new" %></p>
 <h4>Number of Doctors: <%= @hospital.total_number_of_doctors %></h4>
 <h4>Our Doctors' Education</h4>
 <li><%= @hospital.unique_education %></li>

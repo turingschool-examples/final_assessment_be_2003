@@ -13,15 +13,15 @@ RSpec.describe "Creating a Doctor" do
 
     visit "/hospitals/#{memorial.id}"
 
-    click_link "Add New Doctor"
-    expect(current_path).to eq("hospitals/#{memorial.id}/doctors/new")
+    click_link "New Doctor For Hire"
+    expect(current_path).to eq("/hospitals/#{memorial.id}/doctors/new")
 
     fill_in :name, with: "Jackson Avery"
     fill_in :specialty, with: "Plastic Surgery"
     fill_in :education, with: "Boston University"
 
     click_on "Submit"
-
+    save_and_open_page
     expect(current_path).to eq("/hospitals/#{memorial.id}")
     expect(page).to have_content("Number of Doctors: 7")
   end
