@@ -26,9 +26,9 @@ RSpec.describe "Doctor Show Page" do
     it "I see that doctor's name, specialty, university, hospital and patients" do
       visit "/doctors/#{@grey.id}"
 
-      expect(page).to have_content("Name: Meredith Grey")
+      expect(page).to have_content("Meredith Grey")
       expect(page).to have_content("Specialty: General Surgery")
-      expect(page).to have_content("Education: Harvard University")
+      expect(page).to have_content("University: Harvard University")
       expect(page).to have_content("Hospital: Grey Sloan Memorial Hospital")
       expect(page).to have_content("Katie Bryce")
       expect(page).to have_content("Denny Duquette")
