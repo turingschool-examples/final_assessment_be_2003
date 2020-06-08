@@ -23,7 +23,6 @@ RSpec.describe Hospital do
     @rico = @mcdreamy.patients.create(name: "Rico Suave", age: 22)
     @mimi = @mcdreamy.patients.create(name: "Mimi Mimison", age: 88) 
 
-    @doctors = Doctor.all
     end
     it "#unique_doctor_educations" do
       expect(@seaside.unique_doctor_educations).to eq(["Stanford University", "University of Pennsylvania"])

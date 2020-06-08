@@ -4,6 +4,6 @@ class DoctorsController <ApplicationController
     @doctor = Doctor.find(params[:id])
   end
 
-  def edit_hospital
+  def edit
   end
 end

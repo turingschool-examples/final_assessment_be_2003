@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/doctors/:id", to: "doctors#show"
-  get "/doctors/:id/edit_hospital", to: "doctors#edit"
-  
+  post "/doctors/:id/edit_hospital", to: "doctors#edit"
+
   delete "/patients/:id", to: "patients#destroy"
 
   get "/hospitals/:id", to: "hospitals#show"
