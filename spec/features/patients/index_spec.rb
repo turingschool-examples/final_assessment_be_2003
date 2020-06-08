@@ -19,12 +19,10 @@ RSpec.describe "hospital patient index page", type: :feature do
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @ethan.id)
     DoctorPatient.create(doctor_id: @karev.id, patient_id: @lauren.id)
   end
-
+  it "patients and they are displayed oldest to youngest " do
+    visit "/hospitals/#{@grey_sloan.id}/patients"
+    expect(@erik.name).to appear_before(@ethan.name)
+    expect(@ethan.name).to appear_before(@jen.name)
+    expect(@jen.name).to appear_before(@lauren.name)
+  end
 end
-# User Story 3, Hospital Patient Index Page
-# As a visitor
-# When I visit the hospitals show page
-# I see a link to view all of that hospitals patients
-# When I click that link
-# I'm taken to a patients index page for that hospital
-# I see the names of all that hospital's patients listed from oldest to youngest
