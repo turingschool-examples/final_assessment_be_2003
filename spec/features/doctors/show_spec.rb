@@ -7,6 +7,7 @@ RSpec.describe "Dr Show Page" do
 
     @doctor1 = @hospital1.doctors.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
     @doctor2 = @hospital1.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
+    @doctor3 = @hospital2.doctors.create(name: "N3", specialty: "S3", education: "E3")
 
     @patient1 = Patient.create(name: "Katie Bryce", age: 24)
     @patient2 = Patient.create(name: "Denny Duquette", age: 39)
@@ -53,7 +54,7 @@ RSpec.describe "Dr Show Page" do
 
   it "US5 Remove a patient from a doctors caseload via link on doctor show page" do
     visit doctor_path(@doctor1)
-save_and_open_page
+
     within("#patient-#{@patient1.id}")do
       expect(page).to have_button("Remove Patient From Dr. #{@doctor1.name}'s Caseload")
     end
@@ -63,7 +64,10 @@ save_and_open_page
     within("#patient-#{@patient3.id}")do
       click_button("Remove Patient From Dr. #{@doctor1.name}'s Caseload")
     end
+
     expect(current_path).to eq(doctor_path(@doctor1))
+    expect(page).to have_content(@patient1.name)
+    expect(page).to have_content(@patient2.name)
     expect(page).to_not have_content(@patient3.name)
   end
 
@@ -77,13 +81,13 @@ save_and_open_page
     end
 
     expect(current_path).to eq(edit_doctor_path(@doctor1))
+    expect(page).to have_content("Assign Dr. #{@doctor1.name} to a Hospital")
     expect(page).to have_content("Current Hospital ID: #{@hospital1.id}")
 
     within("#assign-form")do
-      # fill_in "doctor[hospital_id]",	with: @hospital2.id 
       select @hospital2.id, :from => "doctor[hospital_id]"
 
-      click_on "Add #{@doctor1.name} to this hospital"
+      click_on "Add Dr. #{@doctor1.name} to this hospital"
     end
     
     expect(current_path).to eq(doctor_path(@doctor1))
@@ -95,28 +99,27 @@ save_and_open_page
 
   end
 
-    it "US6 SAD: If no selection, default is to assign to hospital with lowest id" do
-    visit doctor_path(@doctor1)
-
+  it "US6 SAD: If no selection, default is to assign to current hospital" do
+    visit doctor_path(@doctor3)
     within("#doctor-hospital")do
-      expect(page).to have_content("Works at: #{@hospital1.name}")
-      expect(page).to_not have_content(@hospital2.name)
-      click_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
+      expect(page).to have_content("Works at: #{@hospital2.name}")
+      expect(page).to_not have_content(@hospital1.name)
+      click_link("Assign Dr. #{@doctor3.name} to a Different Hospital")
     end
-
-    expect(current_path).to eq(edit_doctor_path(@doctor1))
-    expect(page).to have_content("Current Hospital ID: #{@hospital1.id}")
+  
+    expect(current_path).to eq(edit_doctor_path(@doctor3))
+    expect(page).to have_content("Current Hospital ID: #{@hospital2.id}")
 
     within("#assign-form")do
 
-      click_on "Add #{@doctor1.name} to this hospital"
+      click_on "Add Dr. #{@doctor3.name} to this hospital"
     end
     
-    expect(current_path).to eq(doctor_path(@doctor1))
-    hospital = Hospital.first
+    expect(current_path).to eq(doctor_path(@doctor3))
+ 
     within("#doctor-hospital")do
-      expect(page).to have_content("Works at: #{hospital.name}")
-      expect(page).to have_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
+      expect(page).to have_content("Works at: #{@hospital2.name}")
+      expect(page).to have_link("Assign Dr. #{@doctor3.name} to a Different Hospital")
     end
 
   end
