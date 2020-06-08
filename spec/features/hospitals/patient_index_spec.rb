@@ -25,8 +25,8 @@ RSpec.describe 'Hospital Patient Index Page' do
       click_link "View All Patients"
 
       expect(page).to have_content(@katie.name, count: 1)
-      expect(@katie.name).to appear_before(@rebecca.name)
-      expect(@rebecca.name).to appear_before(@denny.name)
+      expect(@denny.name).to appear_before(@rebecca.name)
+      expect(@rebecca.name).to appear_before(@katie.name)
 
       expect(page).to_not have_content(@tweety.name)
     end
