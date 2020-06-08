@@ -6,6 +6,9 @@ class Doctor <ApplicationRecord
   has_many :doctor_patients
   has_many :patients, through: :doctor_patients
 
-
+  def self.unique_education
+    schools = pluck(:education).uniq
+    schools.join(", ")
+  end
 
 end
