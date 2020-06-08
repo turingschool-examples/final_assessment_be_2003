@@ -25,7 +25,6 @@ RSpec.describe "doctors show page", type: :feature do
       expect(page).to have_content(@grey.name)
       expect(page).to have_content(@grey.specialty)
       expect(page).to have_content(@grey.education)
-      expect(page).to have_content("Grey Sloan Memorial Hospital")
   end
 
   it "list of all its patients" do
