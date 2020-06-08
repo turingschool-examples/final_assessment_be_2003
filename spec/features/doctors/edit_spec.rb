@@ -25,6 +25,7 @@ RSpec.describe "Doctor show Page" do
       expect(current_path).to eq("/doctors/#{doctor_1.id}")
       expect(page).to_not have_content(hospital_1.name)
       expect(page).to have_content(hospital_2.name)
+      save_and_open_page
 
 
 

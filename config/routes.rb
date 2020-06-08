@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get "/hospitals/:hospital_id/doctors/new", to: 'doctors#new'
   post '/hospitals/:hospital_id/doctors', to: 'doctors#create'
 
+  get "/doctors/:id/edit", to: 'doctors#edit'
+  patch "/doctors/:id", to: 'doctors#update'
+
 end

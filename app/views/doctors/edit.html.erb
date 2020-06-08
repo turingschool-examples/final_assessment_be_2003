@@ -1,0 +1,6 @@
+<%= form_tag("/doctors/#{@doctor.id}", method: :patch) do %>
+  <%= label_tag "Hospital ID" %>
+  <%= text_field_tag :hospital_id %>
+
+  <%= submit_tag "Add #{@doctor.name} to this hospital" %>
+<% end %>
