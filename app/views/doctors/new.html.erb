@@ -1,0 +1,14 @@
+<h1>New Doctor hire for : <%= @hospital.name %></h1>
+
+<%= form_tag hospital_doctors_path(@hospital) do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag :specialty %>
+  <%= text_field_tag :specialty %>
+
+  <%= label_tag :education %>
+  <%= text_field_tag :education %>
+
+  <%= submit_tag "Submit" %>
+<% end %>
