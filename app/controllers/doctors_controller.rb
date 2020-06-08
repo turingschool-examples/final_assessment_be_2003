@@ -18,9 +18,14 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    doctor = Doctor.find(params[:id])
-    doctor.update(doctor_params)
-    redirect_to "/doctors/#{doctor.id}"
+    if Hospital.find(params[:hospital_id]) == nil
+      flash[:notice]= "Please enter a valid hospital ID"
+      rerender edit
+    else
+      doctor = Doctor.find(params[:id])
+      doctor.update(doctor_params)
+      redirect_to "/doctors/#{doctor.id}"
+    end
   end
 
   private
