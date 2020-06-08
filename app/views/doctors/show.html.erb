@@ -1,13 +1,13 @@
 <h1><%= @doctor.name %></h1>
 
 <section class='info'>
-  <p><%= @doctor.hospital.name %></p>
+  <p>Hospital: <%= @doctor.hospital.name %></p>
   <%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %>
-  <p><%= @doctor.speciality %></p>
-  <p><%= @doctor.education %></p>
+  <p>Speciality: <%= @doctor.speciality %></p>
+  <p>Alma Mater: <%= @doctor.education %></p>
 </section>
 
-
+<h3>Doctor's Patients</h3>
 <% @doctor.patients.each do |patient| %>
 <section class='patient-<%= patient.id %>'>
   <p>Name: <%= patient.name %></p>

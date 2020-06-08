@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: url("https://wallpaperaccess.com/full/1282794.jpg");
+  background-size: cover;
+  font-family: inherit;
+  font-color: blue;
+  text-align: center
+}
