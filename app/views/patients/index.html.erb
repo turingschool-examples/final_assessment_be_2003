@@ -1,5 +1,5 @@
-<h1>All Patients at: <%= @hospital.name %></h1>
+<h1>All Patients at: <%= link_to "#{@hospital.name}", hospital_path(@hospital.id) %></h1>
 
 <% @hospital.patients.each do |patient| %>
-   <p><%= patient.name %></p>
+   <p>Name: <%= patient.name %> Age: <%= patient.age %></p>
 <% end %>

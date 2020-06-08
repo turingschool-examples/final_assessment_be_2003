@@ -9,8 +9,7 @@ class Doctor < ApplicationRecord
   end
 
   def find_doctor_patient_id(patient_id)
-    doctor_patients.where("doctor_id = ?", id)
-                    .where("patient_id = ?", patient_id)
+    doctor_patients.where("patient_id = ?", patient_id)
                     .pluck("doctor_patients.id").first
   end
 end
