@@ -14,22 +14,12 @@ Hospitals have many Doctors, Doctors work for just one hospital. Doctors can hav
 * Push your code to you' fork once the time is up (not before!"
 
 ## User Stories
-'```
-User Story 1, Doctors Show Page
-'As a visitor
-When I visit a doctor's show page
-I see all of that doctor's information including:
- - name
- - specialty
- - university where they got their doctorate
-And I see the name of the hospital where this doctor works
-And I see the names of all of the patients this doctor has
+
 ```
-""```
 User Story 2, Hospital Show Page
 "As a visitor
-When I visit a hospital's show "ag'
-I see the hospital's name,'street address, city, state, and zip
+When I visit a hospital's show page
+I see the hospital's name,street address, city, state, and zip
 And I see the number of doctors that work at this hospital
 And I see a unique list of universities that this hospital's doctors attended
 ```
