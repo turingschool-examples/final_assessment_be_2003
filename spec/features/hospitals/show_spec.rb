@@ -13,10 +13,12 @@ RSpec.describe "Hospital Show Page" do
     @katie = Patient.create(name: "Katie Bryce", age: 24)
     @rebecca = Patient.create(name: "Rebecca Pope", age: 32)
     @denny = Patient.create(name: "Denny Duquette", age: 39)
+    @hannah = Patient.create(name: "hannah", age: 20)
 
     DoctorPatient.create(doctor_id: @meredith.id, patient_id: @katie.id)
     DoctorPatient.create(doctor_id: @meredith.id, patient_id: @rebecca.id)
     DoctorPatient.create(doctor_id: @bob.id, patient_id: @denny.id)
+    DoctorPatient.create(doctor_id: @miranda.id, patient_id: @hannah.id)
 
   end
 
@@ -32,7 +34,7 @@ RSpec.describe "Hospital Show Page" do
     expect(page).to have_content("University of Pennsylvania", count:1)
   end
 
-  xit "shows link to view all patients" do
+  it "shows link to view all patients" do
     visit "/hospitals/#{@sloan.id}"
 
     click_link "View All Patients"

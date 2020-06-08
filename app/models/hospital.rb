@@ -12,4 +12,6 @@ class Hospital <ApplicationRecord
     end
     edu.uniq
   end
+
+
 end
