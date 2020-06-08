@@ -34,13 +34,22 @@ RSpec.describe "when visiting a hospitals show page" do
     expect(page).to have_content(@greys.number_of_doctors)
     expect(page).to have_content(@greys.doctors.first.education)
     expect(page).to have_content(@greys.doctors.last.education)
-    save_and_open_page
+  end
+
+  it "a visitor can click a link that will take them to patients index page" do
+    visit "/hospitals/#{@greys.id}"
+
+    click_link "View Patients"
+
+    expect(current_path).to eq("/hospitals/#{@greys.id}/patients")
   end
 end
-# User Story 2, Hospital S'ow Page
-# "As a visitor
-# When I visit a hospital's show "ag'
-# I see the hospital's name,'street address, city, state, and zip
-# And I see the number of doctors that work at this hospital
-# And I see a unique list of universities that this hospital's doctors attended
+# ```
+# User Story 3, Hospital Patient Index Page
+# As a visitor
+# When I visit the hospitals show page
+# I see a link to view all of that hospitals patients
+# When I click that link
+# I'm taken to a patients index page for that hospital
+# I see the names of all that hospital's patients listed from oldest to youngest
 # ```

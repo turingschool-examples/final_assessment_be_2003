@@ -8,5 +8,7 @@
 <h3> Total Doctors: <%= @hospital.number_of_doctors %></h3><br>
 <h3>Doctor Universities:  </h3><br>
 <% @hospital.doctor_universities.each do |university| %>
-  <p><%= university %></p>
+  <p><%= university %> </p>
 <% end %>
+
+<%= link_to "View Patients", "/hospitals/#{@hospital.id}/patients" %>
