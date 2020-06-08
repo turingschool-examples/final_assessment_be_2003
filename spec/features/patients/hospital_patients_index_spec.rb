@@ -31,7 +31,7 @@ RSpec.describe 'Hospital Patient Index Page' do
     end
 
     it 'When I visit patient index, I can see all patients names listed from oldest to youngest' do
-      visit "/hospitals/#{@hospital1.id}/patients"
+      visit hospital_patients_path(@hospital1)
 
       expect(@patient2.name).to appear_before(@patient3.name)
       expect(@patient3.name).to appear_before(@patient1.name)
