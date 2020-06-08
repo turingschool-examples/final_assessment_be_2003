@@ -8,6 +8,7 @@ RSpec.describe "When I visit a hospital's show page" do
     @alex = @grey_sloan.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
     @miranda = @seaside.doctors.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University")
     @mcdreamy = @seaside.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
+    @mcdreamy_2 = @seaside.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania")
     @katie_b = @merideth.patients.create(name: "Katie Bryce", age: 24)
     @denny_d = @alex.patients.create(name: "Denny Duquette", age: 39)
 
@@ -37,7 +38,7 @@ RSpec.describe "When I visit a hospital's show page" do
 
     visit "/hospitals/#{@seaside.id}"
 
-    expect(page).to have_content("Number of Doctors: 2")
+    expect(page).to have_content("Number of Doctors: 3")
   end
 
   it "I see a unique list of universities that this hospital's doctors attended" do 
