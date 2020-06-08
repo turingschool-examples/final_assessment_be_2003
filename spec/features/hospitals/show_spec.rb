@@ -51,7 +51,7 @@ RSpec.describe "Hospital Show Page" do
     end
     doctor = Doctor.last
     expect(doctor.name).to eq("Bugs Bunny")
-    
+
     expect(current_path).to eq(hospital_path(@hospital1))
     expect(page).to have_content("Number of Doctors: 5")
   end

@@ -21,13 +21,16 @@ RSpec.describe "Hospital Patient index Page" do
   end
   it "US3 Hospital show has link to patients, patient index has patients names old to young" do
     visit hospital_path(@hospital1)
-    
+
     click_link "View Patients at #{@hospital1.name}"
     expect(current_path).to eq(hospital_patients_path(@hospital1))
 
+    expect(page).to have_content("Patient Index at #{@hospital1.name}")
+    
     expect(page).to_not have_content(@patient4.name)
 
     within("#patients")do
+      expect(page).to have_content("Patients:")
       expect(page.all('p')[0]).to have_content(@patient2.name)
       expect(page.all('p')[1]).to have_content(@patient3.name) 
       expect(page.all('p')[2]).to have_content(@patient1.name) 

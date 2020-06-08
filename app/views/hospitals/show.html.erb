@@ -7,12 +7,12 @@
   <p>State: <%=@hospital.state %></p>
   <p>Zip: <%=@hospital.zip %></p>
 </section>
+<%= link_to "View Patients at #{@hospital.name}", hospital_patients_path(@hospital) %>
 
+<h3>Doctors at this Hospital</h3>
 <section id="doctor-info">
   <p>Number of Doctors: <%=@hospital.doctor_count %></p>
   <p>Universities Attended: <%=@hospital.uniq_education %></p>
 </section>
-
-<%= link_to "View Patients at #{@hospital.name}", hospital_patients_path(@hospital) %>
 
 <%= link_to 'Add New Doctor', new_hospital_doctor_path(@hospital) %>
