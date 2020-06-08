@@ -4,5 +4,8 @@
 <strong>Hospital: <%=@doctor.hospital.name%></strong></br>
 
 Patients: <%@doctor.patients.each do |patient|%>
+</section class = "patient-<%=patient.id%>">
   <%=patient.name%>
+  <%=button_tag "Delete Patient", "/doctor/#{@doctor.id}/patients/#{patient.id}", method: delete%>
+</section>
 <%end%>

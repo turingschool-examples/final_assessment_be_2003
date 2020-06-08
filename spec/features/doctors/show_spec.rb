@@ -36,7 +36,12 @@ RSpec.describe "Doctors Show Page", type: :feature do
   meredith.patients << katie
   meredith.patients << denny
   visit "/doctors/#{meredith.id}"
-  within
+  within ".patient-#{rebecca.id}" do
+    click_button "Delete Patient"
+  end
+  expect(current_path).to eql("/doctors/#{meredith.id}")
+  expect(page).not_to have_css("patient-#{rebecca.id}")
+  expect(page).not_to have_content("#{rebecca.name}")
 end
 
 
