@@ -29,7 +29,7 @@ RSpec.describe 'Hospital Show Page' do
       expect(page).to_not have_content(@psych.zip)
       expect(page).to_not have_content("Doctors: 1")
       expect(page).to_not have_content("Doctors: 3")
-      expect(page).to have_content(@bunny.education)
+      expect(page).to_not have_content(@bunny.education)
     end
   end
 end
