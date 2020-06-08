@@ -16,4 +16,5 @@
 
 <section id="link">
   <%= link_to "View Patients", "/hospitals/#{@hospital.id}/patient_index" %>
+  <%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/new_doctor", method: :get %>
 </section>
