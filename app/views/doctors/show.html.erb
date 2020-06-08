@@ -1,0 +1,17 @@
+<h1><%= @doctor.name %></h1>
+
+<section class='info'>
+  <p><%= @doctor.hospital.name %></p>
+  <p><%= @doctor.speciality %></p>
+  <p><%= @doctor.education %></p>
+</section>
+
+<section class='patients'>
+  <% if @doctor.patients.empty? %>
+    <p>This Doctor has no patients.</p>
+  <% else%>
+    <% @doctor.patients.each do |patient| %>
+      <p>Name: <%= patient.name %></p>
+    <% end %>
+  <% end %>
+</section>
