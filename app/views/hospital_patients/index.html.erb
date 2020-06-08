@@ -2,6 +2,6 @@
 
 <section id='patients'>
   <% @hospital_patients.each do |patient| %>
-    <%= patient.name %><br>
+    <%= patient.name %>: <%= patient.age %><br>
   <% end %>
 </section>
