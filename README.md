@@ -11,9 +11,11 @@ Please follow the setup directions below. Stories for the assessment will be sen
 When you run `bundle exec rspec` , you should have 0 tests.
 
 # BEM2 Final Technical Assessment
+
 ## Description
 Seattle Grace is based off of Grey's Anatomy (Mike's favorite show), but you need NO knowledge of Grey's Anatomy to complete this final.
 Hospitals have many Doctors, Doctors work for just one hospital. Doctors can have many patients, and patients can have many doctors. Make sure to add timestamps to your tables.
+
 '## Instructions
 '* Work on this assessment independently. DO NOT discuss with anyone.
 * Fork this repository
@@ -22,7 +24,9 @@ Hospitals have many Doctors, Doctors work for just one hospital. Doctors can hav
 * Run `rake db:create`
 * Complete the tasks below
 * Push your code to you' fork once the time is up (not before!"
+
 "## User Stories
+
 '```
 User Story 1, Doctors Show Page
 'As a visitor
@@ -35,10 +39,10 @@ And I see the name of the hospital where this doctor works
 And I see the names of all of the patients this doctor has
 ```
 ""```
-User Story 2, Hospital S'ow Page
+User Story 2, Hospital Show Page
 "As a visitor
-When I visit a hospital's show "ag'
-I see the hospital's name,'street address, city, state, and zip
+When I visit a hospital's show page
+I see the hospital's name,street address, city, state, and zip
 And I see the number of doctors that work at this hospital
 And I see a unique list of universities that this hospital's doctors attended
 ```

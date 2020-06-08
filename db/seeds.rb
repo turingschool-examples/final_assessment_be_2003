@@ -16,3 +16,4 @@ sloan = Doctor.create(name: "Mark McSteamy Sloan", specialty: "Plastic Surgeron"
 bryce = Patient.create(name: "Katie Bryce", age: 24)
 duqette = Patient.create(name: "Denny Duquette", age: 39)
 zola = Patient.create(name: "Zola Shepherd", age: 2)
+pope = Patient.create(name: "Rebecca Pope", age: 32)
