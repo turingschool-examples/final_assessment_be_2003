@@ -53,21 +53,21 @@ RSpec.describe "Dr Show Page" do
 
   it "US5 Remove a patient from a doctors caseload via link on doctor show page" do
     visit doctor_path(@doctor1)
-
+save_and_open_page
     within("#patient-#{@patient1.id}")do
-      expect(page).to have_link("Remove Patient From #{@doctor1.name}'s Caseload")
+      expect(page).to have_button("Remove Patient From #{@doctor1.name}'s Caseload")
     end
     within("#patient-#{@patient2.id}")do
-      expect(page).to have_link("Remove Patient From #{@doctor1.name}'s Caseload")
+      expect(page).to have_button("Remove Patient From #{@doctor1.name}'s Caseload")
     end
     within("#patient-#{@patient3.id}")do
-      click_link("Remove Patient From #{@doctor1.name}'s Caseload")
+      click_button("Remove Patient From #{@doctor1.name}'s Caseload")
     end
     expect(current_path).to eq(doctor_path(@doctor1))
     expect(page).to_not have_content(@patient3.name)
   end
 
-  it "US6 HAPPY: Reassign Dr to different hospital via link on doctor show page" do
+  it "US6 HAPPY: Assign Dr to different hospital via link on doctor show page" do
     visit doctor_path(@doctor1)
 
     within("#doctor-hospital")do

@@ -33,7 +33,7 @@ RSpec.describe "Hospital Show Page" do
       expect(page).to have_content("Universities Attended: #{@hospital1.uniq_education}")
     end
   end
-  it "US4 Create a doctor - link to create doctor and doctor count increases" do
+  it "US4 HAPPY: Create a doctor via link to add new doctor and doctor count increases" do
     visit hospital_path(@hospital1)
     expect(page).to have_content("Number of Doctors: 4")
 
@@ -49,15 +49,19 @@ RSpec.describe "Hospital Show Page" do
 
       click_on "Create Doctor"
     end
+    doctor = Doctor.last
+    expect(doctor.name).to eq("Bugs Bunny")
+    
     expect(current_path).to eq(hospital_path(@hospital1))
     expect(page).to have_content("Number of Doctors: 5")
   end
  
-  it "US4 SAD PATH: if all doctor info is not filled out, redirect to new doctor page" do
+  it "US4 SAD: if all doctor info is not filled out, redirect to new doctor page" do
     visit hospital_path(@hospital1)
     expect(page).to have_content("Number of Doctors: 4")
 
     click_link("Add New Doctor")
+    expect(current_path).to eq(new_hospital_doctor_path(@hospital1))
 
     expect(page).to have_content("New Doctor Hire for #{@hospital1.name}")
 

@@ -21,7 +21,7 @@ RSpec.describe "Hospital Patient index Page" do
   end
   it "US3 Hospital show has link to patients, patient index has patients names old to young" do
     visit hospital_path(@hospital1)
-
+    
     click_link "View Patients at #{@hospital1.name}"
     expect(current_path).to eq(hospital_patients_path(@hospital1))
 
