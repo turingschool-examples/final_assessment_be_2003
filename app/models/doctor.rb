@@ -4,5 +4,4 @@ class Doctor < ApplicationRecord
   has_many :patients, through: :doctor_patients
 
   validates_presence_of :name, :specialty, :education
-  
 end
