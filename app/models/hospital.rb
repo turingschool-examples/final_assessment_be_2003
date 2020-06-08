@@ -10,14 +10,7 @@ class Hospital < ApplicationRecord
   end
 
   def show_patients
-      names = []
-      doctors.each do |doctor|
-      doctor.patients.each do |patient|
-        names << patient.name
-      end
-    end
-    names
-    binding.pry
+    Patient.joins(:doctors).where(doctors: {hospital_id: id}).order(age: :desc).pluck(:name)
   end
 
 end
