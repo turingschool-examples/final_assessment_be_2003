@@ -34,12 +34,18 @@ RSpec.describe 'Hospital show page', type: :feature do
     expect(page).to have_content(@grey.address)
     expect(page).to have_content(@grey.city)
     expect(page).to have_content(@grey.state)
-    save_and_open_page
   
     within(".doctor-info") do
       expect(page).to have_content('Number of Doctors: 3')
       expect(page).to have_content('Stanford University', count: 1)
       expect(page).to have_content('University of Pennsylvania', count: 1)
     end
+  end
+
+  it 'has a link to hospital patients index page' do
+    visit hospital_path(@grey)
+    expect(page).to have_link("View all patients")
+    click_link "View all patients"
+    expect(current_path).to eq(hospital_patients_path(@grey))
   end
 end

@@ -3,6 +3,8 @@
 <h2><%= @hospital.city %></h2>
 <h2><%= @hospital.state %></h2>
 <h2><%= @hospital.zip %></h2>
+<h2><%= link_to 'View all patients', hospital_patients_path(@hospital) %></h2>
+
 <div class='doctor-info'>
   <h2>Number of Doctors: <%= @hospital.number_of_doctors %></h2>
   <h2>Where our doctors were educated:</h2>
