@@ -20,6 +20,6 @@ RSpec.describe 'hospitals show page', type: :feature do
     expect(page).to have_content(@greys.zip)
 
     expect(page).to have_content("Doctors on staff: 4")
-    expect(page).to have_content("Educations: Turing, Brown, Home Schooled.")
+    expect(page).to have_content("Turing Brown Home Schooled")
   end
 end

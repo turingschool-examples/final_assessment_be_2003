@@ -1,0 +1,16 @@
+<h1> <%= @hospital.name %> </h1>
+
+<p> address: <%= @hospital.address %> </p>
+<p> city: <%= @hospital.city %> </p>
+<p> state: <%= @hospital.state %> </p>
+<p> zip: <%= @hospital.zip %> </p>
+
+<p>Doctors on staff: <%= @hospital.doctors.length %> </p>
+
+<% schools = [] %>
+<% @hospital.doctors.each do |doctor|%>
+  <% schools << doctor.school %>
+<% end %>
+<% schools.uniq.each do |school| %>
+  <%= school %>
+<% end %>
