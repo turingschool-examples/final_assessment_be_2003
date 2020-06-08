@@ -31,15 +31,25 @@ RSpec.describe "when visiting a doctors show page" do
     expect(page).to have_content(@meredith.patients.last.name)
   end
 
+  it "a visitor will see all doctors info, hospital & patients" do
+    visit "/doctors/#{@meredith.id}"
+
+    within(:css, "ul#patients-#{@katie.id}") do
+      click_on "Remove Patient"
+    end
+
+    expect(current_path).to eq("/doctors/#{@meredith.id}")
+    expect(page).to_not have_content(@katie.name)
+    expect(page).to have_content(@denny.name)
+  end
+
 end
-# '```
-# User Story 1, Doctors Show Page
-# 'As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
+# ```
+# User Story 5, Remove a Patient from a Doctor
+# As a visitor
+# When I visit a Doctor's show page
+# Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+# When I click that button for one patient
+# I'm brought back to the Doctor's show page
+# And I no longer see that patient's name listed
 # ```
