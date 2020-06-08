@@ -1,0 +1,15 @@
+<h2><%= @doctor.name %></h2><br />
+<h3><%= @doctor.hospital.name %></h3><br />
+
+<h4> Specialty: </h4>
+<li><%= @doctor.specialty %></li><br />
+
+<h4> Education: </h4>
+<li><%= @doctor.education %></li><br />
+
+<section>
+  <h3> Patients: </h3><br />
+  <% @doctor.patients.each do |patient| %>
+  <li><%= patient.name %></li>
+  <% end %>
+</section>
