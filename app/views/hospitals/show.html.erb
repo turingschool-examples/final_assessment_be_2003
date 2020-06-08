@@ -8,4 +8,6 @@
 
 <h3>Universities Attended:</h3>
 
-<%= @hospital.doctors.unique_schools.join(", ") %>
+<%= @hospital.doctors.unique_schools.join(", ") %><br>
+<%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>
+<%= link_to "View #{@hospital.name}'s Patients", "/hospitals/#{@hospital.id}/patients" %>
