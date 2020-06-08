@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'doctors/:id', to: 'doctors#show'
   delete '/doctors/:doctor_id/:patient_id', to: 'doctor_patients#destroy'
   get '/doctors/:id/edit', to: 'doctors#edit'
-  patch '/hospitals/:hospital_id/doctors', to: 'doctors#update'
+  patch '/doctors/:id', to: 'doctors#update'
 
   get 'hospitals/:id/patients', to: 'hospital_patients#index'
 

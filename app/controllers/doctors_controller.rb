@@ -20,14 +20,14 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    hospital = Hospital.find(params[:hospital_id])
-    doctor = Doctor.where(hospital_id: params[:hospital_id])
-    hospital.doctors << doctor
+    doctor = Doctor.find(params[:id])
+    doctor.update(doctor_params)
+    redirect_to "/doctors/#{doctor.id}"
   end
 
   private
 
   def doctor_params
-    params.permit(:name, :specialty, :education)
+    params.permit(:name, :specialty, :education, :hospital_id)
   end
 end

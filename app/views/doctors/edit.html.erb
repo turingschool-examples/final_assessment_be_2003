@@ -7,7 +7,7 @@
 
 <p>Use the hospital ids to reassign the doctor.</p>
 
-<%= form_tag "/hospitals/#{@doctor.hospital_id}/doctors", method: :patch do %>
+<%= form_tag "/doctors/#{@doctor.id}", method: :patch do %>
   <%= label_tag :hospital_id %>
   <%= text_field_tag :hospital_id %>
 
