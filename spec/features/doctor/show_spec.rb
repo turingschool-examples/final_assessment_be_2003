@@ -47,5 +47,20 @@ RSpec.describe "Doctor Show Page" do
       expect(page).to_not have_content("Katie Bryce")
       expect(page).to have_content("Denny Duquette")
     end
+
+    it "I can reassign a doctor to a different hospital" do
+      visit "/doctors/#{@grey.id}"
+
+      click_on "Assign Meredith Grey to a Different Hospital"
+
+      expect(current_path).to eq("/doctors/#{@grey.id}/edit")
+
+      fill_in :hospital, with: @seaside.id
+      click_on "Add Meredith Grey to this hospital"
+
+      expect(current_path).to eq("/doctors/#{@grey.id}")
+      expect(page).to have_content("Hospital: Seaside Health & Wellness Center")
+      expect(page).to_not have_content("Hospital: Grey Sloan Memorial Hospital")
+    end
   end
 end

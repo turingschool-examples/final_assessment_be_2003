@@ -16,15 +16,6 @@ Hospitals have many Doctors, Doctors work for just one hospital. Doctors can hav
 ## User Stories
 
 ```
-User Story 5, Remove a Patient from a Doctor
-As a visitor
-When I visit a Doctor's show page
-Next to each patient's name, I see a button to remove that patient from that doctor's caseload
-When I click that button for one patient
-I'm brought back to the Doctor's show page
-And I no longer see that patient's name listed
-```
-```
 User Story 6, Reassign Doctor to Different Hospital
 As a visitor
 When I visit a doctor's show page
