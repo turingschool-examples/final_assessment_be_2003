@@ -10,8 +10,6 @@ Doctor.destroy_all
 Hospital.destroy_all
 Patient.destroy_all
 
-
-
 #hospitals
 hospital1 = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
 hospital2 = Hospital.create(name: "Seaside Health & Wellness Center", address: "123 Private Practice Road", city: "Los Angeles", state: "CA", zip: "90001")

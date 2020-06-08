@@ -25,6 +25,8 @@ RSpec.describe 'Doctor Show Page' do
       expect(page).to have_content(@doctor1.name)
       expect(page).to have_content("Specialty: #{@doctor1.specialty}")
       expect(page).to have_content("University: #{@doctor1.education}")
+
+      expect(page).to_not have_content("University: #{@doctor2.education}")
     end
 
     it 'I see the name of the hospital where this doctor works' do
