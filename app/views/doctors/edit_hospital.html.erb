@@ -2,7 +2,7 @@
 
 <%= form_tag "/doctors/#{@doctor.id}/update_hospital", method: :patch do |f| %>
 
-<%= label_tag :hospital_id %>
+<%= label_tag :hospital_id, "Hospital ID:" %>
 <%= text_field_tag "hospital_id" %><br>
 
 <%= submit_tag "Add #{@doctor.name} to this hospital" %>
