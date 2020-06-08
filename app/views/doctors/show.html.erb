@@ -2,7 +2,7 @@
 <p>Specialty: <%= @doctor.specialty %></p>
 <p>Education: <%= @doctor.education %></p>
 <p>Hospital <%= @doctor.hospital.name %></p>
-<p><%= link_to "Reassign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %></p>
+<p><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %></p>
 <h4>Patients:</h4>
 
 <% @doctor.patients.each do |patient| %>
