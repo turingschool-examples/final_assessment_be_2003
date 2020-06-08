@@ -34,7 +34,7 @@ RSpec.describe "hospital show page", type: :feature do
     expect(page).to have_content("Universities attended: Harvard University, Johns Hopkins University")
   end
   it "see link to patients" do
-    click_link "Patients List"
+    click_link "View all patients of Grey Sloan Memorial Hospital"
     expect(current_path).to eq("/hospitals/#{@grey_sloan.id}/patients")
     expect(@lauren.name).to appear_before(@jen.name)
     expect(@jen.name).to appear_before(@ethan.name)

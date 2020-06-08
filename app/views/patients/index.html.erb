@@ -1,0 +1,4 @@
+<div class="patients" >
+  <% @patients.order_by_age.each do |patient| %>
+    <p><%= patient.name %> </p>
+  <%end%>
