@@ -9,6 +9,12 @@ class Hospital < ApplicationRecord
   def uniq_universities
     doctors.distinct.pluck(:education)
   end
+ 
+  def patients_by_age
+    doctors.joins(:patients)
+            .order('patients.age')
+            .pluck('patients.name')
+  end
   
   
 

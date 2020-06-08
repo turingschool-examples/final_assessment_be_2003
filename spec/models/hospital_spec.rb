@@ -10,10 +10,20 @@ RSpec.describe Hospital, type: :model do
       @hospital2 = Hospital.create(name:"Seaside Health & Wellness Center", address:"123 Private Practice Road", city: "Los Angeles", state: "CA", zip: "90001" )
 
       @doctor1 = @hospital1.doctors.create(name: "Meredith Grey1", specialty: "General Surgery", education: "Harvard University")
-      @doctor2 = @hospital1.doctors.create(name: "Meredith Grey2", specialty: "General Surgery", education: "Boston University")
-      @doctor3 = @hospital1.doctors.create(name: "Meredith Grey3", specialty: "General Surgery", education: "Harvard University")
-      @doctor4 = @hospital1.doctors.create(name: "Meredith Grey4", specialty: "General Surgery", education: "Turing")
+      @doctor2 = @hospital1.doctors.create(name: "N2", specialty: "S1", education: "Boston University")
+      @doctor3 = @hospital1.doctors.create(name: "N3", specialty: "S2", education: "Harvard University")
+      @doctor4 = @hospital1.doctors.create(name: "N4", specialty: "S3", education: "Turing")
       @doctor5 = @hospital2.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
+    
+      @patient1 = Patient.create(name: "Katie Bryce", age: 24)
+      @patient2 = Patient.create(name: "Denny Duquette", age: 39)
+      @patient3 = Patient.create(name: "Rebecca Pope", age: 32)
+      @patient4 = Patient.create(name: "Zola  Shepherd", age: 2)
+
+      @doctor1.patients << @patient1
+      @doctor2.patients << @patient2
+      @doctor2.patients << @patient3
+      @doctor5.patients << @patient4
     end
     it ".doctor_count" do
       expect(@hospital1.doctor_count).to eq(4)
@@ -22,6 +32,11 @@ RSpec.describe Hospital, type: :model do
       expected = ["Boston University", "Harvard University", "Turing"]
       expect(@hospital1.uniq_universities).to eq(expected)
     end
+    it ".patients_by_age" do
+      expected = ["Katie Bryce", "Rebecca Pope", "Denny Duquette"]
+      expect(@hospital1.patients_by_age).to eq(expected)
+    end
+    
     
   end
   

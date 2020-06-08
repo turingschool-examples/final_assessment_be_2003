@@ -1,0 +1,7 @@
+<h1>Patients Index at <%=@hospital.name %></h1>
+
+<section id="patients">
+  <%@hospital.patients_by_age.each do |patient| %>
+    <p><%=patient %></p>
+  <%end %>
+</section>

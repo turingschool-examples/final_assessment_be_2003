@@ -12,3 +12,5 @@
   <p>Number of Doctors: <%=@hospital.doctor_count %></p>
   <p>Universities Attended: <%=@hospital.uniq_universities %></p>
 </section>
+
+<%= link_to "View Patients at #{@hospital.name}", hospital_patients_path(@hospital) %>
