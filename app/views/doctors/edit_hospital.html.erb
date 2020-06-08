@@ -1,6 +1,6 @@
 <h1>Reassign Hospital for <%= @doctor.name %></h1>
 
-<%= form_tag "/doctors/#{@doctor.id}", method: :patch do |f| %>
+<%= form_tag "/doctors/#{@doctor.id}/update_hospital", method: :patch do |f| %>
 
 <%= label_tag :hospital_id %>
 <%= text_field_tag "hospital_id" %><br>

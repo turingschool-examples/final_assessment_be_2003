@@ -8,8 +8,8 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:doctor_id])
   end 
 
-  def update
-    doctor = Doctor.find(params[:id])
+  def update_hospital
+    doctor = Doctor.find(params[:doctor_id])
     new_hospital_id = params[:hospital_id]
     
     doctor.update(hospital_id: new_hospital_id)
