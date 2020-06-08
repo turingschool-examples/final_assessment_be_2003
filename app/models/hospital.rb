@@ -6,6 +6,6 @@ class Hospital < ApplicationRecord
   end
 
   def education_list
-    binding.pry
+    doctors.select(:education).distinct.pluck(:education)
   end
 end
