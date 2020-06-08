@@ -4,7 +4,14 @@ RSpec.describe Hospital do
   describe 'Relationships' do
     it {should have_many :doctors}
     it {should have_many(:doctor_patients).through(:doctors)}
+  end
 
+  describe 'Validations' do
+    it {should validate_presence_of :name }
+    it {should validate_presence_of :address}
+    it {should validate_presence_of :city}
+    it {should validate_presence_of :state}
+    it {should validate_presence_of :zip}
   end
 
   describe 'instance methods' do
@@ -30,8 +37,12 @@ RSpec.describe Hospital do
       expect(@hospital.doctor_universities).to eq("#{@grey.education} and #{@karev.education}")
     end
 
+    it '#doctor_count' do
+      expect(@hospital.doctor_count).to eq(3)
+    end
+
     it '#patients' do
-      expect(@hospital.patients).to eq("#{@denny.name}, #{@rebecca.name}, #{@katie.name}")
+      expect(@hospital.patients).to eq(["#{@denny.name}", "#{@rebecca.name}", "#{@katie.name}"])
     end
   end
 end
