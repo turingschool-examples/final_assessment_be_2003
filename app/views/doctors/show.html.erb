@@ -5,5 +5,8 @@
 
 <h3>Patients</h3>
 <% @doctor.patients.each do |patient| %>
+  <div class="patients-<%= patient.id %>">
   <li><%= patient.name %></li>
+  <%= link_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete, data: {confirm: "Confirm Patient Deletion"} %>
+  </div>
 <% end %>
