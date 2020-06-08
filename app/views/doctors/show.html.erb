@@ -1,0 +1,14 @@
+<h2><%= @doctor.name %></h2>
+<p>Specialty: <%= @doctor.specialty %></p>
+<p>Education: <%= @doctor.education %></p>
+<p>Current Hospital: <%= @doctor.hospital.name %></p>
+
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %>
+
+<h3>Patients</h3>
+<% @doctor.patients.each do |patient| %>
+  <div class="patients-<%= patient.id %>">
+  <li><%= patient.name %></li>
+  <%= link_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete, data: {confirm: "Confirm Patient Deletion"} %>
+  </div>
+<% end %>

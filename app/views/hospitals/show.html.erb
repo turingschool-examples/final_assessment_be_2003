@@ -1,0 +1,13 @@
+<h2><%= @hospital.name %></h2>
+<p>Address: <%= @hospital.address %></p>
+<p>City: <%= @hospital.city %></p>
+<p>State: <%= @hospital.state %></p>
+<p>Zip: <%= @hospital.zip %></p>
+
+<p>Number of Doctors: <%= @hospital.doctors.count %></p>
+
+<h3>Universities Attended:</h3>
+
+<%= @hospital.doctors.unique_schools.join(", ") %><br>
+<%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>
+<%= link_to "View #{@hospital.name}'s Patients", "/hospitals/#{@hospital.id}/patients" %>
