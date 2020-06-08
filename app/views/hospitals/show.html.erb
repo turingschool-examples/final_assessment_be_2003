@@ -1,0 +1,10 @@
+<h1>Hospital: <%= @hospital.name %></h1>
+<p>Street Address: <%= @hospital.address %></p>
+<p>City: <%= @hospital.city %></p>
+<p>State: <%= @hospital.state %></p>
+<p>Zip: <%= @hospital.zip %></p>
+
+<p>Number of Doctors at this Hospital: <%= @hospital.doctors.length %></p>
+
+<h3>University Partners</h3>
+<p><%= @hospital.list_universities %></p>
