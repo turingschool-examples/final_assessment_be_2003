@@ -1,0 +1,15 @@
+<h1>New Doctor Hire for <%= @hospital.name %></h1>
+
+<%= form_for Doctor.new do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :specialty %>
+  <%= f.text_field :specialty %>
+
+  <%= f.label :education %>
+  <%= f.text_field :education %>
+  <%= hidden_field_tag 'id', "#{@hospital.id}" %>
+  <%= f.submit %>
+
+<% end %>

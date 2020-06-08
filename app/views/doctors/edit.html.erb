@@ -1,0 +1,6 @@
+<h1>Change hospital for <%= @doctor.name %></h1>
+<%= form_tag ("/doctors/#{@doctor.id}"), method: :patch %>
+<%= label_tag :hospital %>
+<%= text_field_tag :hospital %>
+
+<%= submit_tag "Add #{@doctor.name} to this hospital" %>
