@@ -12,7 +12,6 @@ RSpec.describe 'doctors show page', type: :feature do
   end
 
   it "shows doctor's information (name,specialty,school,hospital,patients)" do
-    require "pry";binding.pry
     visit "/doctors/#{@meredith.id}"
 
     expect(page).to have_content(@meredith.name)
