@@ -7,4 +7,8 @@ class Doctor < ApplicationRecord
   validates_presence_of :name,
                         :specialty,
                         :education
+
+  def by_age
+    patients.order(:age)
+  end
 end

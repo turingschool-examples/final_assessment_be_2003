@@ -71,8 +71,14 @@ RSpec.describe "Doctors Show Page" do
       click_on "This Hospital's Patients"
 
       expect(current_path).to eq("/hospitals/#{grey_sloan.id}/patients")
-      expect(page).to have_content("Katie Bryce")
-      expect(page).to have_content("Denny Daquette")
+
+      within("#patient-0") do
+        expect(page).to have_content("Katie Bryce")
+      end
+
+      within("#patient-1") do
+        expect(page).to have_content("Denny Daquette")
+      end
 
     end
 

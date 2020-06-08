@@ -1,7 +1,7 @@
 <h1> Hospital's Patients </h1>
 
 <p><% @hospital.doctors.each do |doctor| %></p>
-  <p><% doctor.doctor_patients.each do |doctor_patient| %></p>
-   <p><%= doctor_patient.patient.name %></p>
+  <p><% doctor.by_age.each_with_index do |patient, index| %></p>
+   <p id="patient-<%= index %>"><%= patient.name %></p>
   <% end %>
 <% end %>
