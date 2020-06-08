@@ -57,4 +57,19 @@ RSpec.describe "Doctors show page", type: :feature do
 
     expect(page).to_not have_content("#{@patient_2.name}")
   end
+
+
+  it "Story-6: Reassign doctor to new hospital" do
+    visit "/doctors/#{@doc_1.id}"
+    click_on "Assign #{@doc_1.name} to a Different Hospital"
+    fill_in :hospital_id, with: "#{@hospital_2.id}"
+    click_on "Add #{@doc_1.name} to this hospital"
+
+    expect(current_path).to eq("/doctors/#{@doc_1.id}")
+
+    expect(page).to have_content("#{@doc_1.name}")
+    expect(page).to have_content("#{@doc_1.specialty}")
+    expect(page).to have_content("#{@doc_1.education}")
+    expect(page).to have_content("#{@hospital_2.name}")
+  end
 end
