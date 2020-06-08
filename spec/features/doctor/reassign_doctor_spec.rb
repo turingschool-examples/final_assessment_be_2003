@@ -18,7 +18,8 @@ RSpec.describe "when i visit the doctors show page" do
     click_on "Assign #{doctor1.name} to a Different Hospital"
 
     expect(current_path).to eq("/doctors/#{doctor1.id}/edit")
-    fill_in "Hospital ID", with: "#{hospital2.id}"
+
+    fill_in "Hospital", with: "#{hospital2.id}"
     click_on "Add #{doctor1.name} to this hospital"
     expect(current_path).to eq("/doctors/#{doctor1.id}")
     expect(page).to have_content("#{hospital2.name}")
