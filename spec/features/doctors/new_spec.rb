@@ -12,6 +12,7 @@ RSpec.describe "Creating a Doctor" do
     sloan = Doctor.create(name: "Mark McSteamy Sloan", specialty: "Plastic Surgeron", education: "University of Pennsylvania", hospital_id: memorial.id)
 
     visit "/hospitals/#{memorial.id}"
+    expect(page).to have_content("Number of Doctors: 6")
 
     click_link "New Doctor For Hire"
     expect(current_path).to eq("/hospitals/#{memorial.id}/doctors/new")
