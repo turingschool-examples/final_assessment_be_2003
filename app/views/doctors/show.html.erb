@@ -4,6 +4,9 @@
   <li> Specialty: <%= @doctor.specialty %></li>
   <li> University: <%= @doctor.university %></li>
   <li> Hospital: <%= @doctor.hospital.name %></li>
+  <ul>
+    <li><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/reassign" %></li>
+  </ul>
   <li>Patients:</li>
     <ul>
       <% @doctor.doctor_patients.each do |doctor_patient| %>

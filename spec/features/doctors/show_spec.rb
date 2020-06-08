@@ -102,5 +102,23 @@ describe 'As a visitor' do
       end
       expect(page).to_not have_content("Katie Bryce")
     end
+
+    it 'I can reassign that doctor to a different hospital' do
+      visit "/doctors/#{@meredith.id}"
+
+      expect(@meredith.hospital).to eq(@grey_sloan)
+
+      click_on "Assign Meredith Grey to a Different Hospital"
+
+      expect(current_path).to eq("/doctors/#{@meredith.id}/reassign")
+
+      fill_in "doctor[hospital_id]", with: @seaside.id
+      click_on "Add #{@meredith.name} to this hospital"
+
+      expect(current_path).to eq("/doctors/#{@meredith.id}")
+      expect(page).to have_content("Hospital: #{@seaside.name}")
+      expect(@meredith.reload.hospital).to eq(@seaside)
+
+    end
   end
 end
