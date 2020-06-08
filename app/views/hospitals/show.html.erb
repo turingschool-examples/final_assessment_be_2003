@@ -6,3 +6,5 @@
 <% @hospital.doc_universities.each do |univ| %>
   <p><%= univ %></p>
 <% end%>
+
+<%= link_to 'View All Patients', "/hospitals/#{@hospital.id}/patients" %>

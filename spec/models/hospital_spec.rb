@@ -17,8 +17,9 @@ RSpec.describe Hospital, type: :model do
     it "#doc_count" do
       expect(@hospital1.doc_count).to eq(3) 
     end
-    
-    
+
+    it "#doc_universities" do
+      expect(@hospital1.doc_universities).to eq(["Arizona State University", "Metro State University"]) 
+    end
   end
-  
 end
