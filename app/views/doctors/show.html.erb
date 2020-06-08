@@ -3,7 +3,8 @@
 <h4>Specialty: <%= @doctor.specialty %></h4>
 <h4>Education: <%= @doctor.education %></h4>
 
-<h4>Work: <%= @doctor.hospital.name %></h4>
+<h4>Work: <%= @doctor.hospital.name %>
+  <button><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit" %></button></h4>
 
 <h2>Patients</h2>
 <% @doctor.patients.each do |patient| %>

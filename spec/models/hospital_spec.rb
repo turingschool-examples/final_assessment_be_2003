@@ -34,5 +34,25 @@ RSpec.describe Hospital do
 
       expect(memorial.unique_education).to eq(["Harvard University", "Johns Hopkins University", "Stanford University", "University of Pennsylvania"])
     end
+
+    it "order_by_age" do
+      memorial = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
+
+      grey = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: memorial.id)
+      karev = Doctor.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", hospital_id: memorial.id)
+      bailey = Doctor.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University", hospital_id: memorial.id)
+
+      bryce = Patient.create(name: "Katie Bryce", age: 24)
+      duqette = Patient.create(name: "Denny Duquette", age: 39)
+      zola = Patient.create(name: "Zola Shepherd", age: 2)
+      pope = Patient.create(name: "Rebecca Pope", age: 32)
+
+      DoctorPatient.create(doctor_id: karev.id, patient_id: pope.id)
+      DoctorPatient.create(doctor_id: karev.id, patient_id: zola.id)
+      DoctorPatient.create(doctor_id: bailey.id, patient_id: duqette.id)
+      DoctorPatient.create(doctor_id: grey.id, patient_id: bryce.id)
+
+      expect(memorial.order_by_patients_age).to eq(["Denny Duquette", "Rebecca Pope", "Katie Bryce", "Zola Shepherd"])
+    end
   end
 end

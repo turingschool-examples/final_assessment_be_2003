@@ -1,0 +1,15 @@
+<h1>Assign @doctor.name to a Different Hospital</h1>
+
+<p>List of hospitals avilable.</p>
+<% @hospitals.each do |hospital| %>
+  <li><%= hospital.name %> - <%= hospital.id %></li>
+<% end %>
+
+<p>Use the hospital ids to reassign the doctor.</p>
+
+<%= form_tag "/doctors/#{@doctor.id}", method: :patch do %>
+  <%= label_tag :hospital_id %>
+  <%= text_field_tag :hospital_id, @doctor.hospital_id %>
+
+  <%= submit_tag "Add #{@doctor.name} to this hospital" %>
+<% end %>
