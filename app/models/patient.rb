@@ -3,6 +3,5 @@ class Patient < ApplicationRecord
   has_many :doctors, through: :doc_patients
 
   validates_presence_of :name,
-                        :age,
-                        :waiting?
+                        :age
 end
