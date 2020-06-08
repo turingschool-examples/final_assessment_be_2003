@@ -8,4 +8,10 @@ class PatientsController < ApplicationController
       end
     end
   end
+
+  def edit
+    patient = Patient.find(params[:id])
+    patient.update(waiting?: true)
+    redirect_to(request.env['HTTP_REFERER'])
+  end
 end
