@@ -54,7 +54,7 @@ RSpec.describe "As a visitor" do
         it "I see the hospitals info, the doctors that work at this hospital and a unique list of univesities these doctors have attended" do
 
             visit "/hospitals/#{@seaside.id}" 
-        save_and_open_page
+        
             expect(page).to have_content(@seaside.name)
             expect(page).to have_content(@seaside.address)
             expect(page).to have_content(@seaside.city)
@@ -93,6 +93,33 @@ RSpec.describe "As a visitor" do
             within "#patient-3" do 
                 expect(page).to have_content(@zola.name)
             end
+        end 
+
+        it "I see a link to add a new doctor to this hospital" do 
+
+            visit "/hospitals/#{@seaside.id}"
+            
+            expect(page).to_not have_content("Josh Tukman")
+
+            click_link "Add new doctor to #{@seaside.name}"
+
+            expect(current_path).to eq("/hospitals/#{@seaside.id}/doctors/new")
+
+            name = "Josh Tukman" 
+            specialty = "Cardiology"
+            education = "Turing School of Design"
+
+            fill_in :name, with: name
+            fill_in :specialty, with: specialty
+            fill_in :education, with: education 
+
+            click_on "Add this Doctor to #{@seaside.name}"
+
+            doctor = Doctor.last
+
+            expect(current_path).to eq("/hospitals/#{@seaside.id}")
+
+            expect(page).to have_content(doctor.name)
         end 
     end
 end

@@ -20,4 +20,6 @@
     <li><p><%= school %></p></li>
 <% end %>
 
-<h4>Link to: <%=link_to "Patient List", "/hospitals/#{@hospital.id}/patients"%></h4>
+<h4>Link to: <%=link_to "Patient List", "/hospitals/#{@hospital.id}/patients"%></h4><br>
+
+<h4>Link to: <%=link_to "Add new doctor to #{@hospital.name}", "/hospitals/#{@hospital.id}/doctors/new"%></h4>

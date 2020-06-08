@@ -1,0 +1,15 @@
+<h1>New Doctor Form</h1>
+
+<%= form_tag "/hospitals/#{@hospital.id}/doctors", method: :post do %>
+
+    <%= label_tag "Name"%><br>
+    <%= text_field_tag :name%><br>
+
+    <%= label_tag "Specialty"%><br>
+    <%= text_field_tag :specialty%><br>
+
+    <%= label_tag "Education"%><br>
+    <%= text_field_tag :education%><br>
+
+    <%= submit_tag "Add this Doctor to #{@hospital.name}" %>
+<% end %>
