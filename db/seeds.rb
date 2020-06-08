@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+DoctorPatient.destroy_all
+Patient.destroy_all
 Doctor.destroy_all
 Hospital.destroy_all
-Patient.destroy_all
 
 grey = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
 seaside = Hospital.create(name: "Seaside Health & Wellness Center", address: "123 Private Practice Road", city: "Los Angeles", state: "CA", zip: "90001")
@@ -27,5 +28,5 @@ DoctorPatient.create(doctor_id: meridith.id, patient_id: katie.id)
 DoctorPatient.create(doctor_id: meridith.id, patient_id: denny.id)
 DoctorPatient.create(doctor_id: alex.id, patient_id: denny.id)
 DoctorPatient.create(doctor_id: miranda.id, patient_id: rebecca.id)
-DoctorPatient.create(doctor_id: darek.id, patient_id: rebecca.id)
+DoctorPatient.create(doctor_id: derek.id, patient_id: rebecca.id)
 DoctorPatient.create(doctor_id: derek.id, patient_id: zola.id)
