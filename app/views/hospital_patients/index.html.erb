@@ -1,0 +1,8 @@
+<h1>List of Patients at <%= @hospital.name %>: </h1>
+<ol>
+<% @hospital.all_patients_by_age.each_with_index do |patient, index| %>
+    <section id="patient-<%= index%>">
+        <li><p><%= patient.name %></p></li>
+    </section>
+<% end %>
+</ol>

@@ -1,0 +1,9 @@
+<h2>Assign <%= @doctor.name%> to new hospital </h2>
+
+<%=form_tag "/doctors/#{@doctor.id}", method: :patch do %>
+
+    <%= label_tag "New hospital ID" %>
+    <%= number_field_tag :hosp_id %>
+
+    <%=submit_tag "Add #{@doctor.name} to this hospital"%>
+<% end %>

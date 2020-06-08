@@ -1,0 +1,14 @@
+<h3><%= @doctor.name %></h3>
+<p>Specialty: <%= @doctor.specialty %><p>
+<p>Educational Background: <%= @doctor.education %></p>
+<p><%=@doctor.name%> currently works for <%= @doctor.hospital.name %> <%= link_to "Assign #{@doctor.name} to a different hospital", "/doctors/#{@doctor.id}/edit" %></p>
+
+<h4>Current list of Patients:</h4>
+<ol>
+<% @doctor.patients.each do |patient| %>
+    <section class="patient-<%=patient.id%>">
+        <p><li><%=patient.name%></li></p>
+        <%= button_to "Remove Patient from caseload", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete%>
+    </section>
+<%end%>
+</ol>
