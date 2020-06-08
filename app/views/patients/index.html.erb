@@ -1,0 +1,4 @@
+<h1> All Patients at <%= @hospital.name %></h1>
+<p><% @hospital.patients_by_age.each do |patient| %>
+  <%= patient.name %><br/>
+<% end %></p>

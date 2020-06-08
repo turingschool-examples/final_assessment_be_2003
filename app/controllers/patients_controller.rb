@@ -1,6 +1,5 @@
 class PatientsController < ApplicationController
   def index
-    hospital = Hospital.find(params[:hospital_id])
-    @patients = hospital.patients
+    @hospital = Hospital.find(params[:hospital_id])
   end
 end

@@ -46,5 +46,17 @@ describe Hospital, type: :model do
 
       expect(@grey_sloan.unique_univ).to eq("Harvard University, Johns Hopkins University")
     end
+
+    it '#patients_by_age' do
+      rebecca = Patient.create(name: "Rebecca Pope", age: 32)
+      zola = Patient.create(name: "Zola Shepherd", age: 2)
+      denny = Patient.create(name: "Denny Duquette", age: 39)
+
+      DoctorPatient.create(doctor_id: @meredith.id, patient_id: rebecca.id)
+      DoctorPatient.create(doctor_id: @meredith.id, patient_id: denny.id)
+      DoctorPatient.create(doctor_id: @alex.id, patient_id: zola.id)
+
+      expect(@grey_sloan.patients_by_age).to eq([denny, rebecca, zola])
+    end
   end
 end

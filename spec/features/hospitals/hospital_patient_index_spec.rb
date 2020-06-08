@@ -53,10 +53,3 @@ describe 'Hospital patient index page' do
     expect(denny.name).to appear_before(rebecca.name)
   end
 end
-
-# As a visitor
-# When I visit the hospitals show page
-# I see a link to view all of that hospitals patients
-# When I click that link
-# I'm taken to a patients index page for that hospital
-# I see the names of all that hospital's patients listed from oldest to youngest
