@@ -1,5 +1,5 @@
 class Doctor < ApplicationRecord
   validates_presence_of :name, :specialty, :education
 
-  has_many :doctors
+  belongs_to :hospital
 end
