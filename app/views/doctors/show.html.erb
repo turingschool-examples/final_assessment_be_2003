@@ -1,7 +1,7 @@
 <h3><%= @doctor.name %></h3>
 <p>Specialty: <%= @doctor.specialty %><p>
-<p>Educational Background: <%= @doctor.education %>
-<p><%=@doctor.name%> currently works for <%= @doctor.hospital.name %>
+<p>Educational Background: <%= @doctor.education %></p>
+<p><%=@doctor.name%> currently works for <%= @doctor.hospital.name %> <%= link_to "Assign #{@doctor.name} to a different hospital", "/doctors/#{@doctor.id}/edit" %></p>
 
 <h4>Current list of Patients:</h4>
 <ol>

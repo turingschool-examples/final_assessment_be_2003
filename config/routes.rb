@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   get '/doctors/:id', to: 'doctors#show'
+  get '/doctors/:id/edit', to: 'doctors#edit'
+  patch '/doctors/:id', to: 'doctors#update'
 
   get '/hospitals/:id', to: 'hospitals#show'
 

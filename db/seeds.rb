@@ -22,19 +22,19 @@ seaside = Hospital.create!(name: "Seaside Health & Wellness Center",
 
 #Doctors:
 
-meredith = Doctor.create!(name: "Meredith Grey",
+meredith = greys.doctors.create!(name: "Meredith Grey",
                           specialty: "General Surgery", 
                           education: "Harvard University")
 
-alex = Doctor.create!(name: "Alex Karev",
+alex = greys.doctors.create!(name: "Alex Karev",
                       specialty: "Pediatric Surgery",
                       education: "Johns Hopkins University")
 
-miranda = Doctor.create!(name: "Miranda Bailey",
+miranda = seaside.doctors.create!(name: "Miranda Bailey",
                          specialty: "General Surgery",
                          education: "Stanford University")
 
-derek = Doctor.create!(name: "Derek McDreamy Shepherd",
+derek = seaside.doctors.create!(name: "Derek McDreamy Shepherd",
                        specialty: "Attending Surgeon",
                        education: "University of Pennsylvania")
 
@@ -49,3 +49,8 @@ rebecca = Patient.create!(name: "Rebecca Pope",
                           age: 32)
 zola = Patient.create!(name: "Zola Shepherd",
                        age: 2)
+
+DoctorPatient.create!(doctor: meredith, patient: katie)
+DoctorPatient.create!(doctor: alex, patient: denny)
+DoctorPatient.create!(doctor: miranda, patient: rebecca)
+DoctorPatient.create!(doctor: derek, patient: katie)
