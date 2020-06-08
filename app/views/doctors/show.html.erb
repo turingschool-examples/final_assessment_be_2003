@@ -6,5 +6,10 @@
 <p>works at: <%= Hospital.find(@doc.hospital_id).name %> </p>
 
 <% @doc.patients.each do |patient|%>
-  <%= patient.name %>
+  <section class= "patient-<%=patient.id%>">
+    <% if patient.waiting? == false %>
+      <%= patient.name %>
+      <%= link_to "remove patient", "/patients/#{patient.id}/edit" %>
+    <% end %>
+  </section>
 <% end %>
