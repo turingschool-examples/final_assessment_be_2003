@@ -55,13 +55,13 @@ RSpec.describe "Dr Show Page" do
     visit doctor_path(@doctor1)
 save_and_open_page
     within("#patient-#{@patient1.id}")do
-      expect(page).to have_button("Remove Patient From #{@doctor1.name}'s Caseload")
+      expect(page).to have_button("Remove Patient From Dr. #{@doctor1.name}'s Caseload")
     end
     within("#patient-#{@patient2.id}")do
-      expect(page).to have_button("Remove Patient From #{@doctor1.name}'s Caseload")
+      expect(page).to have_button("Remove Patient From Dr. #{@doctor1.name}'s Caseload")
     end
     within("#patient-#{@patient3.id}")do
-      click_button("Remove Patient From #{@doctor1.name}'s Caseload")
+      click_button("Remove Patient From Dr. #{@doctor1.name}'s Caseload")
     end
     expect(current_path).to eq(doctor_path(@doctor1))
     expect(page).to_not have_content(@patient3.name)
@@ -73,7 +73,7 @@ save_and_open_page
     within("#doctor-hospital")do
       expect(page).to have_content("Works at: #{@hospital1.name}")
       expect(page).to_not have_content(@hospital2.name)
-      click_link("Assign #{@doctor1.name} to a Different Hospital")
+      click_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
     end
 
     expect(current_path).to eq(edit_doctor_path(@doctor1))
@@ -90,7 +90,7 @@ save_and_open_page
     within("#doctor-hospital")do
       expect(page).to have_content("Works at: #{@hospital2.name}")
       expect(page).to_not have_content(@hospital1.name)
-      expect(page).to have_link("Assign #{@doctor1.name} to a Different Hospital")
+      expect(page).to have_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
     end
 
   end
@@ -101,7 +101,7 @@ save_and_open_page
     within("#doctor-hospital")do
       expect(page).to have_content("Works at: #{@hospital1.name}")
       expect(page).to_not have_content(@hospital2.name)
-      click_link("Assign #{@doctor1.name} to a Different Hospital")
+      click_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
     end
 
     expect(current_path).to eq(edit_doctor_path(@doctor1))
@@ -116,7 +116,7 @@ save_and_open_page
     hospital = Hospital.first
     within("#doctor-hospital")do
       expect(page).to have_content("Works at: #{hospital.name}")
-      expect(page).to have_link("Assign #{@doctor1.name} to a Different Hospital")
+      expect(page).to have_link("Assign Dr. #{@doctor1.name} to a Different Hospital")
     end
 
   end
