@@ -35,13 +35,35 @@ RSpec.describe "doctors show page", type: :feature do
 
     expect(page).to have_content(@jen.name)
     within ("#patient-#{@jen.id}")do
-    
+
       click_link "remove"
     end
     visit "/doctors/#{@grey.id}"
     expect(page).not_to have_content(@jen.name)
   end
+  
+  it "reassign doctor to another hospital" do
+    click_link "Assign Meredith Grey to a Different Hospital"
+    expect(current_path).to eq("/doctors/#{@grey.id}/edit")
+    fill_in 'Hospital ID', with: "#{@seaside.id}"
+
+    click_link "Add #{@grey.name} to this hospital"
+    expect(current_path).to eq("/doctors/#{@grey.id}")
+
+    expect(page).not_to have_content(@grey_sloan.name)
+    expect(page).to have_content(@seaside.name)
+  end
 end
+# User Story 6, Reassign Doctor to Different Hospital
+# As a visitor
+# When I visit a doctor's show page
+# Next to the name of the hospital where this doctor works
+# I see a link that says "Assign <insert name of doctor> to a Different Hospital"
+# When I click on that link
+# I'm taken to a form where I can input an id of an existing hospital
+# When I click "Add <insert name of doctor> to this hospital"
+# I'm taken back to that doctor's show page
+# And I can see the name of the new hospital that they were assigned to
 
 # User Story 5, Remove a Patient from a Doctor
 # As a visitor
