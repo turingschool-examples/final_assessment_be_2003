@@ -7,7 +7,8 @@ RSpec.describe Patient, type: :model do
   end
 
   describe "relationships" do
-    it {should belong_to :doctors}
-    it {should have_many :doctors}
-  end  
+    it {should have_many :doctor_patients}
+    it {should have_many(:doctors).through(:doctor_patients)}
+
+  end
 end
