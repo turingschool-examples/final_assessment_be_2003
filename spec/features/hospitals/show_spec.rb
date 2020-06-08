@@ -97,7 +97,7 @@ describe 'As a visitor' do
       expect(page).to have_content(@grey_sloan.city)
       expect(page).to have_content(@grey_sloan.state)
       expect(page).to have_content(@grey_sloan.zip)
-      expect(page).to have_content("Number of Doctors: 3")
+      expect(page).to have_content("Doctors Count: 3")
       expect(page).to have_content(@meredith.university)
       expect(page).to have_content(@alex.university)
       expect(page).to_not have_content(@derek.university)

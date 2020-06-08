@@ -6,4 +6,8 @@ class Doctor < ApplicationRecord
   validates_presence_of  :name,
                         :specialty,
                         :university
+
+  def self.unique_universities
+    select(:university).distinct.pluck(:university)
+  end
 end
