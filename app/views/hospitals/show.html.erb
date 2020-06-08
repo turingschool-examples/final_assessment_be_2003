@@ -1,0 +1,18 @@
+<h2> <%= @hospital.name %></h2>
+
+<ul>
+  <li> Address: <%= @hospital.address %></li>
+  <li> City: <%= @hospital.city %></li>
+  <li> State: <%= @hospital.state %></li>
+  <li> Zip: <%= @hospital.zip %></li>
+  <li> Doctors Count: <%= @hospital.doctors.count %></li>
+  <li>Universities Represented:</li>
+    <ul>
+      <% @hospital.doctors.unique_universities.each do |university| %>
+        <li> <%= university %></li>
+      <% end %>
+    </ul>
+</ul>
+
+<%= link_to "View Patients", hospital_patients_path(@hospital) %>
+<%= link_to "Add Doctor", new_hospital_doctor_path(@hospital) %>

@@ -1,0 +1,8 @@
+<h2>Reassign Doctor</h2>
+
+<%= form_for @doctor do |f| %>
+  <%= f.label :hospital_id %>
+  <%= f.text_field :hospital_id %>
+
+  <%= f.submit "Add #{@doctor.name} to this hospital" %>
+<% end %>

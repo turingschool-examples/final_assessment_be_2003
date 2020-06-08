@@ -1,0 +1,21 @@
+<h2> <%= @doctor.name %></h2>
+
+<ul>
+  <li> Specialty: <%= @doctor.specialty %></li>
+  <li> University: <%= @doctor.university %></li>
+  <li> Hospital: <%= @doctor.hospital.name %></li>
+  <ul>
+    <li><%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/reassign" %></li>
+  </ul>
+  <li>Patients:</li>
+    <ul>
+      <% @doctor.doctor_patients.each do |doctor_patient| %>
+        <section id="patient-<%= doctor_patient.patient.id %>">
+          <li> <%= doctor_patient.patient.name %></li>
+          <ul>
+            <li><%= link_to "Remove Patient", doctor_patient_path(doctor_patient), method: :delete %></li>
+          </ul>
+        </section>
+      <% end %>
+    </ul>
+</ul>
