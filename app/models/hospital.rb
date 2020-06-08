@@ -1,3 +1,3 @@
 class Hospital < ApplicationRecord
-
-end 
+  has_many :doctors 
+end
