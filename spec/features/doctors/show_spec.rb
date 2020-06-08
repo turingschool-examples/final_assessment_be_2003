@@ -30,6 +30,7 @@ RSpec.describe "Doctors show page", type: :feature do
     expect(page).to have_content("#{@patient_1.name}")
     expect(page).to have_content("#{@patient_2.name}")
     expect(page).to have_content("#{@patient_3.name}")
+
   end
 
   it "Story-5: Delete patients for doctors caseload" do
