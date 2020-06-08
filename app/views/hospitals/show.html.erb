@@ -4,11 +4,6 @@
 <h3><%= @hospital.address %></h3>
 <h3><%= @hospital.city %> <%= @hospital.state %> <%= @hospital.zip %></h3>
 
-<h2>Doctors:</h2>
-<% @hospital.doctors.each do |doctor| %>
-<ul>
-  <%= doctor.name %>
-</ul>
-<% end %>
+<h2>Number of Doctors: <%= @hospital.doctor_count %></h2>
 
 <h2>Affiliated Universities: <%= @hospital.affiliated_universities %></h2>
