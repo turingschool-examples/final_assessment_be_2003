@@ -29,23 +29,13 @@ RSpec.describe "Doctors Show Page" do
       DoctorPatient.create!(patient: denny, doctor: alex)
 
       visit "/doctors/#{alex.id}"
-
       expect(page).to have_content("Alex Karev")
       expect(page).to have_content("Pediatric Surgery")
       expect(page).to have_content("Johns Hopkins University")
       expect(page).to have_content("Grey Sloan Memorial Hospital")
       expect(page).to have_content("Katie Bryce")
       expect(page).to have_content("Denny Daquette")
+      expect(page).to_not have_content("Meredith Grey")
     end
   end
 end
-
-# User Story 1, Doctors Show Page
-# 'As a visitor
-# When I visit a doctor's show page
-# I see all of that doctor's information including:
-#  - name
-#  - specialty
-#  - university where they got their doctorate
-# And I see the name of the hospital where this doctor works
-# And I see the names of all of the patients this doctor has
