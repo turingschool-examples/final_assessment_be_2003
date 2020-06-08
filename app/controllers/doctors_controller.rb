@@ -4,8 +4,6 @@ class DoctorsController < ApplicationController
   end
 
   def new
-    # require "pry"; binding.pry
-   # @hospital_doctor = Hospital.find(params[:id])
    @hospital = Hospital.find(params[:id])
    return @doctor if params[:doctor]
    @doctor = Hash.new("")
@@ -16,7 +14,7 @@ class DoctorsController < ApplicationController
     doctor = @hospital.doctors.create(doctor_params)
     redirect_to "/hospitals/#{@hospital.id}"
   end
-  
+
   private
 
  def doctor_params
