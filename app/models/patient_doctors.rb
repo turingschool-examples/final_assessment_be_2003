@@ -1,4 +1,0 @@
-class PatientDoctors < ApplicationRecord
-
-
-end

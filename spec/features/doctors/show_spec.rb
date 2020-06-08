@@ -13,11 +13,11 @@ RSpec.describe "Doctors show page", type: :feature do
     @patient_3 = Patient.create!(name: "Rebecca Pope", age: 32)
     @patient_4 = Patient.create!(name: "Zola Shepherd", age: 2)
 
-    PatientDoctors.create!(doctor_id: @doc_1.id, patient_id: @patient_1.id)
-    PatientDoctors.create!(doctor_id: @doc_1.id, patient_id: @patient_2.id)
-    PatientDoctors.create!(doctor_id: @doc_1.id, patient_id: @patient_3.id)
-    PatientDoctors.create!(doctor_id: @doc_2.id, patient_id: @patient_1.id)
-    PatientDoctors.create!(doctor_id: @doc_2.id, patient_id: @patient_3.id)
+    PatientDoctor.create!(doctor_id: @doc_1.id, patient_id: @patient_1.id)
+    PatientDoctor.create!(doctor_id: @doc_1.id, patient_id: @patient_2.id)
+    PatientDoctor.create!(doctor_id: @doc_1.id, patient_id: @patient_3.id)
+    PatientDoctor.create!(doctor_id: @doc_2.id, patient_id: @patient_1.id)
+    PatientDoctor.create!(doctor_id: @doc_2.id, patient_id: @patient_3.id)
   end
 
   it "Story-1: Doctors info, hospital and patients are displayed" do
