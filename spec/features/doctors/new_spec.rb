@@ -15,6 +15,19 @@ RSpec.describe "New Doctor Page", type: :feature do
     expect(current_path).to eql("/hospitals/#{hospital_2.id}")
     expect(page).to have_content("Number of Doctors: 1")
   end
+
+  it "Will not submit if all fields are not filled out" do
+    hospital_2 = Hospital.create({name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: 98101})
+    visit "/hospitals/#{hospital_2.id}"
+    click_link "Create Doctor"
+    expect(current_path).to eql("/hospitals/#{hospital_2.id}/doctors/new")
+    fill_in :name, with: "Fred"
+    fill_in :specialty, with: "Family Medicine"
+    click_on "Submit"
+    expect(current_path).to eql("/hospitals/#{hospital_2.id}/doctors/new")
+
+  end
+
 end
 
 
