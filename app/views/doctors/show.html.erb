@@ -1,0 +1,21 @@
+<h1> <%=@doctor.name %> </h1>
+
+<h3>Specialty </h3>
+<p><%=@doctor.specialty  %></p><br>
+
+<h3>Education </h3>
+<p> <%=@doctor.education  %></p><br>
+
+<h3>Hospital </h3>
+<p><%=@doctor.hospital.name %>
+<%= link_to "Assign #{@doctor.name} to a Different Hospital", "/doctors/#{@doctor.id}/edit", method: :patch %></p>
+
+<h2>Patients </h2>
+
+<ul>
+  <%@doctor.patients.each do |patient|%>
+    <li id= <%=patient.id%>>
+      <%=patient.name%>
+      <%= link_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %></li>
+  <% end %>
+</ul>

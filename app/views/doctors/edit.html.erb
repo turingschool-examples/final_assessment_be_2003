@@ -1,0 +1,9 @@
+<h1> Enter New Hospital ID for <%= @doctor.name %> </h1>
+
+<%=form_tag "/doctors/#{@doctor.id}", method: :post do %>
+  <%= label_tag :hospital_id %>
+  <%= text_field_tag :hospital_id %>
+
+  <%= submit_tag "Add #{@doctor.name} to this hospital" %>
+
+<% end %>

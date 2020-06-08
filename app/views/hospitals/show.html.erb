@@ -1,0 +1,15 @@
+<h1> <%= @hospital.name %> </h1>
+
+<h2>Address</h2>
+<p><%=@hospital.address %></p><br>
+<p> <%=@hospital.city%>, <%=@hospital.state%></p><br>
+<p><%=@hospital.zip %></p><br>
+
+<h3> Total Doctors: <%= @hospital.number_of_doctors %></h3><br>
+<h3>Doctor Universities:  </h3><br>
+<% @hospital.doctor_universities.each do |university| %>
+  <p><%= university %> </p>
+<% end%>
+
+<%= link_to "View Patients", "/hospitals/#{@hospital.id}/patients"%><br>
+<%= link_to "Add Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>

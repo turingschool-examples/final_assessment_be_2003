@@ -1,0 +1,8 @@
+<h1><%=@hospital.name %>'s Patients</h1>
+
+<ol id= "patients">
+
+  <% @hospital.patients_by_age.each do |patient| %>
+    <li><%= patient.name %></li>
+  <% end  %>
+</ol>
