@@ -14,11 +14,26 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
   end
 
+  def edit
+    @doctor = Doctor.find(params[:id])
+  end
+
+  def update
+    doctor = Doctor.find(params[:id])
+    # binding.pry
+    doctor.update(doctor_params)
+  end
+  
+  
+
   private
 
   def doctor_params
-    params.permit(:name, :specialty, :education)
+    params.permit(:name, :specialty, :education, :hospital_id)
   end
+
+
+  
   
   
 end

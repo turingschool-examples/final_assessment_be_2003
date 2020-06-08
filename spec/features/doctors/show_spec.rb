@@ -4,6 +4,7 @@ RSpec.describe "doctors show page" do
   context "as a visitor" do
     before(:each) do
       @hospital1 = Hospital.create(name: "Banner Desert", address: "123 Medical Dr", city: "Mesa", state: "AZ", zip: "80202")
+      @hospital2 = Hospital.create(name: "Skyline", address: "555 Cactus St", city: "Scottsdale", state: "AZ", zip: "85048")
       
       @doc1 = @hospital1.doctors.create(name: "John Matrix", specialty: "Cardiology", education: "Arizona State University")
       @doc2 = @hospital1.doctors.create(name: "Doug Quiad", specialty: "Neurology", education: "Metro State University")
@@ -51,9 +52,34 @@ RSpec.describe "doctors show page" do
 
       expect(page).to have_no_content(@pat1.name) 
     end
-    
+
+    it "can reassign doctor to another hospital" do
+      
+      visit doctor_path(@doc1)
+
+      click_link "Assign John Matrix to a Different Hospital"
+
+      expect(current_path).to eq("/doctors/#{@doc1.id}/edit") 
+
+      fill_in :hospital_id,	with: "#{@hospital2.id}" 
+      click_button "Submit"
+
+      expect(current_path).to eq(doctor_path(@doc1)) 
+      @doc1.reload
+      expect(@doc1.hospital).to eq(@hospital2)
+    end
   end
 end
+
+# As a visitor
+# When I visit a doctor's show page
+# Next to the name of the hospital where this doctor works
+# I see a link that says "Assign <insert name of doctor> to a Different Hospital"
+# When I click on that link
+# I'm taken to a form where I can input an id of an existing hospital
+# When I click "Add <insert name of doctor> to this hospital"
+# I'm taken back to that doctor's show page
+# And I can see the name of the new hospital that they were assigned to
 
 # As a visitor
 # When I visit a Doctor's show page

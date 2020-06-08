@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :doctors, only: [:show]
+  resources :doctors, only: [:show, :edit, :update]
   resources :hospitals, only: [:show]
   get '/hospitals/:id/patients', to: 'patients#index'
   get '/hospitals/:hospital_id/doctors/new', to: 'doctors#new'

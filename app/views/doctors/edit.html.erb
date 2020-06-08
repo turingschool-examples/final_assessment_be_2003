@@ -1,0 +1,5 @@
+<%= form_tag doctor_path(@doctor), method: :patch do %>
+  <%= label_tag :hospital_id %>
+  <%= text_field_tag :hospital_id %>
+  <%= submit_tag "Submit" %>
+<% end %>
