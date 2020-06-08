@@ -10,7 +10,7 @@ RSpec.describe "From the doctor show" do
     DoctorPatient.create(doctor_id: meridith.id, patient_id: denny.id)
     visit doctor_path(meridith.id)
     within "#patient-#{katie.id}" do
-      click_button "Remove Patient"
+      click_on "Remove Patient"
     end
     expect(current_path).to eq(doctor_path(meridith.id))
     expect(page).to_not have_content(katie.name)
