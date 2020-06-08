@@ -30,7 +30,7 @@ RSpec.describe "Hospital Show Page" do
 
     within("#doctor-info")do
       expect(page).to have_content("Number of Doctors: #{@hospital1.doctor_count}")
-      expect(page).to have_content("Universities Attended: #{@hospital1.uniq_universities}")
+      expect(page).to have_content("Universities Attended: #{@hospital1.uniq_education}")
     end
   end
   it "US4 Create a doctor - link to create doctor and doctor count increases" do
@@ -58,7 +58,7 @@ RSpec.describe "Hospital Show Page" do
     expect(page).to have_content("Number of Doctors: 4")
 
     click_link("Add New Doctor")
-    
+
     expect(page).to have_content("New Doctor Hire for #{@hospital1.name}")
 
     within("#new-doctor-form")do

@@ -21,7 +21,7 @@ Hospitals have many Doctors, Doctors work for just one hospital. Doctors can hav
 * Run `bundle install`
 * Run `rake db:create`
 * Complete the tasks below
-* Push your code to you' fork once the time is up (not before!"
+* Push your code to you're fork once the time is up (not before!)
 ## User Stories
 ```
 User Story 1, Doctors Show Page
