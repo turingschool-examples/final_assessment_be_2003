@@ -3,7 +3,7 @@
 <p><%= @hospital.city %> <%= @hospital.state %> <%= @hospital.zip %></p>
 
 <%= link_to "Create New Doctor", "/hospitals/#{@hospital.id}/doctors/new" %>
-<h2>Number of Doctors: <%= @hospital.count_of_doctors %></h2>
+<h2><%= link_to "Number of Doctors: #{@hospital.count_of_doctors}", hospital_doctors_path(@hospital.id) %></h2>
 
 <ul class="universities">
   <% @hospital.doctors.all_universities.each do |university| %>

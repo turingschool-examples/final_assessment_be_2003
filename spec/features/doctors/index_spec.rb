@@ -10,7 +10,7 @@ RSpec.describe "Doctor index page" do
     visit hospital_path(grey.id)
 
     click_on "Number of Doctors: 3"
-    expect(current_path).to eq(hospital_doctors)
+    expect(current_path).to eq(hospital_doctors_path(grey.id))
     expect(page).to have_content("Miranda Bailey")
     expect(page).to have_content("Alex Karev")
     click_link "#{meridith.name}"

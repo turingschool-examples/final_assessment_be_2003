@@ -1,5 +1,9 @@
 class DoctorsController < ApplicationController
 
+  def index
+    @hospital = Hospital.find(params[:hospital_id])
+  end
+
   def new
     @hospital = Hospital.find(params[:hospital_id])
     @doctor = @hospital.doctors.new
