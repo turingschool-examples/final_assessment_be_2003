@@ -6,4 +6,8 @@ RSpec.describe Doctor do
     it { should validate_presence_of(:specialty) }
     it { should validate_presence_of(:education) }
   end
+
+  describe "Relationships" do 
+    it { should belong_to(:hospital) } 
+  end
 end
