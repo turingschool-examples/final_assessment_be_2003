@@ -25,7 +25,6 @@ class DoctorsController < ApplicationController
     if @doctor.save
       redirect_to "/doctors/#{@doctor.id}"
     else
-      flash[:error] = @doctor.errors.full_messages.to_sentence
       render :edit
     end
   end

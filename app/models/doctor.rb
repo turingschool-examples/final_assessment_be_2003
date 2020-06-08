@@ -16,5 +16,4 @@ class Doctor <ApplicationRecord
     location = Hospital.find(to_find)
     location.name
   end
-
 end
