@@ -8,4 +8,9 @@ class Hospital < ApplicationRecord
   def doctor_universities
     self.doctors.pluck(:education).uniq
   end
+
+  def patients_by_age
+    require "pry"; binding.pry
+    #joins hospital doctors to patients
+  end
 end

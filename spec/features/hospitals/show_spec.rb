@@ -20,6 +20,13 @@ RSpec.describe "when visiting a hospitals show page" do
     @miranda = @greys.doctors.create!(name: "Miranda Bailey",
                               specialty: "General Surgery",
                               education: "Stanford University")
+
+    @katie = @meredith.patients.create!(name: "Katie Bryce",
+                                        age: 24)
+    @denny = @alex.patients.create!(name: "Denny Duquette",
+                                        age: 39)
+    @rebecca = @miranda.patients.create!(name: "Rebecca Pope",
+                                          age: 32)
   end
 
   it "a visitor sees the hospitals info, # of doctors, list of universities docs attended" do
@@ -42,6 +49,15 @@ RSpec.describe "when visiting a hospitals show page" do
     click_link "View Patients"
 
     expect(current_path).to eq("/hospitals/#{@greys.id}/patients")
+  end
+  it "patients index will list names of patient from oldest to youngest" do
+    visit "/hospitals/#{@greys.id}/patients"
+
+    within '.patients' do
+      expect(page.all('li')[0]).to have_content(@denny.name)
+      expect(page.all('li')[1]).to have_content(@rebecca.name)
+      expect(page.all('li')[2]).to have_content(@katie.name)
+    end
   end
 end
 # ```
