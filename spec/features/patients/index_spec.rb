@@ -28,19 +28,13 @@ RSpec.describe "Hospital Patient index Page" do
     expect(page).to_not have_content(@patient4.name)
 
     within("#patients")do
-      expect(page.all('p')[0]).to have_content(@patient1.name)
+      expect(page.all('p')[0]).to have_content(@patient2.name)
       expect(page.all('p')[1]).to have_content(@patient3.name) 
-      expect(page.all('p')[2]).to have_content(@patient2.name) 
+      expect(page.all('p')[2]).to have_content(@patient1.name) 
     end
 
   end
   
 
 end#final
-# User Story 3, Hospital Patient Index Page
-# As a visitor
-# When I visit the hospitals show page 
-# I see a link to view all of that hospitals patients 
-# When I click that link
-# I'm taken to a patients index page for that hospital 
-# I see the names of all that hospital's patients listed from oldest to youngest
+

@@ -80,11 +80,3 @@ RSpec.describe "Hospital Show Page" do
 
 end#final
 
-# When I visit a hospital's show page
-# I see a link to add a doctor for this hospital
-# When I click that link
-# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
-# And on that page there's a form for me to enter a new doctor's name, specialty, and university where they got their doctorate.
-# When I fill out all three fields and click submit
-# I am taken back to the hospital show page 
-# And I can see that the number of doctors has increased by one

@@ -36,11 +36,11 @@ RSpec.describe Hospital, type: :model do
       expect(@hospital1.doctor_count).to eq(4)
     end
     it ".uniq_education" do
-      expected = ["Boston University", "Harvard University", "Turing"]
+      expected = "Boston University, Harvard University, Turing"
       expect(@hospital1.uniq_education).to eq(expected)
     end
     it ".patients_by_age" do
-      expected = ["Katie Bryce", "Rebecca Pope", "Denny Duquette"]
+      expected = ["Denny Duquette", "Rebecca Pope", "Katie Bryce"]
       expect(@hospital1.patients_by_age).to eq(expected)
     end
     
