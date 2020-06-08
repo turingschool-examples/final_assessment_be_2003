@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "New Doctor Page", type: :feature do
   it "Can create a new doctor" do
     hospital_2 = Hospital.create({name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: 98101})
-    visit "/hosptials/#{hospital_2.id}"
+    visit "/hospitals/#{hospital_2.id}"
     expect(page).to have_content("Number of Doctors: 0")
     click_link "Create Doctor"
     expect(current_path).to eql("/hospitals/#{hospital_2.id}/doctors/new")
