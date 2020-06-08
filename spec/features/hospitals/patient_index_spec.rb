@@ -37,7 +37,6 @@ RSpec.describe "As a visitor", type: :feature do
       expect(page).to have_content(@rebecca.name) 
       
       
-      save_and_open_page
       expect(@rebecca.name).to appear_before(@denny.name)
 
     end
