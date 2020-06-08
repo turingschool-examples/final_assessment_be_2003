@@ -2,6 +2,7 @@ class HospitalDoctorsController < ApplicationController
 
   def new
     @hospital = Hospital.find(params[:hospital_id])
+    @doctor = Doctor.new 
   end 
 
   def create
@@ -18,6 +19,6 @@ class HospitalDoctorsController < ApplicationController
   private
 
   def doctor_params
-    params.permit(:name, :specialty, :education)
+    params.require(:doctor).permit(:name, :specialty, :education)
   end
 end

@@ -38,9 +38,9 @@ RSpec.describe 'New Doctor Creation' do
       specialty = '123 Main St'
       education = "Denver"
 
-      fill_in 'Name', with: name
-      fill_in 'Specialty', with: specialty
-      fill_in 'education', with: education
+      fill_in 'Name:', with: name
+      fill_in 'Specialty:', with: specialty
+      fill_in 'Education:', with: education
 
       click_button 'Hire Doctor'
 
