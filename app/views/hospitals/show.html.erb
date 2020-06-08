@@ -4,3 +4,9 @@
 
 
 <h2>Number of Doctors: <%= @hospital.count_of_doctors %></h2>
+
+<ul class="universities">
+  <% @hospital.doctors.all_universities.each do |university| %>
+  <li><%= university.education %></li>
+  <% end %>
+</ul>

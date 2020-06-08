@@ -14,4 +14,15 @@ RSpec.describe Doctor do
     it {should have_many(:patients).through(:doctor_patients)}
   end
 
+  describe 'Methods' do
+    it ".all_universities" do
+      grey = Hospital.create(name: "Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
+      grey.doctors.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University")
+      grey.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University")
+      grey.doctors.create(name: "Miranda Bailey", specialty: "General Surgery", education: "Harvard University")
+      expect(grey.doctors.all_universities.first.education).to eq("Harvard University")
+      expect(grey.doctors.all_universities.last.education).to eq("Johns Hopkins University")
+    end
+  end
+
 end
