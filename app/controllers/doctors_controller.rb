@@ -26,6 +26,7 @@ class DoctorsController < ApplicationController
   def update 
     doctor = Doctor.find(params[:id])
     doctor.update(hospital_id: params[:doctor][:hospital_id])
+    
     redirect_to doctor_path(doctor)
   end
   
