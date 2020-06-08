@@ -1,0 +1,4 @@
+class PatientDoctors < ApplicationRecord
+
+
+end
