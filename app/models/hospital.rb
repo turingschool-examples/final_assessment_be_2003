@@ -4,7 +4,6 @@ class Hospital < ApplicationRecord
   has_many :doctors
 
   def list_universities
-    self.doctors.pluck(:education)
-    require "pry"; binding.pry
+    self.doctors.pluck(:education).uniq
   end
 end

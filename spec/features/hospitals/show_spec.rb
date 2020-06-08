@@ -23,12 +23,12 @@ RSpec.describe "Show Show Page", type: :feature do
     end
 
     it "I can see the total count of doctors at that hospital" do
-      expect(page).to have_content("Number of Doctors at this Hospital: 2")
+      expect(page).to have_content("Number of Doctors at this Hospital: 3")
     end
 
     it "I see a list of universities that the doctor's attended" do
       save_and_open_page
-      
+
       expect(page).to have_content("Cornell")
       expect(page).to have_content("UNAM")
     end
