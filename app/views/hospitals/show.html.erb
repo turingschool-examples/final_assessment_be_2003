@@ -1,0 +1,15 @@
+<h1><%= @hospital.name %></h1>
+
+<section class='address'>
+  <p><%= @hospital.address%></p>
+  <p><%= @hospital.city %>, <%= @hospital.state %><%= @hospital.zip %></p>
+</section>
+
+<section class='doctors'>
+  <% if @hospital.doctors.empty? %>
+    <p>This Hospital has no doctors.</p>
+  <% else%>
+    <p>Doctors: <%= @hospital.doctors.count %></p>
+    <p>Doctors were educated at: <%= @hospital.doctor_universities %></p>
+  <% end %> 
+</section>
