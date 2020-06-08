@@ -15,6 +15,10 @@ class DoctorsController < ApplicationController
     redirect_to hospital_path
   end
 
+  def edit 
+    
+  end
+
   private
 
   def doctor_params
