@@ -24,4 +24,18 @@ RSpec.describe 'doctors show page', type: :feature do
     expect(page).to have_content(@austin.name)
     expect(page).to have_content(@jared.name)
   end
+
+  it "has link to remove each patient from doctors workload" do
+    visit "/doctors/#{@meredith.id}"
+
+    within ".patient-#{@mikal.id}" do
+      expect(page).to have_content(@mikal.name)
+      click_link "remove patient"
+    end
+    expect(current_path).to eq("/doctors/#{@meredith.id}")
+
+    expect(page).to_not have_content(@mikal.name)
+    expect(page).to have_content(@austin.name)
+    expect(page).to have_content(@jared.name)
+  end
 end
