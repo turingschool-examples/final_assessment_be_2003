@@ -7,7 +7,8 @@ RSpec.describe "Show Show Page", type: :feature do
       @anschutz = Hospital.create!(name: "CU Anschutz Medical Center", address: "13001 East 17th Place", city: "Aurora", state: "CO", zip: 80045)
       @doctor_1 = @unmh.doctors.create!(name: "S. Santos", specialty: "Pediatrics", education: "Cornell")
       @doctor_2 = @unmh.doctors.create!(name: "V. Santos", specialty: "Pediatrics", education: "UNAM")
-      @doctor_3 = @anschutz.doctors.create!(name: "T. Fernandes", specialty: "Oncology", education: "Harvard")
+      @doctor_3 = @unmh.doctors.create!(name: "E. Santos", specialty: "Pediatrics", education: "Cornell")
+      @doctor_4 = @anschutz.doctors.create!(name: "T. Fernandes", specialty: "Oncology", education: "Harvard")
 
       visit "/hospitals/#{@unmh.id}"
     end
@@ -23,6 +24,13 @@ RSpec.describe "Show Show Page", type: :feature do
 
     it "I can see the total count of doctors at that hospital" do
       expect(page).to have_content("Number of Doctors at this Hospital: 2")
+    end
+
+    it "I see a list of universities that the doctor's attended" do
+      save_and_open_page
+      
+      expect(page).to have_content("Cornell")
+      expect(page).to have_content("UNAM")
     end
   end
 end
