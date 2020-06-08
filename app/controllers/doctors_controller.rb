@@ -5,4 +5,16 @@ class DoctorsController < ApplicationController
 
   def new
   end
+
+  def create
+    hospital = Hospital.find(params[:id])
+    hospital.doctors.create(doctor_params)
+    redirect_to "/hospitals/#{params[:id]}"
+  end
+
+  private
+
+  def doctor_params
+    params.permit(:name,:specialty,:school)
+  end
 end
