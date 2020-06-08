@@ -28,7 +28,7 @@ RSpec.describe "Hospital's Patients Index Page" do
     DoctorPatient.create(doctor_id: yang.id, patient_id: duqette.id)
 
     visit "/hospitals/#{memorial.id}/patients"
-    save_and_open_page
+
     expect("Denny Duquette").to appear_before("Rebecca Pope")
     expect("Rebecca Pope").to appear_before("Katie Bryce")
     expect("Katie Bryce").to appear_before("Zola Shepherd")
