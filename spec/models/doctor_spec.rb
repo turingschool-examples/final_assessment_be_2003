@@ -8,6 +8,8 @@ RSpec.describe Doctor do
   end
 
   describe "Relationships" do 
-    it { should belong_to(:hospital) } 
+    it { should belong_to(:hospital) }
+    it { should have_many(:patient_doctors) } 
+    it { should have_many(:patients).through(:patient_doctors) }  
   end
 end
