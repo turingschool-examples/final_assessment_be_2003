@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :doctors
   resources :hospitals
+  get '/hospitals/:id/patients', to: "hospital_patients#index"
 end
