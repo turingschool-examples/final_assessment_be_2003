@@ -20,7 +20,7 @@ RSpec.describe "When I visit a doctor's show page" do
     expect(page).to have_content(@mcdreamy.name)
     expect(page).to have_content("Specialty: #{@mcdreamy.specialty}")
     expect(page).to have_content("Education: #{@mcdreamy.education}")
-    # expect(page).to have_content("Hospital: #{@seaside.name}")
+    expect(page).to have_content("Hospital: #{@seaside.name}")
     expect(page).to have_content("Rebecca Pope")
     expect(page).to have_content("Zola Shepherd")
     expect(page).to_not have_content(@alex.name)
