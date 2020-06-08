@@ -28,6 +28,5 @@ RSpec.describe "Doctor Show Page" do
 
     expect(page).to have_content(katie.name)
     expect(page).to have_content(denny.name)
-    save_and_open_page
   end
 end
