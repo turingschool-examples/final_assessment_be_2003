@@ -1,0 +1,20 @@
+<h1><%= @hospital.name %></h1>
+<h4>Located at:</h4>
+<p>Street address: <%= @hospital.address %></p><br>
+<p>City: <%= @hospital.city %></p><br>
+<p>State: <%= @hospital.state %></p><br>
+<p>Zipcode: <%= @hospital.zip %></p><br>
+
+<h4>List of Doctors working at hospital: </h4>
+<ol>
+<% @hospital.doctors.each do |doctor| %>
+    <section class="doctor-<%= doctor.id%>">
+        <li><p><%= doctor.name %>
+    </section>
+<% end %>
+</ol>
+<ul>
+<h4>List of Universities attended by doctors at hospital:</h4>
+<% @hospital.doctor_schools.each do |school| %>
+    <li><p><%= school %></p></li>
+<% end %>

@@ -12,13 +12,13 @@ greys = Hospital.create!(name: "Grey Sloan Memorial Hospital",
                         address: "123 Save Lives Rd",
                         city: "Seattle", 
                         state: "WA",
-                        zip: "98101"
+                        zip: "98101")
 
 seaside = Hospital.create!(name: "Seaside Health & Wellness Center",
                            address: "123 Private Practice Road",
                            city: "Los Angeles", 
                            state: "CA", 
-                           zip: "90001"
+                           zip: "90001")
 
 #Doctors:
 
@@ -41,11 +41,11 @@ derek = Doctor.create!(name: "Derek McDreamy Shepherd",
 
 #Patients:
 
-katie = Patient.create!(name: Katie Bryce,
+katie = Patient.create!(name: "Katie Bryce",
                         age: 24)
-denny = Patient.create!(name: Denny Duquette,
+denny = Patient.create!(name: "Denny Duquette",
                         age: 39)
-rebecca = Patient.create!(name: Rebecca Pope,
+rebecca = Patient.create!(name: "Rebecca Pope",
                           age: 32)
-zola = Patient.create!(name: Zola  Shepherd,
+zola = Patient.create!(name: "Zola Shepherd",
                        age: 2)
