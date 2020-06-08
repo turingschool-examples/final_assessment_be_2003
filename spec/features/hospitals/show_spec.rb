@@ -12,14 +12,14 @@ RSpec.describe "Hospital's Show Page" do
     sloan = Doctor.create(name: "Mark McSteamy Sloan", specialty: "Plastic Surgeron", education: "University of Pennsylvania", hospital_id: memorial.id)
 
     visit "/hospitals/#{memorial.id}"
-
+  
     expect(page).to have_content("Grey Sloan Memorial Hospital")
     expect(page).to have_content("123 Save Lives Rd")
     expect(page).to have_content("Seattle")
     expect(page).to have_content("WA")
     expect(page).to have_content("98101")
     expect(page).to have_content("Number of Doctors: 6")
-    expect(page).to have_content(["Harvard University", "Stanford University", "Johns Hopkins University", "University of Pennsylvania"])
+    expect(page).to have_content(["Harvard University", "Johns Hopkins University", "Stanford University", "University of Pennsylvania"])
   end
 end
 
