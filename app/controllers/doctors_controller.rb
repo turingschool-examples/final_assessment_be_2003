@@ -6,11 +6,14 @@ class DoctorsController < ApplicationController
   end
 
   def create
-    hospital = Hospital.find(params[:hospital_id])
-    doctor = hospital.doctors.new(doctor_params)
-    if doctor.save
+    @hospital = Hospital.find(params[:hospital_id])
+    @doctor = @hospital.doctors.new(doctor_params)
+    if @doctor.save
       flash[:success] = "New Doctor Created!"
-      redirect_to hospital_path(doctor.hospital.id)
+      redirect_to hospital_path(@doctor.hospital.id)
+    else
+      flash[:error] = @doctor.errors.full_messages.to_sentence
+      render :new
     end
   end
 
