@@ -30,7 +30,7 @@ RSpec.describe "Hospital show page", type: :feature do
       expect(page).to have_content("#{@hospital_1.zip}")
     end
 
-    within "#num-of_docs" do
+    within "#num-of-docs" do
       expect(page).to have_content("3")
     end
 
@@ -38,6 +38,6 @@ RSpec.describe "Hospital show page", type: :feature do
       expect(page).to have_content("Harvard University")
       expect(page).to have_content("Johns Hopkins University")
     end
-    
+
   end
 end
