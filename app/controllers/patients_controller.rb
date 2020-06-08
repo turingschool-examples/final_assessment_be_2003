@@ -7,6 +7,7 @@ class PatientsController < ApplicationController
         @patients << patient
       end
     end
+    @patients = @patients.sort_by {|patient| patient.age}.reverse
   end
 
   def edit
