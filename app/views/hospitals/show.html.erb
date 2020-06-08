@@ -3,7 +3,6 @@
 <%= @hospital.city %>, <%= @hospital.state %> <%= @hospital.zip %></h2>
 
 <p>Number of doctors on staff: <%= @hospital.num_doctors %></p> <br/>
-<p>Featuring doctors from -
-<% @hospital.doctors.each do |doctor| %>
-  <%= doctor.education %><br/>
-<% end %></p>
+<p>Featuring doctors from - <%= @hospital.unique_univ %></p>
+<br/>
+<%= link_to "See Patients", hospital_patients_path(@hospital.id) %>
