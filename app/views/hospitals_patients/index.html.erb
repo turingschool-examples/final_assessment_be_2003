@@ -1,4 +1,6 @@
 <h2> <%= @hospital.name %>'s Patients </h2>
 
-<p>Patients: 
-<% @hospital.patient_list %></p>
+<p>Patients: </p>
+<% @hospital.doctors.each do |doctor| %>
+<%= doctor.patients.order_by_oldest.join(", ") %>
+<% end %> 

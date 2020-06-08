@@ -13,22 +13,23 @@ RSpec.describe "Hospital Index Page" do
     end
   end
 
-  xit "can see the names of all that hospital's patients listed from oldest to youngest" do
+  it "can see the names of all that hospital's patients listed from oldest to youngest" do
       grey = Hospital.create(name:"Grey Sloan Memorial Hospital", address: "123 Save Lives Rd", city: "Seattle", state: "WA", zip: "98101")
      
-      meredith = Doctor.create(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: grey.id)
-      alex = Doctor.create(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Stanford University", hospital_id: grey.id)
-      
-      katie = meredith.patients.create(name: "Katie Bryce", age: 24)
-      denny = meredith.patients.create(name: "Denny Duquette", age: 39)
-      rebecca = alex.patients.create(name: "Rebecca Pope", age: 32)
-      zola = alex.patients.create(name: "Zola Shepherd", age: 2)
+      meredith = Doctor.create!(name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: grey.id)
+      alex = Doctor.create!(name: "Alex Karev", specialty: "Pediatric Surgery", education: "Stanford University", hospital_id: grey.id)
+ 
+      denny = Patient.create(name: "Denny Duquette", age: 39)
+      rebecca = Patient.create(name: "Rebecca Pope", age: 32)
+      katie = Patient.create(name: "Katie Bryce", age: 24)
+      zola = Patient.create(name: "Zola Shepherd", age: 2)
+     
+      DoctorPatient.create(doctor: meredith, patient: denny)
+      DoctorPatient.create(doctor: meredith, patient: rebecca)
 
       visit "/hospitals/#{grey.id}/patients"
 
-      expect(zola.name).to appear_before(katie.name)
-      expect(katie.name).to appear_before(rebecca.name)
-      expect(rebecca.name).to appear_before(denny.name)
+      expect(denny.name).to appear_before(rebecca.name)
   end
 end
 
