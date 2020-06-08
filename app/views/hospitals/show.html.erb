@@ -4,6 +4,10 @@
 <section id='doctors'>
   <p>Number of Doctors at Hospital: <%= @hospital.count_of_doctors %></p>
 </section>
+
+<%= link_to "Add Doctor to Hospital", "/hospitals/#{@hospital.id}/doctors/new" %>
+
+
 <br>
 <h3>Universities this hospital's doctors have attended:</h3>
 <section id='universities'>
