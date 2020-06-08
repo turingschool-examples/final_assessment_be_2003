@@ -45,22 +45,10 @@ RSpec.describe 'New Doctor Creation' do
       click_button 'Hire Doctor'
 
       expect(current_path).to eq(hospital_path(@hospital1))
-      
+
       within "#doctors" do
         expect(page).to have_content("Number of Doctors at Hospital: 4")
       end
     end
   end
 end
-
-# User Story 4, Creating a Doctor 
-# As a visitor
-# When I visit a hospital's show page
-# I see a link to add a doctor for this hospital
-# When I click that link
-# I'm taken to a page that has a title of "New Doctor Hire for <insert hospital name here>"
-# And on that page there's a form for me to enter a new doctor's name, specialty, 
-# and university where they got their doctorate.
-# When I fill out all three fields and click submit
-# I am taken back to the hospital show page 
-# And I can see that the number of doctors has increased by one

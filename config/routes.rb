@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get :root, to: 'welcome#index'
 
-  resources :doctors, only: [:show]
+  resources :doctors, only: [:show] do 
+    resources :patients, only: [:destroy], controller: "doctor_patients"
+  end 
 
   resources :hospitals, only: [:show] do 
     resources :patients, only: [:index], controller: "hospital_patients"
