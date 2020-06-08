@@ -83,40 +83,46 @@ I'm taken to a form where I can input an id of an existing hospital
 When I click "Add <insert name of doctor> to this hospital"
 I'm taken back to that doctor's show page
 And I can see the name of the new hospital that they were assigned 
+```
 
-
-
-
-=============
-Ross Notes
-one -> many
+# Ross Notes
+## Relationships
+### one -> many
 hospital -> doctors
 
-many <-> many
+### many <-> many
 doctors <-> patients
 
-migrations
+## Migrations
 rails g migration CreateHospitals name:string address:string city:string state:string zip:string
 rails g migration CreateDoctors name:string specialty:string education:string hospital:references
 rails g migration CreatePatients name:string age:integer
 rails g migration CreateDoctorPatients doctor:references patients:references
 
-ADD TIMESTAMPS
+*ADD TIMESTAMPS*
 
-US1 = DR SHOW PAGE
-its info, hospital, patients
+## User Story Notes
+### US1 = DR SHOW PAGE
+* its info, hospital, patients
 
-US2 = HOSPITAL SHOW PAGE
-its info, # doctors, uniq universities of doctors
+### US2 = HOSPITAL SHOW PAGE
+* its info, # doctors, uniq universities of doctors
 
-US3 = HOSPITAL PATIENT INDEX '/hospital/:id/patients'
-link to patients, list patient names oldest to youngest
+### US3 = HOSPITAL PATIENT INDEX '/hospital/:id/patients'
+* link to patients, list patient names oldest to youngest
 
-US4 = CREATE A DOCTOR
-on hospital show link to add doctor, NEW DOCTOR FORM, reidrect to hospital and # doctors has incremennted
+### US4 = CREATE A DOCTOR
+* on hospital show link to add doctor, NEW DOCTOR FORM, reidrect to hospital and # 
+doctors has incremennted
 
-US5 = REMOVE PATIENT FROM DR - DR SHOW
-on DR show, button to remove from dr. NOT DELETE, JUST REMOVE. delete doctor-patient, patients not listed
+### US5 = REMOVE PATIENT FROM DR - DR SHOW
+* on DR show, button to remove from doctor
+* NOT DELETE, JUST REMOVE. 
+* delete doctor-patient -> patients not listed
 
-US6 = REASSIGN DR TO DIFFERENT HOSPITAL (update hospital_id) - DR SHOW
-next to hostpital link to change hosp, FORM id of existing, click add DR to this hosp, redirect dr show with new hosp
+### US6 = REASSIGN DR TO DIFFERENT HOSPITAL 
+* update hospital_id - DR SHOW
+* next to hostpital link to change hosp, 
+* FORM id of existing, 
+* click add DR to this hospital, 
+* redirect dr show with new hosp
