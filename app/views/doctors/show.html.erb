@@ -10,7 +10,7 @@
 <section id = "patient-<%= patient.id %>">
 <ul>
   <%= patient.name %><br>
-  <%= link_to "Remove This Patient from Caseload", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
+  <%= link_to "Remove This Patient from Dr. #{@doctor.name}'s Caseload", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
 </ul>
 </section>
 <% end %>

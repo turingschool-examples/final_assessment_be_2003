@@ -40,7 +40,7 @@ RSpec.describe "Doctor Show Page" do
       visit "/doctors/#{@grey.id}"
 
       within "#patient-#{@bryce.id}" do
-        click_on "Remove This Patient from Caseload"
+        click_on "Remove This Patient from Dr. Meredith Grey's Caseload"
       end
 
       expect(current_path).to eq("/doctors/#{@grey.id}")
