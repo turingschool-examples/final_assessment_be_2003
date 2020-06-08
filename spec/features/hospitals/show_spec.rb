@@ -48,4 +48,11 @@ RSpec.describe 'Hospital show page', type: :feature do
     click_link "View all patients"
     expect(current_path).to eq(hospital_patients_path(@grey))
   end
+
+  it 'has a link to create a new doctor' do
+    visit hospital_path(@grey)
+    expect(page).to have_link("Add a doctor")
+    click_link "Add a doctor"
+    expect(current_path).to eq(new_hospital_doctor_path(@grey))
+  end
 end
