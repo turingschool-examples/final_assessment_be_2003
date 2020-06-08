@@ -57,7 +57,5 @@ RSpec.describe "Hospital show page", type: :feature do
     within "#num-of-docs" do
       expect(page).to have_content("4")
     end
-
-
   end
 end

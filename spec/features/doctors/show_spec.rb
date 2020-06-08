@@ -41,7 +41,6 @@ RSpec.describe "Doctors show page", type: :feature do
     expect(page).to have_content("#{@doc_1.education}")
     expect(page).to have_content("#{@hospital_1.name}")
 
-
     within "#patient-#{@patient_2.id}" do
       expect(page).to have_content("#{@patient_2.name}")
       click_on "Delete"
@@ -58,7 +57,6 @@ RSpec.describe "Doctors show page", type: :feature do
 
     expect(page).to_not have_content("#{@patient_2.name}")
   end
-
 
   it "Story-6: Reassign doctor to new hospital" do
     visit "/doctors/#{@doc_1.id}"
