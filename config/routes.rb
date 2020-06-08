@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "/hospitals/:id", to: "hospitals#show"
   get "/hospitals/:hospital_id/doctors/new", to: "doctors#new"
   post "/hospitals/:hospital_id/doctors", to: "doctors#create"
-  delete "doctors/:doctor_id/patients/:id", to: "patients#destroy"
+  delete "/doctors/:doctor_id/patients/:id", to: "patients#destroy"
+  get "/doctors/:id/edit", to: "doctors#edit"
+  patch "/doctors/:id", to: "doctors#update"
   # get "/hospitals/:id/patients", to: "hospitals_patients#index"
 end
