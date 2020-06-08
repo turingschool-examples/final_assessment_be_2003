@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "As a visitor" do
     describe "when I visit a doctor's show page" do
-        "I see all of the doctor's info, the hospital they work for and names of all their patients" do
+        it "I see all of the doctor's info, the hospital they work for and names of all their patients" do
             
         end
     end
