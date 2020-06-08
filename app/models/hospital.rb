@@ -9,4 +9,11 @@ class Hospital < ApplicationRecord
   def count_of_doctors
     doctors.count
   end
+
+  def patients
+    doctors.joins(:patients)
+            .select("patients.name AS name")
+            .select("patients.age AS age")
+            .order("age DESC").distinct
+  end
 end
