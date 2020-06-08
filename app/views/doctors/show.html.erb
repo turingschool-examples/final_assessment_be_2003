@@ -1,0 +1,16 @@
+<h1> <%= @doc.name %> </h1>
+
+<p> specialty: <%= @doc.specialty %> </p>
+<p> education: <%= @doc.school %> </p>
+
+<p>works at: <%= Hospital.find(@doc.hospital_id).name %>
+<%= link_to "Assign #{@doc.name} to a Different Hospital", "/doctors/#{@doc.id}/edit" %> </p>
+
+<% @doc.patients.each do |patient|%>
+  <section class= "patient-<%=patient.id%>">
+    <% if patient.waiting? == false %>
+      <%= patient.name %>
+      <%= link_to "remove patient", "/patients/#{patient.id}/edit" %>
+    <% end %>
+  </section>
+<% end %>

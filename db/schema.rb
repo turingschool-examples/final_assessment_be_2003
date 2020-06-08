@@ -10,9 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20200608215352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "doc_patients", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.bigint "patient_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string "name"
+    t.string "specialty"
+    t.string "school"
+    t.bigint "hospital_id"
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.boolean "waiting?", default: false
+    t.bigint "hospital_id"
+    t.bigint "hospitals_id"
+    t.index ["hospitals_id"], name: "index_patients_on_hospitals_id"
+  end
+
+  add_foreign_key "patients", "hospitals", column: "hospitals_id"
 end

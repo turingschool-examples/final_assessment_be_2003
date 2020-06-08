@@ -1,0 +1,9 @@
+<h1>Reassign: <%= Doctor.find(params[:id]).name %> </h1>
+
+<%= form_tag "/doctors/#{params[:id]}", method: :patch do |f| %>
+
+  <%= label_tag :hospital_id %>
+  <%= text_field_tag :hospital_id %>
+
+  <%= submit_tag "Add #{Doctor.find(params[:id]).name} to this hospital" %>
+<% end %>
