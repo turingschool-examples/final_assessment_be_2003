@@ -1,0 +1,10 @@
+<h1><%=@doctor.name%></h1>
+
+  <p><%=@doctor.specialty%></p>
+  <p><%=@doctor.hospital.name %></p>
+
+  <section id=doctors_patients>
+    <%@pats.flatten.each do |patient|%>
+    <%= patient.name %>
+    <% end %>
+  </section>
