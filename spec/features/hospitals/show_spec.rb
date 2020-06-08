@@ -50,22 +50,14 @@ RSpec.describe "when visiting a hospitals show page" do
 
     expect(current_path).to eq("/hospitals/#{@greys.id}/patients")
   end
+
   it "patients index will list names of patient from oldest to youngest" do
     visit "/hospitals/#{@greys.id}/patients"
-
-    within '.patients' do
+    save_and_open_page
+    within(:css, "ol#patients") do
       expect(page.all('li')[0]).to have_content(@denny.name)
       expect(page.all('li')[1]).to have_content(@rebecca.name)
       expect(page.all('li')[2]).to have_content(@katie.name)
     end
   end
 end
-# ```
-# User Story 3, Hospital Patient Index Page
-# As a visitor
-# When I visit the hospitals show page
-# I see a link to view all of that hospitals patients
-# When I click that link
-# I'm taken to a patients index page for that hospital
-# I see the names of all that hospital's patients listed from oldest to youngest
-# ```

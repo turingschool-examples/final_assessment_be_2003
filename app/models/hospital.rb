@@ -10,7 +10,6 @@ class Hospital < ApplicationRecord
   end
 
   def patients_by_age
-    require "pry"; binding.pry
-    #joins hospital doctors to patients
+    Patient.joins(:doctor).where(:hospital_id == id).order(:age).reverse
   end
 end
